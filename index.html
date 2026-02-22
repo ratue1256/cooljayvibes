@@ -1,592 +1,586 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="CoolJayVibe - Unbiased hardware intelligence for your ecosystem." />
     <title>CoolJayVibe - Tech Advisory</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+    <!-- Preconnect to CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
         rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script id="tailwind-config">
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    <script>
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#2997FF", "background-dark": "#000000", "card-dark": "#1C1C1E", "card-border": "#2C2C2E", "text-primary": "#F5F5F7", "text-secondary": "#86868B",
+                        "primary": "#2997FF",
+                        "bg-dark": "#000000",
+                        "card-dark": "#1C1C1E",
+                        "text-secondary": "#86868B"
                     },
                     fontFamily: {
-                        "display": ["Inter", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
-                        "body": ["Inter", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.5rem",
-                        "lg": "1rem",
-                        "xl": "1.5rem", "2xl": "2rem",
-                        "full": "9999px"
-                    },
-                },
-            },
+                        body: ["Inter", "system-ui", "sans-serif"]
+                    }
+                }
+            }
         }
     </script>
     <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent
+        }
+
+        body {
+            background: #000;
+            color: #F5F5F7;
+            font-family: Inter, system-ui, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden
+        }
+
         ::-webkit-scrollbar {
-            width: 10px;
+            width: 6px
         }
 
         ::-webkit-scrollbar-track {
-            background: #000000;
+            background: #000
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #333333;
-            border-radius: 5px;
+            background: #333;
+            border-radius: 3px
         }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555555;
-        }
-
-        .text-gradient-subtle {
-            background: linear-gradient(180deg, #FFFFFF 0%, #A1A1AA 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .backdrop-blur-md {
+        .glass {
+            background: rgba(28, 28, 30, 0.8);
             backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%)
         }
 
-        /* Apple-style card elevation */
-        .apple-card {
+        .card {
             background: #1C1C1E;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 2.5rem;
+            transition: transform .3s ease, border-color .3s ease
         }
 
-        .apple-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
-            pointer-events: none;
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.12)
         }
 
-        .apple-card:hover {
-            border-color: rgba(255, 255, 255, 0.1);
-            transform: scale(1.005);
+        .text-grad {
+            background: linear-gradient(180deg, #fff 0%, #A1A1AA 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent
         }
 
-        /* Smooth Progress Bars */
-        .progress-tray {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 999px;
+        .btn-primary {
+            background: #2997FF;
+            border-radius: 9999px;
+            color: #fff;
+            font-weight: 600;
+            padding: .9rem 2.2rem;
+            transition: background .2s, transform .1s;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem
+        }
+
+        .btn-primary:hover {
+            background: #47a5ff
+        }
+
+        .btn-primary:active {
+            transform: scale(.97)
+        }
+
+        .bar-bg {
+            background: rgba(255, 255, 255, .08);
+            border-radius: 9999px;
             height: 6px;
-            width: 100%;
+            overflow: hidden
+        }
+
+        .bar-fg {
+            height: 6px;
+            border-radius: 9999px;
+            transition: width 1s ease
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            right: 0;
+            top: calc(100% + 10px);
+            min-width: 180px;
+            background: #1C1C1E;
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 1rem;
             overflow: hidden;
+            z-index: 100;
+            max-height: 260px;
+            overflow-y: auto
         }
 
-        .progress-fill {
-            height: 100%;
-            border-radius: 999px;
-            transition: width 1.5s cubic-bezier(0.65, 0, 0.35, 1);
-        }
-
-        /* Toast Styles */
-        #toast-container {
+        .toast-wrap {
             position: fixed;
-            bottom: 2rem;
-            right: 2rem;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 999;
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
-            z-index: 100;
+            gap: .6rem;
+            pointer-events: none
         }
 
         .toast {
             background: #1C1C1E;
-            border: 1px solid #2C2C2E;
-            color: #F5F5F7;
-            padding: 1rem 1.5rem;
-            border-radius: 1rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-            font-size: 0.875rem;
-            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, .1);
+            border-radius: .875rem;
+            padding: .8rem 1.2rem;
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            transition: all 0.3s ease;
+            gap: .6rem;
+            font-size: .8rem;
+            font-weight: 500;
+            animation: slideUp .25s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, .5)
         }
 
-        @keyframes slideIn {
+        @keyframes slideUp {
             from {
-                transform: translateX(100%);
                 opacity: 0;
+                transform: translateY(12px)
             }
 
             to {
-                transform: translateX(0);
                 opacity: 1;
+                transform: translateY(0)
             }
         }
 
-        .toast.fade-out {
-            opacity: 0;
-            transform: translateX(100%);
+        .toast.out {
+            animation: fadeOut .25s ease forwards
         }
-    
-        /* Auto Translate Hiding */
-        body { top: 0px !important; }
-        .skiptranslate { display: none !important; }
-        .goog-te-banner-frame { display: none !important; }
-        .goog-tooltip { display: none !important; }
-        .goog-tooltip:hover { display: none !important; }
-        .goog-text-highlight { background-color: transparent !important; border: none !important; box-shadow: none !important; }
-        #google_translate_element { display: none !important; }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: translateY(8px)
+            }
+        }
+
+        /* Mobile touch targets */
+        button,
+        a {
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center
+        }
+
+        nav a {
+            min-height: auto
+        }
+
+        @media(max-width:768px) {
+            .card {
+                border-radius: 1.5rem;
+                padding: 1.5rem !important
+            }
+
+            h1 {
+                font-size: 2.4rem !important;
+                line-height: 1.15 !important
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                width: 100%
+            }
+
+            .hero-btns .btn-primary,
+            .hero-btns a {
+                width: 100%;
+                justify-content: center
+            }
+        }
     </style>
 </head>
 
-<body
-    class="bg-background-dark text-text-primary font-body antialiased selection:bg-primary selection:text-white overflow-x-hidden">
-    <div class="relative flex min-h-screen w-full flex-col max-w-[1240px] mx-auto p-4 md:p-10 lg:p-16 gap-10">
+<body class="dark">
+
+    <!-- ───────── HEADER ───────── -->
+    <div class="max-w-[1240px] mx-auto px-4 pt-4">
         <header
-            class="flex items-center justify-between py-3 sticky top-6 z-50 bg-background-dark/70 backdrop-blur-md border border-white/10 px-6 rounded-full mx-[-1rem] md:mx-0 shadow-2xl">
-            <div class="flex items-center gap-2">
-                <div class="flex items-center justify-center size-7 bg-white text-black rounded-full">
-                    <span class="material-symbols-outlined text-[18px] font-bold">bolt</span>
+            class="glass flex items-center justify-between py-3 px-5 rounded-full border border-white/10 sticky top-4 z-50 shadow-2xl">
+            <a href="index.html" class="flex items-center gap-2 min-h-0" aria-label="CoolJayVibe Home">
+                <div class="flex items-center justify-center w-7 h-7 bg-white text-black rounded-full">
+                    <span class="material-symbols-outlined"
+                        style="font-size:17px;font-variation-settings:'FILL' 1">bolt</span>
                 </div>
-                <h2 class="text-lg font-semibold tracking-tight text-white">CoolJayVibe</h2>
-            </div>
-            <nav class="hidden md:flex items-center gap-10">
-                <a class="text-[13px] font-medium text-text-secondary hover:text-white transition-colors"
-                    href="reviews.html">Reviews</a>
-                <a class="text-[13px] font-medium text-text-secondary hover:text-white transition-colors"
-                    href="configurator.html">Configurator</a>
-                <a class="text-[13px] font-medium text-text-secondary hover:text-white transition-colors"
-                    href="guides.html">Guides</a>
-                </nav>
-                        <div class="flex items-center gap-4">
-                <a href="https://x.com/cooljayvibes" target="_blank" class="hidden md:flex items-center gap-2 text-white hover:text-text-secondary transition-colors text-sm font-medium">
-                    <svg fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 5.965h-1.92z"/></svg>
-                    Follow
+                <span class="text-[17px] font-semibold tracking-tight">CoolJayVibe</span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8" aria-label="Main navigation">
+                <a class="text-[13px] font-medium text-[#86868B] hover:text-white transition-colors" href="reviews.html"
+                    data-i18n="nav_reviews">Reviews</a>
+                <a class="text-[13px] font-medium text-[#86868B] hover:text-white transition-colors"
+                    href="configurator.html" data-i18n="nav_configurator">Configurator</a>
+                <a class="text-[13px] font-medium text-[#86868B] hover:text-white transition-colors" href="guides.html"
+                    data-i18n="nav_guides">Guides</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <!-- X Follow -->
+                <a href="https://x.com/cooljayvibes" target="_blank" rel="noopener"
+                    class="hidden md:flex items-center gap-1.5 text-[#86868B] hover:text-white transition-colors text-sm font-medium min-h-0">
+                    <svg fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4" aria-hidden="true">
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 5.965h-1.92z" />
+                    </svg>
+                    <span data-i18n="nav_follow">Follow</span>
                 </a>
-                
-                <div class="relative group">
-                    <button type="button" class="lang-menu-btn flex items-center gap-1 text-white hover:text-text-secondary transition-colors text-sm font-medium" onclick="event.stopPropagation();">
-                        <span class="material-symbols-outlined text-[18px]">language</span>
-                        <span id="current-lang-display" class="uppercase">EN</span>
-                        <span class="material-symbols-outlined text-[14px]">expand_more</span>
+
+                <!-- Language Picker -->
+                <div class="relative">
+                    <button id="lang-toggle-btn" type="button" aria-haspopup="true" aria-expanded="false"
+                        class="flex items-center gap-1 text-[#86868B] hover:text-white transition-colors text-sm font-medium px-2 py-1 rounded-lg hover:bg-white/5">
+                        <span class="material-symbols-outlined" style="font-size:18px">language</span>
+                        <span id="current-lang-display" class="uppercase text-xs font-bold tracking-wide">EN</span>
+                        <span class="material-symbols-outlined" style="font-size:14px">expand_more</span>
                     </button>
-                    <div class="absolute right-0 top-full mt-2 w-48 bg-card-dark border border-white/10 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-                        <div class="py-2 flex flex-col max-h-64 overflow-y-auto">
-                            <button type="button" class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="en">English</button>
-                            <button type="button" class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="fr">Français</button>
-                            <button type="button" class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="de">Deutsch</button>
-                            <button type="button" class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="it">Italiano</button>
-                            <button type="button" class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="es">Español</button>
-                            <button type="button" class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="pt">Português</button>
-                            <button type="button" class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="nl">Nederlands</button>
-                            <button type="button" class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="sv">Svenska</button>
-                            <button type="button" class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="pl">Polski</button>
-                            <button type="button" class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="zh-CN">中文 (Simplified)</button>
-                        </div>
+                    <div id="lang-dropdown" class="lang-dropdown hidden shadow-2xl" role="menu">
+                        <div id="lang-menu-list"><!-- built by lang.js --></div>
                     </div>
                 </div>
 
-                <button class="md:hidden text-white hover:text-text-secondary">
+                <!-- Mobile menu -->
+                <button id="mobile-menu-btn" type="button" class="md:hidden text-white p-1" aria-label="Open menu">
                     <span class="material-symbols-outlined">menu</span>
                 </button>
             </div>
         </header>
-        <main class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 flex-grow">
-            <section
-                class="col-span-1 md:col-span-2 lg:col-span-3 row-span-2 relative group overflow-hidden rounded-[2.5rem] bg-card-dark p-10 md:p-20 flex flex-col justify-center items-center text-center shadow-lg apple-card">
-                <div
-                    class="absolute inset-0 bg-gradient-to-b from-blue-600/10 via-transparent to-transparent opacity-40">
-                </div>
-                <div class="relative z-10 max-w-4xl flex flex-col items-center">
-                    <h1 class="text-6xl md:text-8xl font-bold tracking-tight mb-8 leading-[1.05] text-gradient-subtle">
-                        Don't buy a phone.<br /><span class="opacity-60">Buy a workflow.</span>
-                    </h1>
-                    <p class="text-text-secondary text-xl md:text-2xl font-medium mb-12 max-w-2xl leading-relaxed">
-                        Unbiased hardware intelligence. Tailored to your work, your privacy, and your life.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-6 items-center">
-                        <button onclick="window.location.href='configurator.html'"
-                            class="flex items-center justify-center gap-2 bg-primary hover:bg-[#47a5ff] text-white px-10 py-4 rounded-full font-semibold text-base transition-all transform active:scale-95 shadow-2xl shadow-primary/20">
-                            Start Configurator
-                        </button>
-                        <a class="px-8 py-4 text-white hover:text-primary font-medium text-base transition-colors flex items-center gap-1 group/link"
-                            href="manifesto.html">
-                            Learn more <span
-                                class="material-symbols-outlined text-[20px] group-hover/link:translate-x-1 transition-transform">chevron_right</span>
-                        </a>
-                    </div>
-                </div>
-            </section>
-            <section
-                class="col-span-1 md:col-span-1 lg:col-span-1 row-span-2 rounded-[2.5rem] bg-card-dark border border-white/5 flex flex-col relative group overflow-hidden shadow-lg apple-card">
-                <div class="p-8 border-b border-white/5 flex justify-between items-center">
-                    <h3 class="font-semibold text-xs uppercase tracking-[0.1em] text-text-secondary">Comparison</h3>
-                </div>
-                <div class="flex-1 flex flex-col p-8 gap-10 relative">
-                    <div class="flex justify-between items-start pt-4">
-                        <div class="flex flex-col items-center gap-4 text-center w-1/2 group/pixel">
-                            <div
-                                class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#2c2c2e] to-[#1c1c1e] shadow-2xl flex items-center justify-center text-gray-300 border border-white/10 group-hover/pixel:scale-105 transition-transform duration-500">
-                                <span class="material-symbols-outlined text-3xl font-light text-white">smartphone</span>
-                            </div>
-                            <div>
-                                <span class="block font-semibold text-sm text-white">Pixel 10 Pro</span>
-                            </div>
-                        </div>
-                        <div class="flex flex-col items-center gap-4 text-center w-1/2 group/iphone">
-                            <div
-                                class="w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-100 to-gray-400 shadow-2xl flex items-center justify-center text-black border border-white/10 group-hover/iphone:scale-105 transition-transform duration-500">
-                                <span class="material-symbols-outlined text-3xl font-light">phone_iphone</span>
-                            </div>
-                            <div>
-                                <span class="block font-semibold text-sm text-white">iPhone 17</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="space-y-8 mt-4">
-                        <div class="space-y-3">
-                            <div
-                                class="flex justify-between text-[11px] font-semibold text-text-secondary uppercase tracking-widest">
-                                <span>Camera</span>
-                            </div>
-                            <div class="progress-tray">
-                                <div class="progress-fill bg-primary w-[52%]"></div>
-                            </div>
-                        </div>
-                        <div class="space-y-3">
-                            <div
-                                class="flex justify-between text-[11px] font-semibold text-text-secondary uppercase tracking-widest">
-                                <span>Efficiency</span>
-                            </div>
-                            <div class="progress-tray">
-                                <div class="progress-fill bg-white w-[88%]"></div>
-                            </div>
-                        </div>
-                        <div class="space-y-3">
-                            <div
-                                class="flex justify-between text-[11px] font-semibold text-text-secondary uppercase tracking-widest">
-                                <span>Privacy</span>
-                            </div>
-                            <div class="progress-tray">
-                                <div class="progress-fill bg-green-500 w-[60%]"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <button onclick="window.location.href='comparison.html'"
-                        class="mt-auto w-full py-3.5 bg-white/5 hover:bg-white/10 text-white rounded-full transition-all text-xs font-semibold uppercase tracking-widest group/btn border border-white/5">
-                        Deep Analysis
-                    </button>
-                </div>
-            </section>
-            <section
-                class="col-span-1 md:col-span-3 lg:col-span-4 rounded-[2.5rem] bg-card-dark p-10 flex flex-col md:flex-row items-center justify-between gap-12 apple-card">
-                <div class="flex flex-col gap-3 max-w-lg">
-                    <h3 class="text-white font-semibold text-3xl tracking-tight">
-                        What matters to you?
-                    </h3>
-                    <p class="text-text-secondary text-lg font-medium leading-relaxed">Choose your priority. We'll show
-                        you exactly how each device fits into your world.</p>
-                </div>
-                <div class="flex flex-wrap justify-center gap-4 w-full md:w-auto">
-                    <label class="relative cursor-pointer group">
-                        <input checked="" class="peer sr-only" name="priority" type="radio" value="work" />
-                        <div
-                            class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 peer-checked:shadow-2xl">
-                            <span class="material-symbols-outlined text-3xl mb-1">work</span>
-                            <span class="font-semibold text-xs uppercase tracking-tighter">Work</span>
-                        </div>
-                    </label>
-                    <label class="relative cursor-pointer group">
-                        <input class="peer sr-only" name="priority" type="radio" value="photo" />
-                        <div
-                            class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 text-text-secondary peer-checked:shadow-2xl">
-                            <span class="material-symbols-outlined text-3xl mb-1">photo_camera</span>
-                            <span class="font-semibold text-xs uppercase tracking-tighter">Photo</span>
-                        </div>
-                    </label>
-                    <label class="relative cursor-pointer group">
-                        <input class="peer sr-only" name="priority" type="radio" value="privacy" />
-                        <div
-                            class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 text-text-secondary peer-checked:shadow-2xl">
-                            <span class="material-symbols-outlined text-3xl mb-1">shield</span>
-                            <span class="font-semibold text-xs uppercase tracking-tighter">Privacy</span>
-                        </div>
-                    </label>
-                    <label class="relative cursor-pointer group">
-                        <input class="peer sr-only" name="priority" type="radio" value="gaming" />
-                        <div
-                            class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 text-text-secondary peer-checked:shadow-2xl">
-                            <span class="material-symbols-outlined text-3xl mb-1">sports_esports</span>
-                            <span class="font-semibold text-xs uppercase tracking-tighter">Gaming</span>
-                        </div>
-                    </label>
-                </div>
-                <div class="hidden md:flex flex-col items-end min-w-[120px]">
-                    <span class="text-[11px] text-text-secondary font-bold uppercase tracking-[0.1em]">Matches</span>
-                    <div class="text-4xl font-medium text-white tracking-tighter">12<span
-                            class="text-text-secondary text-xl font-normal">/48</span>
-                    </div>
-                </div>
-            </section>
-            <section onclick="window.location.href='compliance.html'"
-                class="col-span-1 md:col-span-1 lg:col-span-2 rounded-[2.5rem] bg-card-dark p-10 flex items-center gap-8 apple-card cursor-pointer group">
-                <div
-                    class="size-16 rounded-[1.5rem] bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0">
-                    <span class="material-symbols-outlined text-3xl">policy</span>
-                </div>
-                <div class="flex-1">
-                    <h3 class="font-semibold text-xl text-white mb-2 transition-colors">Digital Sovereignty</h3>
-                    <p class="text-base text-text-secondary font-medium leading-relaxed">Understanding privacy laws.
-                        Secure your life from global data harvesting.</p>
-                </div>
-                <div class="self-center">
-                    <span
-                        class="material-symbols-outlined text-text-secondary group-hover:text-white transition-colors">chevron_right</span>
-                </div>
-            </section>
-            <section onclick="window.location.href='guides.html'"
-                class="col-span-1 md:col-span-1 lg:col-span-1 rounded-[2.5rem] bg-card-dark p-10 flex flex-col justify-between apple-card cursor-pointer group h-full">
-                <div class="flex justify-between items-start mb-6">
-                    <div
-                        class="size-14 rounded-[1.25rem] bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
-                        <span class="material-symbols-outlined text-2xl">sync_alt</span>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-xl text-white mb-2 transition-colors">
-                        Easy Migration</h3>
-                    <p class="text-base text-text-secondary font-medium">Step-by-step guides for ecosystem transitions.
-                    </p>
-                </div>
-            </section>
-            <section
-                class="col-span-1 md:col-span-1 lg:col-span-1 rounded-[2.5rem] bg-card-dark overflow-hidden relative group apple-card">
-                <div class="absolute inset-0 bg-gradient-to-br from-gray-700 to-black opacity-40"></div>
-                <div class="relative z-10 p-10 h-full flex flex-col justify-end">
-                    <span class="text-primary text-[11px] font-bold mb-2 uppercase tracking-widest">Newsletter</span>
-                    <h3 class="font-bold text-white text-2xl leading-tight mb-6 tracking-tight">Stay updated.</h3>
-                    <form class="flex flex-col gap-3 w-full">
-                        <input
-                            class="w-full bg-white/5 border border-white/5 text-white text-sm px-6 py-4 rounded-full focus:outline-none focus:bg-white/10 placeholder:text-gray-500 backdrop-blur-sm transition-all text-center"
-                            placeholder="Email address" type="email" />
-                        <button
-                            class="bg-white text-black px-6 py-4 rounded-full hover:bg-gray-200 transition-colors font-bold text-sm tracking-tight"
-                            type="submit">
-                            Join Now
-                        </button>
-                    </form>
-                </div>
-            </section>
-        </main>
-        <footer
-            class="flex flex-col md:flex-row justify-between items-center text-xs text-text-secondary py-8 border-t border-white/5 mt-4">
-            <div class="flex gap-6">
-                <span>© 2024 CJV Systems</span>
-                <span class="w-px h-3 bg-white/10 self-center"></span>
-                <span>Berlin / Tokyo</span>
-            </div>
-            <div class="flex gap-6 mt-4 md:mt-0">
-                <a class="hover:text-white transition-colors" href="#">Privacy Protocol</a>
-                <a class="hover:text-white transition-colors" href="#">Impressum</a>
-            </div>
-        </footer>
+
+        <!-- Mobile nav -->
+        <nav id="mobile-nav" class="hidden md:hidden card mt-2 rounded-2xl! px-5 py-4 flex-col gap-4" role="navigation">
+            <a class="text-white font-medium py-2" href="reviews.html" data-i18n="nav_reviews">Reviews</a>
+            <a class="text-white font-medium py-2" href="configurator.html"
+                data-i18n="nav_configurator">Configurator</a>
+            <a class="text-white font-medium py-2" href="guides.html" data-i18n="nav_guides">Guides</a>
+            <a href="https://x.com/cooljayvibes" target="_blank" rel="noopener"
+                class="text-[#86868B] font-medium py-2 flex items-center gap-2">
+                <svg fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4" aria-hidden="true">
+                    <path
+                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 5.965h-1.92z" />
+                </svg>
+                <span data-i18n="nav_follow">Follow on X</span>
+            </a>
+        </nav>
     </div>
 
+    <!-- ───────── HERO ───────── -->
+    <main class="max-w-[1240px] mx-auto px-4 mt-14 md:mt-24">
+        <div class="text-center mb-16 md:mb-24">
+            <h1 class="text-grad text-[2.8rem] md:text-[5.5rem] font-bold tracking-tight leading-[1.1] mb-6"
+                data-i18n="hero_tagline">
+                Build your ecosystem.
+            </h1>
+            <p class="text-[#86868B] text-base md:text-xl font-medium max-w-xl mx-auto mb-10" data-i18n="hero_subtitle">
+                Unbiased hardware intelligence. Tailored to your work, your privacy, and your life.
+            </p>
+            <div class="hero-btns flex flex-row flex-wrap gap-4 items-center justify-center">
+                <a href="configurator.html" class="btn-primary shadow-lg shadow-blue-500/20">
+                    <span data-i18n="hero_cta">Start Configurator</span>
+                </a>
+                <a href="manifesto.html"
+                    class="flex items-center gap-1 text-white hover:text-primary font-medium transition-colors px-4 py-3 group">
+                    <span data-i18n="hero_learn">Learn more</span>
+                    <span
+                        class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">chevron_right</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- ───── BENTO GRID ───── -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 md:gap-5">
+
+            <!-- Comparison Card -->
+            <section class="card col-span-1 md:col-span-2 lg:col-span-7 p-7 md:p-10" aria-label="Device Comparison">
+                <div class="text-[10px] font-bold uppercase tracking-widest text-primary mb-4">Live Analysis</div>
+                <h2 class="text-2xl md:text-3xl font-bold text-white leading-tight mb-2" data-i18n="compare_title">Pixel
+                    10 Pro vs iPhone 17.</h2>
+                <p class="text-[#86868B] text-sm mb-8 leading-relaxed" data-i18n="compare_subtitle">The clash of the
+                    titans mapped cell-by-cell.</p>
+
+                <div class="space-y-5">
+                    <div>
+                        <div class="flex justify-between text-xs font-medium mb-2">
+                            <span data-i18n="compare_cpu">CPU Speed</span>
+                            <span class="text-[#86868B]">89 <span class="text-[#86868B]">/</span> 96</span>
+                        </div>
+                        <div class="flex gap-2 items-center">
+                            <div class="bar-bg flex-1">
+                                <div class="bar-fg bg-emerald-400" data-width="89"></div>
+                            </div>
+                            <div class="bar-bg flex-1">
+                                <div class="bar-fg bg-primary" data-width="96"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-medium mb-2">
+                            <span data-i18n="compare_battery">Battery Life</span>
+                            <span class="text-[#86868B]">95 <span class="text-[#86868B]">/</span> 78</span>
+                        </div>
+                        <div class="flex gap-2 items-center">
+                            <div class="bar-bg flex-1">
+                                <div class="bar-fg bg-emerald-400" data-width="95"></div>
+                            </div>
+                            <div class="bar-bg flex-1">
+                                <div class="bar-fg bg-primary" data-width="78"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-medium mb-2">
+                            <span data-i18n="compare_privacy">Privacy</span>
+                            <span class="text-[#86868B]">92 <span class="text-[#86868B]">/</span> 70</span>
+                        </div>
+                        <div class="flex gap-2 items-center">
+                            <div class="bar-bg flex-1">
+                                <div class="bar-fg bg-emerald-400" data-width="92"></div>
+                            </div>
+                            <div class="bar-bg flex-1">
+                                <div class="bar-fg bg-primary" data-width="70"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-medium mb-2">
+                            <span data-i18n="compare_camera">Camera AI</span>
+                            <span class="text-[#86868B]">97 <span class="text-[#86868B]">/</span> 88</span>
+                        </div>
+                        <div class="flex gap-2 items-center">
+                            <div class="bar-bg flex-1">
+                                <div class="bar-fg bg-emerald-400" data-width="97"></div>
+                            </div>
+                            <div class="bar-bg flex-1">
+                                <div class="bar-fg bg-primary" data-width="88"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-5 mt-6 text-xs text-[#86868B]">
+                    <span class="flex items-center gap-1.5"><span
+                            class="w-2.5 h-2.5 bg-emerald-400 rounded-full inline-block"></span>Pixel 10 Pro</span>
+                    <span class="flex items-center gap-1.5"><span
+                            class="w-2.5 h-2.5 bg-primary rounded-full inline-block"></span>iPhone 17</span>
+                </div>
+                <a href="comparison.html"
+                    class="mt-8 flex items-center justify-center w-full py-3 bg-white/5 hover:bg-white/10 text-white rounded-full transition-all text-xs font-bold uppercase tracking-widest border border-white/5">
+                    <span data-i18n="compare_deep">Deep Analysis</span>
+                </a>
+            </section>
+
+            <!-- Quick Selector Card -->
+            <section class="card col-span-1 md:col-span-1 lg:col-span-5 p-7 md:p-10 flex flex-col"
+                aria-label="Quick Device Selector">
+                <h2 class="text-xl font-bold text-white mb-1" data-i18n="selector_title">Tell us what matters.</h2>
+                <p class="text-[#86868B] text-sm mb-6" data-i18n="selector_subtitle">Select your priority to find the
+                    right devices.</p>
+
+                <div class="flex flex-col gap-2 flex-1">
+                    <label
+                        class="flex items-center gap-3 p-4 rounded-2xl border border-white/8 hover:border-primary/50 hover:bg-primary/5 cursor-pointer transition-all group">
+                        <input type="radio" name="priority" value="work" class="accent-[#2997FF] w-4 h-4 shrink-0" />
+                        <div>
+                            <div class="font-semibold text-sm" data-i18n="selector_work">Deep Work</div>
+                        </div>
+                    </label>
+                    <label
+                        class="flex items-center gap-3 p-4 rounded-2xl border border-white/8 hover:border-primary/50 hover:bg-primary/5 cursor-pointer transition-all group">
+                        <input type="radio" name="priority" value="photo" class="accent-[#2997FF] w-4 h-4 shrink-0" />
+                        <div>
+                            <div class="font-semibold text-sm" data-i18n="selector_photo">Photography</div>
+                        </div>
+                    </label>
+                    <label
+                        class="flex items-center gap-3 p-4 rounded-2xl border border-white/8 hover:border-primary/50 hover:bg-primary/5 cursor-pointer transition-all group">
+                        <input type="radio" name="priority" value="privacy" class="accent-[#2997FF] w-4 h-4 shrink-0" />
+                        <div>
+                            <div class="font-semibold text-sm" data-i18n="selector_privacy">Privacy</div>
+                        </div>
+                    </label>
+                    <label
+                        class="flex items-center gap-3 p-4 rounded-2xl border border-white/8 hover:border-primary/50 hover:bg-primary/5 cursor-pointer transition-all group">
+                        <input type="radio" name="priority" value="gaming" class="accent-[#2997FF] w-4 h-4 shrink-0" />
+                        <div>
+                            <div class="font-semibold text-sm" data-i18n="selector_gaming">Gaming</div>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="mt-6 p-5 rounded-2xl bg-white/4 border border-white/6">
+                    <div class="text-[10px] font-bold uppercase tracking-widest text-[#86868B] mb-1"
+                        data-i18n="selector_matches">Matches</div>
+                    <div id="matches-count" class="text-3xl font-light text-white">—<span
+                            class="text-[#86868B] text-lg">/48</span></div>
+                </div>
+            </section>
+
+            <!-- EU Compliance Card -->
+            <a href="compliance.html"
+                class="card col-span-1 md:col-span-1 lg:col-span-4 p-7 md:p-10 flex items-center gap-6 group no-underline">
+                <div
+                    class="w-14 h-14 rounded-2xl bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0">
+                    <span class="material-symbols-outlined"
+                        style="font-size:26px;font-variation-settings:'FILL' 0">policy</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <h2 class="text-base font-bold text-white mb-1 leading-tight" data-i18n="compliance_title">EU Data
+                        Sovereignty.</h2>
+                    <p class="text-[#86868B] text-xs leading-relaxed" data-i18n="compliance_subtitle">Not all hardware
+                        protects your data equally.</p>
+                </div>
+                <span
+                    class="material-symbols-outlined text-[#86868B] group-hover:text-white group-hover:translate-x-1 transition-all shrink-0">chevron_right</span>
+            </a>
+
+            <!-- Guides Card -->
+            <a href="guides.html"
+                class="card col-span-1 md:col-span-1 lg:col-span-4 p-7 md:p-10 flex items-center gap-6 group no-underline">
+                <div
+                    class="w-14 h-14 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0">
+                    <span class="material-symbols-outlined"
+                        style="font-size:26px;font-variation-settings:'FILL' 0">sync_alt</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <h2 class="text-base font-bold text-white mb-1 leading-tight" data-i18n="guide_title">Easy
+                        Migration.</h2>
+                    <p class="text-[#86868B] text-xs leading-relaxed" data-i18n="guide_subtitle">Step by step guidance.
+                    </p>
+                </div>
+                <span
+                    class="material-symbols-outlined text-[#86868B] group-hover:text-white group-hover:translate-x-1 transition-all shrink-0">chevron_right</span>
+            </a>
+
+            <!-- Newsletter Card -->
+            <section class="card col-span-1 md:col-span-2 lg:col-span-4 p-7 md:p-10 flex flex-col justify-between"
+                aria-label="Newsletter signup">
+                <div>
+                    <h2 class="text-xl font-bold text-white mb-2" data-i18n="newsletter_title">Join the inner circle.
+                    </h2>
+                </div>
+                <form id="newsletter-form" class="flex gap-2 mt-6 flex-wrap md:flex-nowrap" novalidate>
+                    <input type="email" id="newsletter-email" required
+                        class="flex-1 min-w-0 bg-white/6 border border-white/10 focus:border-primary text-white text-sm px-4 py-3 rounded-full focus:outline-none placeholder:text-[#86868B] transition-colors"
+                        data-i18n="newsletter_placeholder" placeholder="your@email.com" />
+                    <button type="submit" id="newsletter-btn" class="btn-primary !py-3 !px-5 text-sm">
+                        <span data-i18n="newsletter_btn">Join</span>
+                    </button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <!-- ───────── FOOTER ───────── -->
+    <footer
+        class="max-w-[1240px] mx-auto px-4 mt-20 mb-8 flex flex-col md:flex-row items-center justify-between gap-4 border-t border-white/5 pt-8">
+        <p class="text-xs text-[#86868B]" data-i18n="rights">© 2026 CJV Systems</p>
+        <a href="https://x.com/cooljayvibes" target="_blank" rel="noopener"
+            class="flex items-center gap-2 text-[#86868B] hover:text-white transition-colors text-sm font-medium">
+            <svg fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4" aria-hidden="true">
+                <path
+                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 5.965h-1.92z" />
+            </svg>
+            <span data-i18n="follow_x">Follow on X</span>
+        </a>
+    </footer>
+
+    <div class="toast-wrap" id="toast-container" aria-live="polite"></div>
+
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Quick Selector Logic
-            const priorityRadios = document.querySelectorAll('input[name="priority"]');
-            const matchesContainer = document.querySelector('.text-3xl.font-light.text-white');
-            const matchData = {
-                'work': 12,
-                'photo': 8,
-                'privacy': 5,
-                'gaming': 14
-            };
-
-            if (matchesContainer) {
-                matchesContainer.style.transition = 'opacity 0.2s ease';
-                priorityRadios.forEach(radio => {
-                    radio.addEventListener('change', (e) => {
-                        const count = matchData[e.target.value] || 0;
-                        matchesContainer.style.opacity = '0';
-                        setTimeout(() => {
-                            matchesContainer.innerHTML = `${count}<span class="text-text-secondary text-lg">/48</span>`;
-                            matchesContainer.style.opacity = '1';
-                        }, 200);
-                    });
-                });
-            }
-
-            // Mobile Menu Toggle
-            const menuBtn = document.querySelector('button.md\\:hidden');
-            const nav = document.querySelector('nav');
-
-            if (menuBtn && nav) {
-                menuBtn.addEventListener('click', () => {
-                    nav.classList.toggle('hidden');
-                    nav.classList.toggle('absolute');
-                    nav.classList.toggle('top-[70px]');
-                    nav.classList.toggle('left-4');
-                    nav.classList.toggle('right-4');
-                    nav.classList.toggle('bg-card-dark');
-                    nav.classList.toggle('p-6');
-                    nav.classList.toggle('rounded-xl');
-                    nav.classList.toggle('border');
-                    nav.classList.toggle('border-white/5');
-                    nav.classList.toggle('flex-col');
-                    nav.classList.toggle('shadow-2xl');
-                    nav.classList.toggle('z-50');
-                });
-            }
-
-            // Newsletter Form Submission
-            const form = document.querySelector('form');
-            if (form) {
-                form.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const input = form.querySelector('input[type="email"]');
-                    const btn = form.querySelector('button');
-
-                    if (input.value.trim() !== '') {
-                        const originalBtnContent = btn.innerHTML;
-                        const originalPlaceholder = input.placeholder;
-
-                        btn.innerHTML = '<span class="material-symbols-outlined text-xl">check</span>';
-                        btn.classList.add('bg-green-500', 'text-white');
-                        btn.classList.remove('bg-white', 'text-black', 'hover:bg-gray-200');
-
-                        input.value = '';
-                        input.placeholder = 'Confirmed!';
-                        input.disabled = true;
-
-                        showToast('Welcome to the inner circle.', 'mail');
-
-                        setTimeout(() => {
-                            btn.innerHTML = originalBtnContent;
-                            btn.classList.remove('bg-green-500', 'text-white');
-                            btn.classList.add('bg-white', 'text-black', 'hover:bg-gray-200');
-                            input.placeholder = originalPlaceholder;
-                            input.disabled = false;
-                        }, 3000);
-                    }
-                });
-            }
-
-            // Global Toast System
-            const toastContainer = document.createElement('div');
-            toastContainer.id = 'toast-container';
-            document.body.appendChild(toastContainer);
-
-            function showToast(message, icon = 'info') {
-                const toast = document.createElement('div');
-                toast.className = 'toast';
-                toast.innerHTML = `
-                    <span class="material-symbols-outlined text-primary">${icon}</span>
-                    <span>${message}</span>
-                `;
-                toastContainer.appendChild(toast);
-
-                setTimeout(() => {
-                    toast.classList.add('fade-out');
-                    setTimeout(() => toast.remove(), 300);
-                }, 3000);
-            }
-
-            // Handle unlinked buttons with simple toasts
-            document.querySelectorAll('button:not([onclick]):not([type="submit"]):not(.lang-switch):not(.lang-menu-btn)').forEach(el => {
-                el.addEventListener('click', (e) => {
-                    const text = el.innerText.trim() || 'Feature';
-                    showToast(`${text} loading...`, 'hourglass_empty');
-                });
-            });
-        });
-    </script>
-
-    <!-- Language Script -->
-    <div id="google_translate_element" style="display:none;"></div>
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false}, 'google_translate_element');
+        // ─── Minimal Performance Helpers ───
+        function showToast(msg, icon = 'info') {
+            const w = document.getElementById('toast-container');
+            const t = document.createElement('div');
+            t.className = 'toast';
+            t.innerHTML = `<span class="material-symbols-outlined text-primary" aria-hidden="true" style="font-size:18px">${icon}</span><span>${msg}</span>`;
+            w.appendChild(t);
+            setTimeout(() => { t.classList.add('out'); setTimeout(() => t.remove(), 280); }, 3000);
         }
-    </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <script>
+
         document.addEventListener('DOMContentLoaded', () => {
-            let currentLang = localStorage.getItem('cooljay_lang');
-            
-            if (!currentLang) {
-                const userLang = navigator.language || navigator.userLanguage;
-                const baseLang = userLang.split('-')[0];
-                const supportedLangs = ['en', 'fr', 'de', 'it', 'es', 'pt', 'nl', 'sv', 'pl', 'zh'];
-                currentLang = supportedLangs.includes(baseLang) ? baseLang : 'en';
-                
-                if (currentLang !== 'en') {
-                    const gLang = currentLang === 'zh' ? 'zh-CN' : currentLang;
-                    document.cookie = `googtrans=/en/${gLang}; path=/`;
-                }
-                localStorage.setItem('cooljay_lang', currentLang);
-                if (currentLang !== 'en') {
-                    location.reload();
-                }
-            }
+            // ─── Animate bars ───
+            setTimeout(() => {
+                document.querySelectorAll('.bar-fg[data-width]').forEach(b => {
+                    b.style.width = b.dataset.width + '%';
+                });
+            }, 300);
 
-            const displayLang = currentLang === 'zh-CN' || currentLang === 'zh' ? 'ZH' : currentLang.toUpperCase();
-            const displayElement = document.getElementById('current-lang-display');
-            if (displayElement) displayElement.innerText = displayLang;
-
-            document.querySelectorAll('.lang-switch').forEach(btn => {
-                const btnLang = btn.dataset.lang;
-                if (btnLang === currentLang || (currentLang === 'zh' && btnLang === 'zh-CN')) {
-                    btn.classList.remove('text-text-secondary');
-                    btn.classList.add('text-white', 'font-bold');
-                    btn.innerHTML += '<span class="material-symbols-outlined text-[16px] ml-2">check</span>';
-                }
-
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    // Prevent bubbling up
-                    e.stopPropagation();
-                    
-                    const targetLang = e.currentTarget.dataset.lang;
-                    
-                    if(targetLang === 'en') {
-                        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                        document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=.${location.hostname}; path=/;`;
-                    } else {
-                        document.cookie = `googtrans=/en/${targetLang}; path=/`;
-                        document.cookie = `googtrans=/en/${targetLang}; domain=.${location.hostname}; path=/`;
+            // ─── Radio selectors ───
+            const matchData = { work: 12, photo: 8, privacy: 5, gaming: 14 };
+            document.querySelectorAll('input[name="priority"]').forEach(r => {
+                r.addEventListener('change', e => {
+                    const mc = document.getElementById('matches-count');
+                    if (mc) {
+                        mc.innerHTML = `${matchData[e.target.value] || 0}<span class="text-[#86868B] text-lg">/48</span>`;
                     }
-                    
-                    localStorage.setItem('cooljay_lang', targetLang);
-                    location.reload();
                 });
             });
-            
-            // Also close the dropdown when language selected or clicked outside
-            document.addEventListener('click', (e) => {
-                if(!e.target.closest('.group')) {
-                    // It's using hover, so clicking outside isn't strictly necessary for CSS hide 
-                    // but on mobile it helps
-                }
-            });
+
+            // ─── Mobile menu ───
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileNav = document.getElementById('mobile-nav');
+            if (menuBtn && mobileNav) {
+                menuBtn.addEventListener('click', () => {
+                    mobileNav.classList.toggle('hidden');
+                    mobileNav.classList.toggle('flex');
+                });
+            }
+
+            // ─── Newsletter ───
+            const form = document.getElementById('newsletter-form');
+            if (form) {
+                form.addEventListener('submit', e => {
+                    e.preventDefault();
+                    const input = document.getElementById('newsletter-email');
+                    if (!input.value.includes('@')) return;
+                    const btn = document.getElementById('newsletter-btn');
+                    btn.innerHTML = '<span class="material-symbols-outlined" style="font-size:18px">check</span>';
+                    btn.style.background = '#22c55e';
+                    input.value = '';
+                    input.disabled = true;
+                    showToast('Welcome to the inner circle.', 'mail');
+                    setTimeout(() => {
+                        btn.innerHTML = '<span data-i18n="newsletter_btn">Join</span>';
+                        btn.style.background = '';
+                        input.disabled = false;
+                    }, 3000);
+                });
+            }
         });
     </script>
+
+    <!-- i18n & Language Engine (no external deps, no Google Translate) -->
+    <script src="lang.js"></script>
 </body>
 
 </html>

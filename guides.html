@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Guides & Migration - CoolJayVibe</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
@@ -30,12 +30,6 @@
         }
     </script>
     <style>
-        *,*::before,*::after{box-sizing:border-box}
-        html{-webkit-tap-highlight-color:transparent}
-        button,a{min-height:44px;display:inline-flex;align-items:center}
-        nav a, header a{min-height:auto}
-        .lang-dropdown{position:absolute;right:0;top:calc(100% + 10px);min-width:185px;background:#1C1C1E;border:1px solid rgba(255,255,255,.08);border-radius:1rem;overflow:hidden;z-index:100;max-height:260px;overflow-y:auto}
-        
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -71,105 +65,48 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-    
-        /* Auto Translate Hiding */
-        body { top: 0px !important; }
-        .skiptranslate { display: none !important; }
-        .goog-te-banner-frame { display: none !important; }
-        .goog-tooltip { display: none !important; }
-        .goog-tooltip:hover { display: none !important; }
-        .goog-text-highlight { background-color: transparent !important; border: none !important; box-shadow: none !important; }
-        #google_translate_element { display: none !important; }
     </style>
 </head>
 
 <body class="bg-background-dark text-text-primary font-body antialiased overflow-x-hidden">
     <div class="relative flex min-h-screen w-full flex-col max-w-[1240px] mx-auto p-4 md:p-10 lg:p-16 gap-10">
-        
-<div class="max-w-[1240px] mx-auto px-4 pt-4">
-    <header class="glass flex items-center justify-between py-3 px-5 rounded-full border border-white/10 sticky top-4 z-50 shadow-2xl">
-        <a href="index.html" class="flex items-center gap-2 min-h-0">
-            <div class="flex items-center justify-center w-7 h-7 bg-white text-black rounded-full">
-                <span class="material-symbols-outlined" style="font-size:17px;font-variation-settings:'FILL' 1">bolt</span>
-            </div>
-            <span class="text-[17px] font-semibold tracking-tight">CoolJayVibe</span>
-        </a>
-        <nav class="hidden md:flex items-center gap-8">
-            <a class="text-[13px] font-medium text-[#86868B] hover:text-white transition-colors" href="reviews.html" data-i18n="nav_reviews">Reviews</a>
-            <a class="text-[13px] font-medium text-[#86868B] hover:text-white transition-colors" href="configurator.html" data-i18n="nav_configurator">Configurator</a>
-            <a class="text-[13px] font-medium text-white border-b border-white pb-1 transition-colors" href="guides.html" data-i18n="nav_guides">Guides</a>
-        </nav>
-        <div class="flex items-center gap-3">
-            <a href="https://x.com/cooljayvibes" target="_blank" rel="noopener" class="hidden md:flex items-center gap-1.5 text-[#86868B] hover:text-white transition-colors text-sm font-medium min-h-0">
-                <svg fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 5.965h-1.92z"/></svg>
-                <span data-i18n="nav_follow">Follow</span>
-            </a>
-            <div class="relative">
-                <button id="lang-toggle-btn" type="button" class="flex items-center gap-1 text-[#86868B] hover:text-white transition-colors text-sm font-medium px-2 py-1 rounded-lg hover:bg-white/5">
-                    <span class="material-symbols-outlined" style="font-size:18px">language</span>
-                    <span id="current-lang-display" class="uppercase text-xs font-bold tracking-wide">EN</span>
-                    <span class="material-symbols-outlined" style="font-size:14px">expand_more</span>
-                </button>
-                <div id="lang-dropdown" class="lang-dropdown hidden shadow-2xl">
-                    <div id="lang-menu-list"></div>
+        <header
+            class="flex items-center justify-between py-3 sticky top-6 z-50 bg-background-dark/70 backdrop-blur-md border border-white/10 px-6 rounded-full mx-[-1rem] md:mx-0 shadow-2xl">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="flex items-center justify-center size-7 bg-white text-black rounded-full">
+                    <span class="material-symbols-outlined text-[18px] font-bold">bolt</span>
                 </div>
-            </div>
-            <button id="mobile-menu-btn" type="button" class="md:hidden text-white p-1">
-                <span class="material-symbols-outlined">menu</span>
-            </button>
-        </div>
-    </header>
-    <nav id="mobile-nav" class="hidden md:hidden mt-2 px-5 py-4 flex-col gap-4" style="background:#1C1C1E;border:1px solid rgba(255,255,255,.06);border-radius:1.5rem">
-        <a class="text-white font-medium py-2" href="reviews.html" data-i18n="nav_reviews">Reviews</a>
-        <a class="text-white font-medium py-2" href="configurator.html" data-i18n="nav_configurator">Configurator</a>
-        <a class="text-white font-medium py-2" href="guides.html" data-i18n="nav_guides">Guides</a>
-        <a href="https://x.com/cooljayvibes" target="_blank" rel="noopener" class="text-[#86868B] font-medium py-2 flex items-center gap-2">
-            <svg fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 5.965h-1.92z"/></svg>
-            <span data-i18n="nav_follow">Follow on X</span>
-        </a>
-    </nav>
-</div> class="glass flex items-center justify-between py-3 px-5 rounded-full border border-white/10 sticky top-4 z-50 shadow-2xl">
-        <a href="index.html" class="flex items-center gap-2 min-h-0">
-            <div class="flex items-center justify-center w-7 h-7 bg-white text-black rounded-full">
-                <span class="material-symbols-outlined" style="font-size:17px;font-variation-settings:'FILL' 1">bolt</span>
-            </div>
-            <span class="text-[17px] font-semibold tracking-tight">CoolJayVibe</span>
-        </a>
-        <nav class="hidden md:flex items-center gap-8">
-            <a class="text-[13px] font-medium text-[#86868B] hover:text-white transition-colors" href="reviews.html" data-i18n="nav_reviews">Reviews</a>
-            <a class="text-[13px] font-medium text-[#86868B] hover:text-white transition-colors" href="configurator.html" data-i18n="nav_configurator">Configurator</a>
-            <a class="text-[13px] font-medium text-white border-b border-white pb-1 transition-colors" href="guides.html" data-i18n="nav_guides">Guides</a>
-        </nav>
-        <div class="flex items-center gap-3">
-            <a href="https://x.com/cooljayvibes" target="_blank" rel="noopener" class="hidden md:flex items-center gap-1.5 text-[#86868B] hover:text-white transition-colors text-sm font-medium min-h-0">
-                <svg fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 5.965h-1.92z"/></svg>
-                <span data-i18n="nav_follow">Follow</span>
+                <h2 class="text-lg font-semibold tracking-tight text-white">CoolJayVibe</h2>
             </a>
-            <div class="relative">
-                <button id="lang-toggle-btn" type="button" class="flex items-center gap-1 text-[#86868B] hover:text-white transition-colors text-sm font-medium px-2 py-1 rounded-lg hover:bg-white/5">
-                    <span class="material-symbols-outlined" style="font-size:18px">language</span>
-                    <span id="current-lang-display" class="uppercase text-xs font-bold tracking-wide">EN</span>
-                    <span class="material-symbols-outlined" style="font-size:14px">expand_more</span>
-                </button>
-                <div id="lang-dropdown" class="lang-dropdown hidden shadow-2xl">
-                    <div id="lang-menu-list"></div>
+            <nav class="hidden md:flex items-center gap-10">
+                <a class="text-[13px] font-medium text-text-secondary hover:text-white transition-colors"
+                    href="reviews.html" data-i18n="nav_reviews">Reviews</a>
+                <a class="text-[13px] font-medium text-text-secondary hover:text-white transition-colors"
+                    href="configurator.html" data-i18n="nav_configurator">Configurator</a>
+                <a class="text-[13px] font-medium text-white transition-colors border-b border-white pb-1"
+                    href="guides.html" data-i18n="nav_guides">Guides</a>
+                <a class="text-[13px] font-medium text-text-secondary hover:text-white transition-colors"
+                    href="login.html">Login</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                
+                <div class="relative" style="position:relative">
+                    <button id="lang-toggle-btn" type="button" class="text-text-secondary hover:text-white transition-colors" style="display:flex;align-items:center;gap:4px;font-size:13px;font-weight:500;background:none;border:none;cursor:pointer;padding:4px 6px;border-radius:8px;">
+                        <span class="material-symbols-outlined" style="font-size:18px">language</span>
+                        <span id="current-lang-display" style="font-size:11px;font-weight:700;letter-spacing:.05em">EN</span>
+                        <span class="material-symbols-outlined" style="font-size:13px">expand_more</span>
+                    </button>
+                    <div id="lang-dropdown" class="hidden" style="position:absolute;right:0;top:calc(100% + 8px);min-width:185px;background:#1C1C1E;border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden;z-index:9999;max-height:260px;overflow-y:auto;box-shadow:0 16px 40px rgba(0,0,0,.8)">
+                        <div id="lang-menu-list"></div>
+                    </div>
                 </div>
+                <button class="md:hidden text-white hover:text-text-secondary">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
             </div>
-            <button id="mobile-menu-btn" type="button" class="md:hidden text-white p-1">
-                <span class="material-symbols-outlined">menu</span>
-            </button>
-        </div>
-    </header>
-    <nav id="mobile-nav" class="hidden md:hidden mt-2 px-5 py-4 flex-col gap-4" style="background:#1C1C1E;border:1px solid rgba(255,255,255,.06);border-radius:1.5rem">
-        <a class="text-white font-medium py-2" href="reviews.html" data-i18n="nav_reviews">Reviews</a>
-        <a class="text-white font-medium py-2" href="configurator.html" data-i18n="nav_configurator">Configurator</a>
-        <a class="text-white font-medium py-2" href="guides.html" data-i18n="nav_guides">Guides</a>
-        <a href="https://x.com/cooljayvibes" target="_blank" rel="noopener" class="text-[#86868B] font-medium py-2 flex items-center gap-2">
-            <svg fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 5.965h-1.92z"/></svg>
-            <span data-i18n="nav_follow">Follow on X</span>
-        </a>
-    </nav>
-</div><main class="flex-grow flex flex-col items-center justify-center text-center mt-10">
+        </header>
+
+        <main class="flex-grow flex flex-col items-center justify-center text-center mt-10">
             <div class="w-24 h-24 bg-white/5 rounded-full flex items-center justify-center mb-8 border border-white/10">
                 <span class="material-symbols-outlined text-5xl text-white">sync_alt</span>
             </div>
@@ -197,83 +134,6 @@
             </div>
         </main>
     </div>
-
-    
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            let currentLang = localStorage.getItem('cooljay_lang');
-            
-            if (!currentLang) {
-                const userLang = navigator.language || navigator.userLanguage;
-                const baseLang = userLang.split('-')[0];
-                const supportedLangs = ['en', 'fr', 'de', 'it', 'es', 'pt', 'nl', 'sv', 'pl', 'zh'];
-                currentLang = supportedLangs.includes(baseLang) ? baseLang : 'en';
-                
-                if (currentLang !== 'en') {
-                    const gLang = currentLang === 'zh' ? 'zh-CN' : currentLang;
-                    document.cookie = `googtrans=/en/${gLang}; path=/`;
-                }
-                localStorage.setItem('cooljay_lang', currentLang);
-                if (currentLang !== 'en') {
-                    location.reload();
-                }
-            }
-
-            const displayLang = currentLang === 'zh-CN' || currentLang === 'zh' ? 'ZH' : currentLang.toUpperCase();
-            const displayElement = document.getElementById('current-lang-display');
-            if (displayElement) displayElement.innerText = displayLang;
-
-            document.querySelectorAll('.lang-switch').forEach(btn => {
-                const btnLang = btn.dataset.lang;
-                if (btnLang === currentLang || (currentLang === 'zh' && btnLang === 'zh-CN')) {
-                    btn.classList.remove('text-text-secondary');
-                    btn.classList.add('text-white', 'font-bold');
-                    btn.innerHTML += '<span class="material-symbols-outlined text-[16px] ml-2">check</span>';
-                }
-
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    // Prevent bubbling up
-                    e.stopPropagation();
-                    
-                    const targetLang = e.currentTarget.dataset.lang;
-                    
-                    if(targetLang === 'en') {
-                        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                        document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=.${location.hostname}; path=/;`;
-                    } else {
-                        document.cookie = `googtrans=/en/${targetLang}; path=/`;
-                        document.cookie = `googtrans=/en/${targetLang}; domain=.${location.hostname}; path=/`;
-                    }
-                    
-                    localStorage.setItem('cooljay_lang', targetLang);
-                    location.reload();
-                });
-            });
-            
-            // Also close the dropdown when language selected or clicked outside
-            document.addEventListener('click', (e) => {
-                if(!e.target.closest('.group')) {
-                    // It's using hover, so clicking outside isn't strictly necessary for CSS hide 
-                    // but on mobile it helps
-                }
-            });
-        });
-    </script>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('mobile-menu-btn');
-    const nav = document.getElementById('mobile-nav');
-    if (btn && nav) {
-        btn.addEventListener('click', () => {
-            nav.classList.toggle('hidden');
-            nav.classList.toggle('flex');
-        });
-    }
-});
-</script>
 <script src="lang.js"></script>
 </body>
 

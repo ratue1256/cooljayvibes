@@ -279,16 +279,18 @@
                 <div class="relative z-10 max-w-4xl flex flex-col items-center">
                     <h1 id="hero-headline"
                         class="text-6xl md:text-8xl font-bold tracking-tight mb-8 leading-[1.05] text-gradient-subtle">
-                        <span data-i18n="hero_line1">Don't buy a phone.</span><br /><span class="opacity-60" data-i18n="hero_line2">Buy a workflow.</span>
+                        <span data-i18n="hero_line1">Don't buy a phone.</span><br /><span class="opacity-60"
+                            data-i18n="hero_line2">Buy a workflow.</span>
                     </h1>
                     <p
                         class="text-text-secondary text-xl md:text-2xl font-medium mb-12 max-w-2xl leading-relaxed anim-ready">
-                        Unbiased hardware intelligence. Tailored to your work, your privacy, and your life.
+                        <span data-i18n="hero_subtitle">Unbiased hardware intelligence. Tailored to your work, your
+                            privacy, and your life.</span>
                     </p>
                     <div class="flex flex-col sm:flex-row gap-6 items-center anim-ready" style="animation-delay:.15s">
                         <button onclick="window.location.href='configurator.html'"
                             class="flex items-center justify-center gap-2 bg-primary hover:bg-[#47a5ff] text-white px-10 py-4 rounded-full font-semibold text-base transition-all transform active:scale-95 shadow-2xl shadow-primary/20">
-                            Start Configurator
+                            <span data-i18n="hero_cta">Start Configurator</span>
                         </button>
                         <a class="px-8 py-4 text-white hover:text-primary font-medium text-base transition-colors flex items-center gap-1 group/link"
                             href="manifesto.html">
@@ -584,6 +586,15 @@
                 });
             }
 
+            // Stagger cards (exclude hero card)
+            document.querySelectorAll('section.apple-card').forEach((card, i) => {
+                if (card.classList.contains('col-span-1') && card.classList.contains('md:col-span-2')) return;
+                if (!card.classList.contains('anim-card')) {
+                    card.classList.add('anim-card');
+                    card.style.animationDelay = (i * 0.08) + 's';
+                }
+            });
+
             // Scroll-triggered for .anim-ready and .anim-card
             const revealTargets = document.querySelectorAll('.anim-ready, .anim-card');
             if ('IntersectionObserver' in window) {
@@ -599,15 +610,6 @@
             } else {
                 revealTargets.forEach(el => el.classList.add('anim-go'));
             }
-
-            // Stagger cards (exclude hero card)
-            document.querySelectorAll('section.apple-card').forEach((card, i) => {
-                if (card.classList.contains('col-span-1') && card.classList.contains('md:col-span-2')) return;
-                if (!card.classList.contains('anim-card')) {
-                    card.classList.add('anim-card');
-                    card.style.animationDelay = (i * 0.08) + 's';
-                }
-            });
 
             // Handle unlinked buttons with simple toasts
             document.querySelectorAll('button:not([onclick]):not([type="submit"]):not(#lang-toggle-btn)').forEach(el => {

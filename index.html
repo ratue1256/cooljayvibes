@@ -142,6 +142,86 @@
             opacity: 0;
             transform: translateX(100%);
         }
+
+        /* ─── Apple cinematic animations ─── */
+        @keyframes appleReveal {
+            from {
+                opacity: 0;
+                transform: translateY(36px);
+                filter: blur(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0);
+            }
+        }
+
+        @keyframes wordIn {
+            from {
+                opacity: 0;
+                transform: translateY(22px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes cardReveal {
+            from {
+                opacity: 0;
+                transform: translateY(44px) scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes shimmer {
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 0.65;
+            }
+        }
+
+        .anim-ready {
+            opacity: 0;
+        }
+
+        .anim-word {
+            display: inline-block;
+            opacity: 0;
+        }
+
+        .anim-card {
+            opacity: 0;
+        }
+
+        .anim-ready.anim-go {
+            animation: appleReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .anim-word.anim-go {
+            animation: wordIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .anim-card.anim-go {
+            animation: cardReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .hero-shimmer {
+            animation: shimmer 6s ease-in-out infinite;
+        }
     </style>
 </head>
 
@@ -170,14 +250,18 @@
                 <button class="text-white hover:text-text-secondary transition-colors">
                     <span class="material-symbols-outlined text-[20px]">search</span>
                 </button>
-                
+
                 <div class="relative" style="position:relative">
-                    <button id="lang-toggle-btn" type="button" class="text-text-secondary hover:text-white transition-colors" style="display:flex;align-items:center;gap:4px;font-size:13px;font-weight:500;background:none;border:none;cursor:pointer;padding:4px 6px;border-radius:8px;">
+                    <button id="lang-toggle-btn" type="button"
+                        class="text-text-secondary hover:text-white transition-colors"
+                        style="display:flex;align-items:center;gap:4px;font-size:13px;font-weight:500;background:none;border:none;cursor:pointer;padding:4px 6px;border-radius:8px;">
                         <span class="material-symbols-outlined" style="font-size:18px">language</span>
-                        <span id="current-lang-display" style="font-size:11px;font-weight:700;letter-spacing:.05em">EN</span>
+                        <span id="current-lang-display"
+                            style="font-size:11px;font-weight:700;letter-spacing:.05em">EN</span>
                         <span class="material-symbols-outlined" style="font-size:13px">expand_more</span>
                     </button>
-                    <div id="lang-dropdown" class="hidden" style="position:absolute;right:0;top:calc(100% + 8px);min-width:185px;background:#1C1C1E;border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden;z-index:9999;max-height:260px;overflow-y:auto;box-shadow:0 16px 40px rgba(0,0,0,.8)">
+                    <div id="lang-dropdown" class="hidden"
+                        style="position:absolute;right:0;top:calc(100% + 8px);min-width:185px;background:#1C1C1E;border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden;z-index:9999;max-height:260px;overflow-y:auto;box-shadow:0 16px 40px rgba(0,0,0,.8)">
                         <div id="lang-menu-list"></div>
                     </div>
                 </div>
@@ -190,23 +274,25 @@
             <section
                 class="col-span-1 md:col-span-2 lg:col-span-3 row-span-2 relative group overflow-hidden rounded-[2.5rem] bg-card-dark p-10 md:p-20 flex flex-col justify-center items-center text-center shadow-lg apple-card">
                 <div
-                    class="absolute inset-0 bg-gradient-to-b from-blue-600/10 via-transparent to-transparent opacity-40">
+                    class="absolute inset-0 bg-gradient-to-b from-blue-600/10 via-transparent to-transparent opacity-40 hero-shimmer">
                 </div>
                 <div class="relative z-10 max-w-4xl flex flex-col items-center">
-                    <h1 class="text-6xl md:text-8xl font-bold tracking-tight mb-8 leading-[1.05] text-gradient-subtle">
-                        Don't buy a phone.<br /><span class="opacity-60">Buy a workflow.</span>
+                    <h1 id="hero-headline"
+                        class="text-6xl md:text-8xl font-bold tracking-tight mb-8 leading-[1.05] text-gradient-subtle">
+                        <span data-i18n="hero_line1">Don't buy a phone.</span><br /><span class="opacity-60" data-i18n="hero_line2">Buy a workflow.</span>
                     </h1>
-                    <p class="text-text-secondary text-xl md:text-2xl font-medium mb-12 max-w-2xl leading-relaxed">
+                    <p
+                        class="text-text-secondary text-xl md:text-2xl font-medium mb-12 max-w-2xl leading-relaxed anim-ready">
                         Unbiased hardware intelligence. Tailored to your work, your privacy, and your life.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-6 items-center">
+                    <div class="flex flex-col sm:flex-row gap-6 items-center anim-ready" style="animation-delay:.15s">
                         <button onclick="window.location.href='configurator.html'"
                             class="flex items-center justify-center gap-2 bg-primary hover:bg-[#47a5ff] text-white px-10 py-4 rounded-full font-semibold text-base transition-all transform active:scale-95 shadow-2xl shadow-primary/20">
                             Start Configurator
                         </button>
                         <a class="px-8 py-4 text-white hover:text-primary font-medium text-base transition-colors flex items-center gap-1 group/link"
                             href="manifesto.html">
-                            Learn more <span
+                            <span data-i18n="hero_learn">Learn more</span> <span
                                 class="material-symbols-outlined text-[20px] group-hover/link:translate-x-1 transition-transform">chevron_right</span>
                         </a>
                     </div>
@@ -488,8 +574,43 @@
                 }, 3000);
             }
 
+
+
+            // ─── Apple-style cinematic reveal ───
+            const headline = document.getElementById('hero-headline');
+            if (headline) {
+                requestAnimationFrame(() => {
+                    headline.classList.add('anim-go');
+                });
+            }
+
+            // Scroll-triggered for .anim-ready and .anim-card
+            const revealTargets = document.querySelectorAll('.anim-ready, .anim-card');
+            if ('IntersectionObserver' in window) {
+                const revealObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('anim-go');
+                            revealObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.12 });
+                revealTargets.forEach(el => revealObserver.observe(el));
+            } else {
+                revealTargets.forEach(el => el.classList.add('anim-go'));
+            }
+
+            // Stagger cards (exclude hero card)
+            document.querySelectorAll('section.apple-card').forEach((card, i) => {
+                if (card.classList.contains('col-span-1') && card.classList.contains('md:col-span-2')) return;
+                if (!card.classList.contains('anim-card')) {
+                    card.classList.add('anim-card');
+                    card.style.animationDelay = (i * 0.08) + 's';
+                }
+            });
+
             // Handle unlinked buttons with simple toasts
-            document.querySelectorAll('button:not([onclick]):not([type="submit"])').forEach(el => {
+            document.querySelectorAll('button:not([onclick]):not([type="submit"]):not(#lang-toggle-btn)').forEach(el => {
                 el.addEventListener('click', (e) => {
                     const text = el.innerText.trim() || 'Feature';
                     showToast(`${text} loading...`, 'hourglass_empty');
@@ -497,7 +618,7 @@
             });
         });
     </script>
-<script src="lang.js"></script>
+    <script src="lang.js"></script>
 </body>
 
 </html>

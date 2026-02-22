@@ -65,6 +65,15 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+    
+        /* Auto Translate Hiding */
+        body { top: 0px !important; }
+        .skiptranslate { display: none !important; }
+        .goog-te-banner-frame { display: none !important; }
+        .goog-tooltip { display: none !important; }
+        .goog-tooltip:hover { display: none !important; }
+        .goog-text-highlight { background-color: transparent !important; border: none !important; box-shadow: none !important; }
+        #google_translate_element { display: none !important; }
     </style>
 </head>
 
@@ -87,10 +96,35 @@
                     href="configurator.html">Configurator</a>
                 <a class="text-[13px] font-medium text-text-secondary hover:text-white transition-colors"
                     href="guides.html">Guides</a>
-                <a class="text-[13px] font-medium text-text-secondary hover:text-white transition-colors"
-                    href="login.html">Login</a>
-            </nav>
-            <div class="flex items-center gap-4">
+                </nav>
+                        <div class="flex items-center gap-4">
+                <a href="https://x.com/cooljayvibes" target="_blank" class="hidden md:flex items-center gap-2 text-white hover:text-text-secondary transition-colors text-sm font-medium">
+                    <svg fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 5.965h-1.92z"/></svg>
+                    Follow
+                </a>
+                
+                <div class="relative group">
+                    <button class="flex items-center gap-1 text-white hover:text-text-secondary transition-colors text-sm font-medium">
+                        <span class="material-symbols-outlined text-[18px]">language</span>
+                        <span id="current-lang-display" class="uppercase">EN</span>
+                        <span class="material-symbols-outlined text-[14px]">expand_more</span>
+                    </button>
+                    <div class="absolute right-0 top-full mt-2 w-48 bg-card-dark border border-white/10 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                        <div class="py-2 flex flex-col max-h-64 overflow-y-auto">
+                            <button class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="en">English</button>
+                            <button class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="fr">Français</button>
+                            <button class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="de">Deutsch</button>
+                            <button class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="it">Italiano</button>
+                            <button class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="es">Español</button>
+                            <button class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="pt">Português</button>
+                            <button class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="nl">Nederlands</button>
+                            <button class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="sv">Svenska</button>
+                            <button class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="pl">Polski</button>
+                            <button class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="zh-CN">中文 (Simplified)</button>
+                        </div>
+                    </div>
+                </div>
+
                 <button class="md:hidden text-white hover:text-text-secondary">
                     <span class="material-symbols-outlined">menu</span>
                 </button>

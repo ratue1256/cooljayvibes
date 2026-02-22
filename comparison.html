@@ -117,6 +117,76 @@
             </div>
         </main>
     </div>
+
+    <!-- Language Script -->
+    <div id="google_translate_element" style="display:none;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let currentLang = localStorage.getItem('cooljay_lang');
+            
+            if (!currentLang) {
+                const userLang = navigator.language || navigator.userLanguage;
+                const baseLang = userLang.split('-')[0];
+                const supportedLangs = ['en', 'fr', 'de', 'it', 'es', 'pt', 'nl', 'sv', 'pl', 'zh'];
+                currentLang = supportedLangs.includes(baseLang) ? baseLang : 'en';
+                
+                if (currentLang !== 'en') {
+                    const gLang = currentLang === 'zh' ? 'zh-CN' : currentLang;
+                    document.cookie = `googtrans=/en/${gLang}; path=/`;
+                }
+                localStorage.setItem('cooljay_lang', currentLang);
+                if (currentLang !== 'en') {
+                    location.reload();
+                }
+            }
+
+            const displayLang = currentLang === 'zh-CN' || currentLang === 'zh' ? 'ZH' : currentLang.toUpperCase();
+            const displayElement = document.getElementById('current-lang-display');
+            if (displayElement) displayElement.innerText = displayLang;
+
+            document.querySelectorAll('.lang-switch').forEach(btn => {
+                const btnLang = btn.dataset.lang;
+                if (btnLang === currentLang || (currentLang === 'zh' && btnLang === 'zh-CN')) {
+                    btn.classList.remove('text-text-secondary');
+                    btn.classList.add('text-white', 'font-bold');
+                    btn.innerHTML += '<span class="material-symbols-outlined text-[16px] ml-2">check</span>';
+                }
+
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    // Prevent bubbling up
+                    e.stopPropagation();
+                    
+                    const targetLang = e.currentTarget.dataset.lang;
+                    
+                    if(targetLang === 'en') {
+                        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                        document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=.${location.hostname}; path=/;`;
+                    } else {
+                        document.cookie = `googtrans=/en/${targetLang}; path=/`;
+                        document.cookie = `googtrans=/en/${targetLang}; domain=.${location.hostname}; path=/`;
+                    }
+                    
+                    localStorage.setItem('cooljay_lang', targetLang);
+                    location.reload();
+                });
+            });
+            
+            // Also close the dropdown when language selected or clicked outside
+            document.addEventListener('click', (e) => {
+                if(!e.target.closest('.group')) {
+                    // It's using hover, so clicking outside isn't strictly necessary for CSS hide 
+                    // but on mobile it helps
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

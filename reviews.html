@@ -102,23 +102,23 @@
                 </a>
                 
                 <div class="relative group">
-                    <button class="flex items-center gap-1 text-white hover:text-text-secondary transition-colors text-sm font-medium">
+                    <button type="button" class="lang-menu-btn flex items-center gap-1 text-white hover:text-text-secondary transition-colors text-sm font-medium" onclick="event.stopPropagation();">
                         <span class="material-symbols-outlined text-[18px]">language</span>
                         <span id="current-lang-display" class="uppercase">EN</span>
                         <span class="material-symbols-outlined text-[14px]">expand_more</span>
                     </button>
                     <div class="absolute right-0 top-full mt-2 w-48 bg-card-dark border border-white/10 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
                         <div class="py-2 flex flex-col max-h-64 overflow-y-auto">
-                            <button class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="en">English</button>
-                            <button class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="fr">Français</button>
-                            <button class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="de">Deutsch</button>
-                            <button class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="it">Italiano</button>
-                            <button class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="es">Español</button>
-                            <button class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="pt">Português</button>
-                            <button class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="nl">Nederlands</button>
-                            <button class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="sv">Svenska</button>
-                            <button class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="pl">Polski</button>
-                            <button class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="zh-CN">中文 (Simplified)</button>
+                            <button type="button" class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="en">English</button>
+                            <button type="button" class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="fr">Français</button>
+                            <button type="button" class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="de">Deutsch</button>
+                            <button type="button" class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="it">Italiano</button>
+                            <button type="button" class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="es">Español</button>
+                            <button type="button" class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="pt">Português</button>
+                            <button type="button" class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="nl">Nederlands</button>
+                            <button type="button" class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="sv">Svenska</button>
+                            <button type="button" class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="pl">Polski</button>
+                            <button type="button" class="lang-switch px-4 py-2 text-left text-sm text-text-secondary hover:bg-white/5 hover:text-white flex items-center justify-between" data-lang="zh-CN">中文 (Simplified)</button>
                         </div>
                     </div>
                 </div>
@@ -191,6 +191,76 @@
             </div>
         </main>
     </div>
+
+    <!-- Language Script -->
+    <div id="google_translate_element" style="display:none;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let currentLang = localStorage.getItem('cooljay_lang');
+            
+            if (!currentLang) {
+                const userLang = navigator.language || navigator.userLanguage;
+                const baseLang = userLang.split('-')[0];
+                const supportedLangs = ['en', 'fr', 'de', 'it', 'es', 'pt', 'nl', 'sv', 'pl', 'zh'];
+                currentLang = supportedLangs.includes(baseLang) ? baseLang : 'en';
+                
+                if (currentLang !== 'en') {
+                    const gLang = currentLang === 'zh' ? 'zh-CN' : currentLang;
+                    document.cookie = `googtrans=/en/${gLang}; path=/`;
+                }
+                localStorage.setItem('cooljay_lang', currentLang);
+                if (currentLang !== 'en') {
+                    location.reload();
+                }
+            }
+
+            const displayLang = currentLang === 'zh-CN' || currentLang === 'zh' ? 'ZH' : currentLang.toUpperCase();
+            const displayElement = document.getElementById('current-lang-display');
+            if (displayElement) displayElement.innerText = displayLang;
+
+            document.querySelectorAll('.lang-switch').forEach(btn => {
+                const btnLang = btn.dataset.lang;
+                if (btnLang === currentLang || (currentLang === 'zh' && btnLang === 'zh-CN')) {
+                    btn.classList.remove('text-text-secondary');
+                    btn.classList.add('text-white', 'font-bold');
+                    btn.innerHTML += '<span class="material-symbols-outlined text-[16px] ml-2">check</span>';
+                }
+
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    // Prevent bubbling up
+                    e.stopPropagation();
+                    
+                    const targetLang = e.currentTarget.dataset.lang;
+                    
+                    if(targetLang === 'en') {
+                        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                        document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=.${location.hostname}; path=/;`;
+                    } else {
+                        document.cookie = `googtrans=/en/${targetLang}; path=/`;
+                        document.cookie = `googtrans=/en/${targetLang}; domain=.${location.hostname}; path=/`;
+                    }
+                    
+                    localStorage.setItem('cooljay_lang', targetLang);
+                    location.reload();
+                });
+            });
+            
+            // Also close the dropdown when language selected or clicked outside
+            document.addEventListener('click', (e) => {
+                if(!e.target.closest('.group')) {
+                    // It's using hover, so clicking outside isn't strictly necessary for CSS hide 
+                    // but on mobile it helps
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

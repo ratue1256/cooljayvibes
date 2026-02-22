@@ -207,7 +207,8 @@
             opacity: 0;
         }
 
-        .anim-ready.anim-go {
+        .anim-ready.anim-go,
+        #hero-headline.anim-go {
             animation: appleReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
@@ -278,8 +279,8 @@
                 </div>
                 <div class="relative z-10 max-w-4xl flex flex-col items-center">
                     <h1 id="hero-headline"
-                        class="text-6xl md:text-8xl font-bold tracking-tight mb-8 leading-[1.05] text-gradient-subtle">
-                        <span data-i18n="hero_line1">Don't buy a phone.</span><br /><span class="opacity-60"
+                        class="text-6xl md:text-8xl font-bold tracking-tight mb-8 leading-[1.05] anim-ready text-white">
+                        <span class="text-gradient-subtle" style="display:inline-block;" data-i18n="hero_line1">Don't buy a phone.</span><br /><span class="opacity-60 text-[#A1A1AA]"
                             data-i18n="hero_line2">Buy a workflow.</span>
                     </h1>
                     <p
@@ -301,7 +302,7 @@
                 </div>
             </section>
             <section
-                class="col-span-1 md:col-span-1 lg:col-span-1 row-span-2 rounded-[2.5rem] bg-card-dark border border-white/5 flex flex-col relative group overflow-hidden shadow-lg apple-card">
+                class="col-span-1 md:col-span-1 lg:col-span-1 row-span-2 rounded-[2.5rem] bg-card-dark border border-white/5 flex flex-col relative group overflow-hidden shadow-lg apple-card anim-card" style="animation-delay: 0.1s"">
                 <div class="p-8 border-b border-white/5 flex justify-between items-center">
                     <h3 class="font-semibold text-xs uppercase tracking-[0.1em] text-text-secondary">Comparison</h3>
                 </div>
@@ -581,19 +582,10 @@
             // ─── Apple-style cinematic reveal ───
             const headline = document.getElementById('hero-headline');
             if (headline) {
-                requestAnimationFrame(() => {
-                    headline.classList.add('anim-go');
-                });
+                setTimeout(() => { headline.classList.add('anim-go'); }, 50);
             }
 
-            // Stagger cards (exclude hero card)
-            document.querySelectorAll('section.apple-card').forEach((card, i) => {
-                if (card.classList.contains('col-span-1') && card.classList.contains('md:col-span-2')) return;
-                if (!card.classList.contains('anim-card')) {
-                    card.classList.add('anim-card');
-                    card.style.animationDelay = (i * 0.08) + 's';
-                }
-            });
+            
 
             // Scroll-triggered for .anim-ready and .anim-card
             const revealTargets = document.querySelectorAll('.anim-ready, .anim-card');
@@ -605,7 +597,7 @@
                             revealObserver.unobserve(entry.target);
                         }
                     });
-                }, { threshold: 0.12 });
+                }, { threshold: 0.02 });
                 revealTargets.forEach(el => revealObserver.observe(el));
             } else {
                 revealTargets.forEach(el => el.classList.add('anim-go'));

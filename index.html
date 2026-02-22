@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>CoolJayVibe - Tech Advisory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2997FF", "background-dark": "#000000", "card-dark": "#1C1C1E", "card-border": "#2C2C2E", "text-primary": "#F5F5F7", "text-secondary": "#86868B",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+                        "body": ["Inter", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem", "2xl": "2rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333333;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555555;
+        }
+
+        .text-gradient-subtle {
+            background: linear-gradient(180deg, #FFFFFF 0%, #A1A1AA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .backdrop-blur-md {
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+        }
+
+        /* Apple-style card elevation */
+        .apple-card {
+            background: #1C1C1E;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .apple-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .apple-card:hover {
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: scale(1.005);
+        }
+
+        /* Smooth Progress Bars */
+        .progress-tray {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 999px;
+            height: 6px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 999px;
+            transition: width 1.5s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        /* Toast Styles */
+        #toast-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            z-index: 100;
+        }
+
+        .toast {
+            background: #1C1C1E;
+            border: 1px solid #2C2C2E;
+            color: #F5F5F7;
+            padding: 1rem 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            font-size: 0.875rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .toast.fade-out {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-dark text-text-primary font-body antialiased selection:bg-primary selection:text-white overflow-x-hidden">
+    <div class="relative flex min-h-screen w-full flex-col max-w-[1240px] mx-auto p-4 md:p-10 lg:p-16 gap-10">
+        <header
+            class="flex items-center justify-between py-3 sticky top-6 z-50 bg-background-dark/70 backdrop-blur-md border border-white/10 px-6 rounded-full mx-[-1rem] md:mx-0 shadow-2xl">
+            <div class="flex items-center gap-2">
+                <div class="flex items-center justify-center size-7 bg-white text-black rounded-full">
+                    <span class="material-symbols-outlined text-[18px] font-bold">bolt</span>
+                </div>
+                <h2 class="text-lg font-semibold tracking-tight text-white">CoolJayVibe</h2>
+            </div>
+            <nav class="hidden md:flex items-center gap-10">
+                <a class="text-[13px] font-medium text-text-secondary hover:text-white transition-colors"
+                    href="reviews.html">Reviews</a>
+                <a class="text-[13px] font-medium text-text-secondary hover:text-white transition-colors"
+                    href="configurator.html">Configurator</a>
+                <a class="text-[13px] font-medium text-text-secondary hover:text-white transition-colors"
+                    href="guides.html">Guides</a>
+                <a class="text-[13px] font-medium text-text-secondary hover:text-white transition-colors"
+                    href="login.html">Login</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <button class="text-white hover:text-text-secondary transition-colors">
+                    <span class="material-symbols-outlined text-[20px]">search</span>
+                </button>
+                <button class="md:hidden text-white hover:text-text-secondary">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </header>
+        <main class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 flex-grow">
+            <section
+                class="col-span-1 md:col-span-2 lg:col-span-3 row-span-2 relative group overflow-hidden rounded-[2.5rem] bg-card-dark p-10 md:p-20 flex flex-col justify-center items-center text-center shadow-lg apple-card">
+                <div
+                    class="absolute inset-0 bg-gradient-to-b from-blue-600/10 via-transparent to-transparent opacity-40">
+                </div>
+                <div class="relative z-10 max-w-4xl flex flex-col items-center">
+                    <h1 class="text-6xl md:text-8xl font-bold tracking-tight mb-8 leading-[1.05] text-gradient-subtle">
+                        Don't buy a phone.<br /><span class="opacity-60">Buy a workflow.</span>
+                    </h1>
+                    <p class="text-text-secondary text-xl md:text-2xl font-medium mb-12 max-w-2xl leading-relaxed">
+                        Unbiased hardware intelligence. Tailored to your work, your privacy, and your life.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-6 items-center">
+                        <button onclick="window.location.href='configurator.html'"
+                            class="flex items-center justify-center gap-2 bg-primary hover:bg-[#47a5ff] text-white px-10 py-4 rounded-full font-semibold text-base transition-all transform active:scale-95 shadow-2xl shadow-primary/20">
+                            Start Configurator
+                        </button>
+                        <a class="px-8 py-4 text-white hover:text-primary font-medium text-base transition-colors flex items-center gap-1 group/link"
+                            href="manifesto.html">
+                            Learn more <span
+                                class="material-symbols-outlined text-[20px] group-hover/link:translate-x-1 transition-transform">chevron_right</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <section
+                class="col-span-1 md:col-span-1 lg:col-span-1 row-span-2 rounded-[2.5rem] bg-card-dark border border-white/5 flex flex-col relative group overflow-hidden shadow-lg apple-card">
+                <div class="p-8 border-b border-white/5 flex justify-between items-center">
+                    <h3 class="font-semibold text-xs uppercase tracking-[0.1em] text-text-secondary">Comparison</h3>
+                </div>
+                <div class="flex-1 flex flex-col p-8 gap-10 relative">
+                    <div class="flex justify-between items-start pt-4">
+                        <div class="flex flex-col items-center gap-4 text-center w-1/2 group/pixel">
+                            <div
+                                class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#2c2c2e] to-[#1c1c1e] shadow-2xl flex items-center justify-center text-gray-300 border border-white/10 group-hover/pixel:scale-105 transition-transform duration-500">
+                                <span class="material-symbols-outlined text-3xl font-light text-white">smartphone</span>
+                            </div>
+                            <div>
+                                <span class="block font-semibold text-sm text-white">Pixel 10 Pro</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-center gap-4 text-center w-1/2 group/iphone">
+                            <div
+                                class="w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-100 to-gray-400 shadow-2xl flex items-center justify-center text-black border border-white/10 group-hover/iphone:scale-105 transition-transform duration-500">
+                                <span class="material-symbols-outlined text-3xl font-light">phone_iphone</span>
+                            </div>
+                            <div>
+                                <span class="block font-semibold text-sm text-white">iPhone 17</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-8 mt-4">
+                        <div class="space-y-3">
+                            <div
+                                class="flex justify-between text-[11px] font-semibold text-text-secondary uppercase tracking-widest">
+                                <span>Camera</span>
+                            </div>
+                            <div class="progress-tray">
+                                <div class="progress-fill bg-primary w-[52%]"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div
+                                class="flex justify-between text-[11px] font-semibold text-text-secondary uppercase tracking-widest">
+                                <span>Efficiency</span>
+                            </div>
+                            <div class="progress-tray">
+                                <div class="progress-fill bg-white w-[88%]"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div
+                                class="flex justify-between text-[11px] font-semibold text-text-secondary uppercase tracking-widest">
+                                <span>Privacy</span>
+                            </div>
+                            <div class="progress-tray">
+                                <div class="progress-fill bg-green-500 w-[60%]"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="window.location.href='comparison.html'"
+                        class="mt-auto w-full py-3.5 bg-white/5 hover:bg-white/10 text-white rounded-full transition-all text-xs font-semibold uppercase tracking-widest group/btn border border-white/5">
+                        Deep Analysis
+                    </button>
+                </div>
+            </section>
+            <section
+                class="col-span-1 md:col-span-3 lg:col-span-4 rounded-[2.5rem] bg-card-dark p-10 flex flex-col md:flex-row items-center justify-between gap-12 apple-card">
+                <div class="flex flex-col gap-3 max-w-lg">
+                    <h3 class="text-white font-semibold text-3xl tracking-tight">
+                        What matters to you?
+                    </h3>
+                    <p class="text-text-secondary text-lg font-medium leading-relaxed">Choose your priority. We'll show
+                        you exactly how each device fits into your world.</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-4 w-full md:w-auto">
+                    <label class="relative cursor-pointer group">
+                        <input checked="" class="peer sr-only" name="priority" type="radio" value="work" />
+                        <div
+                            class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 peer-checked:shadow-2xl">
+                            <span class="material-symbols-outlined text-3xl mb-1">work</span>
+                            <span class="font-semibold text-xs uppercase tracking-tighter">Work</span>
+                        </div>
+                    </label>
+                    <label class="relative cursor-pointer group">
+                        <input class="peer sr-only" name="priority" type="radio" value="photo" />
+                        <div
+                            class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 text-text-secondary peer-checked:shadow-2xl">
+                            <span class="material-symbols-outlined text-3xl mb-1">photo_camera</span>
+                            <span class="font-semibold text-xs uppercase tracking-tighter">Photo</span>
+                        </div>
+                    </label>
+                    <label class="relative cursor-pointer group">
+                        <input class="peer sr-only" name="priority" type="radio" value="privacy" />
+                        <div
+                            class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 text-text-secondary peer-checked:shadow-2xl">
+                            <span class="material-symbols-outlined text-3xl mb-1">shield</span>
+                            <span class="font-semibold text-xs uppercase tracking-tighter">Privacy</span>
+                        </div>
+                    </label>
+                    <label class="relative cursor-pointer group">
+                        <input class="peer sr-only" name="priority" type="radio" value="gaming" />
+                        <div
+                            class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 text-text-secondary peer-checked:shadow-2xl">
+                            <span class="material-symbols-outlined text-3xl mb-1">sports_esports</span>
+                            <span class="font-semibold text-xs uppercase tracking-tighter">Gaming</span>
+                        </div>
+                    </label>
+                </div>
+                <div class="hidden md:flex flex-col items-end min-w-[120px]">
+                    <span class="text-[11px] text-text-secondary font-bold uppercase tracking-[0.1em]">Matches</span>
+                    <div class="text-4xl font-medium text-white tracking-tighter">12<span
+                            class="text-text-secondary text-xl font-normal">/48</span>
+                    </div>
+                </div>
+            </section>
+            <section onclick="window.location.href='compliance.html'"
+                class="col-span-1 md:col-span-1 lg:col-span-2 rounded-[2.5rem] bg-card-dark p-10 flex items-center gap-8 apple-card cursor-pointer group">
+                <div
+                    class="size-16 rounded-[1.5rem] bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0">
+                    <span class="material-symbols-outlined text-3xl">policy</span>
+                </div>
+                <div class="flex-1">
+                    <h3 class="font-semibold text-xl text-white mb-2 transition-colors">Digital Sovereignty</h3>
+                    <p class="text-base text-text-secondary font-medium leading-relaxed">Understanding privacy laws.
+                        Secure your life from global data harvesting.</p>
+                </div>
+                <div class="self-center">
+                    <span
+                        class="material-symbols-outlined text-text-secondary group-hover:text-white transition-colors">chevron_right</span>
+                </div>
+            </section>
+            <section onclick="window.location.href='guides.html'"
+                class="col-span-1 md:col-span-1 lg:col-span-1 rounded-[2.5rem] bg-card-dark p-10 flex flex-col justify-between apple-card cursor-pointer group h-full">
+                <div class="flex justify-between items-start mb-6">
+                    <div
+                        class="size-14 rounded-[1.25rem] bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-2xl">sync_alt</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-xl text-white mb-2 transition-colors">
+                        Easy Migration</h3>
+                    <p class="text-base text-text-secondary font-medium">Step-by-step guides for ecosystem transitions.
+                    </p>
+                </div>
+            </section>
+            <section
+                class="col-span-1 md:col-span-1 lg:col-span-1 rounded-[2.5rem] bg-card-dark overflow-hidden relative group apple-card">
+                <div class="absolute inset-0 bg-gradient-to-br from-gray-700 to-black opacity-40"></div>
+                <div class="relative z-10 p-10 h-full flex flex-col justify-end">
+                    <span class="text-primary text-[11px] font-bold mb-2 uppercase tracking-widest">Newsletter</span>
+                    <h3 class="font-bold text-white text-2xl leading-tight mb-6 tracking-tight">Stay updated.</h3>
+                    <form class="flex flex-col gap-3 w-full">
+                        <input
+                            class="w-full bg-white/5 border border-white/5 text-white text-sm px-6 py-4 rounded-full focus:outline-none focus:bg-white/10 placeholder:text-gray-500 backdrop-blur-sm transition-all text-center"
+                            placeholder="Email address" type="email" />
+                        <button
+                            class="bg-white text-black px-6 py-4 rounded-full hover:bg-gray-200 transition-colors font-bold text-sm tracking-tight"
+                            type="submit">
+                            Join Now
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </main>
+        <footer
+            class="flex flex-col md:flex-row justify-between items-center text-xs text-text-secondary py-8 border-t border-white/5 mt-4">
+            <div class="flex gap-6">
+                <span>© 2024 CJV Systems</span>
+                <span class="w-px h-3 bg-white/10 self-center"></span>
+                <span>Berlin / Tokyo</span>
+            </div>
+            <div class="flex gap-6 mt-4 md:mt-0">
+                <a class="hover:text-white transition-colors" href="#">Privacy Protocol</a>
+                <a class="hover:text-white transition-colors" href="#">Impressum</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Quick Selector Logic
+            const priorityRadios = document.querySelectorAll('input[name="priority"]');
+            const matchesContainer = document.querySelector('.text-3xl.font-light.text-white');
+            const matchData = {
+                'work': 12,
+                'photo': 8,
+                'privacy': 5,
+                'gaming': 14
+            };
+
+            if (matchesContainer) {
+                matchesContainer.style.transition = 'opacity 0.2s ease';
+                priorityRadios.forEach(radio => {
+                    radio.addEventListener('change', (e) => {
+                        const count = matchData[e.target.value] || 0;
+                        matchesContainer.style.opacity = '0';
+                        setTimeout(() => {
+                            matchesContainer.innerHTML = `${count}<span class="text-text-secondary text-lg">/48</span>`;
+                            matchesContainer.style.opacity = '1';
+                        }, 200);
+                    });
+                });
+            }
+
+            // Mobile Menu Toggle
+            const menuBtn = document.querySelector('button.md\\:hidden');
+            const nav = document.querySelector('nav');
+
+            if (menuBtn && nav) {
+                menuBtn.addEventListener('click', () => {
+                    nav.classList.toggle('hidden');
+                    nav.classList.toggle('absolute');
+                    nav.classList.toggle('top-[70px]');
+                    nav.classList.toggle('left-4');
+                    nav.classList.toggle('right-4');
+                    nav.classList.toggle('bg-card-dark');
+                    nav.classList.toggle('p-6');
+                    nav.classList.toggle('rounded-xl');
+                    nav.classList.toggle('border');
+                    nav.classList.toggle('border-white/5');
+                    nav.classList.toggle('flex-col');
+                    nav.classList.toggle('shadow-2xl');
+                    nav.classList.toggle('z-50');
+                });
+            }
+
+            // Newsletter Form Submission
+            const form = document.querySelector('form');
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const input = form.querySelector('input[type="email"]');
+                    const btn = form.querySelector('button');
+
+                    if (input.value.trim() !== '') {
+                        const originalBtnContent = btn.innerHTML;
+                        const originalPlaceholder = input.placeholder;
+
+                        btn.innerHTML = '<span class="material-symbols-outlined text-xl">check</span>';
+                        btn.classList.add('bg-green-500', 'text-white');
+                        btn.classList.remove('bg-white', 'text-black', 'hover:bg-gray-200');
+
+                        input.value = '';
+                        input.placeholder = 'Confirmed!';
+                        input.disabled = true;
+
+                        showToast('Welcome to the inner circle.', 'mail');
+
+                        setTimeout(() => {
+                            btn.innerHTML = originalBtnContent;
+                            btn.classList.remove('bg-green-500', 'text-white');
+                            btn.classList.add('bg-white', 'text-black', 'hover:bg-gray-200');
+                            input.placeholder = originalPlaceholder;
+                            input.disabled = false;
+                        }, 3000);
+                    }
+                });
+            }
+
+            // Global Toast System
+            const toastContainer = document.createElement('div');
+            toastContainer.id = 'toast-container';
+            document.body.appendChild(toastContainer);
+
+            function showToast(message, icon = 'info') {
+                const toast = document.createElement('div');
+                toast.className = 'toast';
+                toast.innerHTML = `
+                    <span class="material-symbols-outlined text-primary">${icon}</span>
+                    <span>${message}</span>
+                `;
+                toastContainer.appendChild(toast);
+
+                setTimeout(() => {
+                    toast.classList.add('fade-out');
+                    setTimeout(() => toast.remove(), 300);
+                }, 3000);
+            }
+
+            // Handle unlinked buttons with simple toasts
+            document.querySelectorAll('button:not([onclick]):not([type="submit"])').forEach(el => {
+                el.addEventListener('click', (e) => {
+                    const text = el.innerText.trim() || 'Feature';
+                    showToast(`${text} loading...`, 'hourglass_empty');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

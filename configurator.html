@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Configurator - CoolJayVibe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2997FF", "background-dark": "#000000", "card-dark": "#1C1C1E", "card-border": "#2C2C2E", "text-primary": "#F5F5F7", "text-secondary": "#86868B",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+                        "body": ["Inter", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "2xl": "2rem", "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333333;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555555;
+        }
+
+        .backdrop-blur-md {
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+        }
+
+        .apple-card {
+            background: #1C1C1E;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .text-gradient-subtle {
+            background: linear-gradient(180deg, #FFFFFF 0%, #A1A1AA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-dark text-text-primary font-body antialiased selection:bg-primary selection:text-white overflow-x-hidden">
+    <div class="relative flex min-h-screen w-full flex-col max-w-[1240px] mx-auto p-4 md:p-10 lg:p-16 gap-10">
+        <!-- Header copied from index -->
+        <header
+            class="flex items-center justify-between py-3 sticky top-6 z-50 bg-background-dark/70 backdrop-blur-md border border-white/10 px-6 rounded-full mx-[-1rem] md:mx-0 shadow-2xl">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="flex items-center justify-center size-7 bg-white text-black rounded-full">
+                    <span class="material-symbols-outlined text-[18px] font-bold">bolt</span>
+                </div>
+                <h2 class="text-lg font-semibold tracking-tight text-white">CoolJayVibe</h2>
+            </a>
+            <nav class="hidden md:flex items-center gap-10">
+                <a class="text-[13px] font-medium text-text-secondary hover:text-white transition-colors"
+                    href="reviews.html">Reviews</a>
+                <a class="text-[13px] font-medium text-white transition-colors border-b border-white pb-1"
+                    href="configurator.html">Configurator</a>
+                <a class="text-[13px] font-medium text-text-secondary hover:text-white transition-colors"
+                    href="guides.html">Guides</a>
+                <a class="text-[13px] font-medium text-text-secondary hover:text-white transition-colors"
+                    href="login.html">Login</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <button class="md:hidden text-white hover:text-text-secondary">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="flex-grow flex flex-col items-center justify-center text-center mt-10">
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-gradient-subtle leading-tight">
+                Build your perfect workflow.
+            </h1>
+            <p class="text-text-secondary text-xl font-medium mb-12 max-w-2xl">
+                Answer a few quick questions. We'll analyze the entire market and build a tech ecosystem uniquely suited
+                to your life.
+            </p>
+
+            <div class="w-full max-w-2xl apple-card rounded-[2.5rem] p-10 text-left">
+                <div class="mb-8">
+                    <div class="text-xs text-text-secondary font-bold uppercase tracking-widest mb-2">Step 1 of 4</div>
+                    <h3 class="text-3xl font-semibold text-white">What's your primary operating system?</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <button id="os-mac"
+                        class="os-btn flex flex-col items-center justify-center p-8 rounded-[1.5rem] border border-white/10 hover:border-primary hover:bg-primary/5 transition-all group">
+                        <span
+                            class="material-symbols-outlined text-4xl mb-4 group-hover:text-primary transition-colors text-white">laptop_mac</span>
+                        <span class="font-semibold">macOS / iOS</span>
+                    </button>
+                    <button id="os-win"
+                        class="os-btn flex flex-col items-center justify-center p-8 rounded-[1.5rem] border border-white/10 hover:border-primary hover:bg-primary/5 transition-all group">
+                        <span
+                            class="material-symbols-outlined text-4xl mb-4 group-hover:text-primary transition-colors text-white">desktop_windows</span>
+                        <span class="font-semibold">Windows / Android</span>
+                    </button>
+                </div>
+
+                <div class="mt-10 flex justify-end">
+                    <button id="btn-next" disabled
+                        class="bg-white/50 text-black px-8 py-3 rounded-full font-semibold transition-colors cursor-not-allowed">
+                        Next Step
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="flex justify-center text-xs text-text-secondary py-8 border-t border-white/5 mt-4">
+            <div>© 2026 CJV Systems</div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const osButtons = document.querySelectorAll('.os-btn');
+            const nextBtn = document.getElementById('btn-next');
+            const stepLabel = document.querySelector('.text-xs');
+            const stepTitle = document.querySelector('h3');
+            const cardContainer = document.querySelector('.apple-card');
+
+            let currentStep = 0;
+            let selectedOption = null;
+
+            const steps = [
+                {
+                    title: "What's your primary operating system?",
+                    options: [
+                        { icon: 'laptop_mac', text: 'macOS / iOS' },
+                        { icon: 'desktop_windows', text: 'Windows / Android' }
+                    ]
+                },
+                {
+                    title: "What is your typical daily screen time?",
+                    options: [
+                        { icon: 'schedule', text: 'Under 4 Hours' },
+                        { icon: 'bolt', text: '8+ Hours (Power User)' }
+                    ]
+                },
+                {
+                    title: "What is your main priority?",
+                    options: [
+                        { icon: 'shield', text: 'Privacy & Security' },
+                        { icon: 'speed', text: 'Raw Performance' }
+                    ]
+                },
+                {
+                    title: "What is your budget configuration?",
+                    options: [
+                        { icon: 'savings', text: 'Value Focused' },
+                        { icon: 'diamond', text: 'No Compromises' }
+                    ]
+                }
+            ];
+
+            function resetButtons() {
+                osButtons.forEach(b => {
+                    b.classList.remove('border-primary', 'bg-primary/10');
+                    b.classList.add('border-white/10');
+                    b.querySelector('span.material-symbols-outlined').classList.remove('text-primary');
+                    b.querySelector('span.material-symbols-outlined').classList.add('text-white');
+                });
+                selectedOption = null;
+                nextBtn.disabled = true;
+                nextBtn.classList.add('bg-white/50', 'cursor-not-allowed');
+                nextBtn.classList.remove('bg-white', 'hover:bg-gray-200');
+            }
+
+            function loadStep(stepIndex) {
+                const stepData = steps[stepIndex];
+                stepLabel.innerText = `Step ${stepIndex + 1} of 4`;
+                stepTitle.innerText = stepData.title;
+
+                osButtons[0].querySelector('.material-symbols-outlined').innerText = stepData.options[0].icon;
+                osButtons[0].querySelector('span.font-semibold').innerText = stepData.options[0].text;
+
+                osButtons[1].querySelector('.material-symbols-outlined').innerText = stepData.options[1].icon;
+                osButtons[1].querySelector('span.font-semibold').innerText = stepData.options[1].text;
+
+                resetButtons();
+            }
+
+            osButtons.forEach((btn, index) => {
+                btn.addEventListener('click', () => {
+                    resetButtons();
+
+                    // Set active
+                    btn.classList.remove('border-white/10');
+                    btn.classList.add('border-primary', 'bg-primary/10');
+                    btn.querySelector('span.material-symbols-outlined').classList.remove('text-white');
+                    btn.querySelector('span.material-symbols-outlined').classList.add('text-primary');
+
+                    selectedOption = index;
+
+                    // Enable Next button
+                    nextBtn.disabled = false;
+                    nextBtn.classList.remove('bg-white/50', 'cursor-not-allowed');
+                    nextBtn.classList.add('bg-white', 'hover:bg-gray-200');
+                });
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (selectedOption === null) return;
+
+                const originalText = nextBtn.innerText;
+                nextBtn.innerHTML = '<span class="material-symbols-outlined animate-spin text-sm">progress_activity</span> Loading...';
+                nextBtn.disabled = true;
+
+                setTimeout(() => {
+                    currentStep++;
+
+                    if (currentStep < steps.length) {
+                        nextBtn.innerHTML = 'Next Step';
+                        loadStep(currentStep);
+                    } else {
+                        // Show final analysis
+                        cardContainer.innerHTML = `
+                            <div class="flex flex-col items-center justify-center text-center py-12 animate-pulse">
+                                <span class="material-symbols-outlined text-6xl text-primary mb-6 animate-spin">memory</span>
+                                <h3 class="text-3xl font-bold text-white mb-2">Analyzing the matrix...</h3>
+                                <p class="text-text-secondary">Correlating millions of data points across global supply chains.</p>
+                            </div>
+                        `;
+
+                        setTimeout(() => {
+                            cardContainer.classList.remove('p-10');
+                            cardContainer.classList.add('p-0');
+
+                            cardContainer.innerHTML = `
+                                <div class="bg-[#2c2c2e]/50 border-b border-white/5 p-8 text-center bg-gradient-to-b from-primary/10 to-transparent">
+                                    <div class="inline-flex items-center justify-center bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
+                                        Optimization Complete
+                                    </div>
+                                    <h3 class="text-3xl font-bold text-white mb-2">The Executive Workflow</h3>
+                                    <p class="text-text-secondary">Based on your privacy focus and power-user status.</p>
+                                </div>
+                                <div class="p-8">
+                                    <div class="space-y-6">
+                                        <div class="flex items-center gap-6 p-4 rounded-2xl hover:bg-white/5 transition-colors group cursor-pointer border border-transparent hover:border-white/10">
+                                            <div class="w-16 h-16 rounded-xl bg-gray-900 border border-white/10 flex items-center justify-center text-white shrink-0 shadow-lg group-hover:scale-105 transition-transform">
+                                                <span class="material-symbols-outlined text-3xl">smartphone</span>
+                                            </div>
+                                            <div>
+                                                <div class="text-[10px] text-primary font-bold uppercase tracking-widest mb-1">Mobile Core</div>
+                                                <h4 class="text-lg font-bold text-white">GrapheneOS Pixel 10 Pro</h4>
+                                                <p class="text-sm text-text-secondary mt-1">Maximum privacy baseline. No Google Play Services required.</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center gap-6 p-4 rounded-2xl hover:bg-white/5 transition-colors group cursor-pointer border border-transparent hover:border-white/10">
+                                            <div class="w-16 h-16 rounded-xl bg-gray-200 border border-white/10 flex items-center justify-center text-black shrink-0 shadow-lg group-hover:scale-105 transition-transform">
+                                                <span class="material-symbols-outlined text-3xl">laptop_mac</span>
+                                            </div>
+                                            <div>
+                                                <div class="text-[10px] text-primary font-bold uppercase tracking-widest mb-1">Workstation</div>
+                                                <h4 class="text-lg font-bold text-white">MacBook Pro M5 Max</h4>
+                                                <p class="text-sm text-text-secondary mt-1">8+ hours battery performance under heavy loads.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-10 flex flex-col md:flex-row gap-4 justify-between items-center border-t border-white/5 pt-8">
+                                        <a href="guides.html" class="text-text-secondary hover:text-white transition-colors text-sm font-medium">Read migration protocol &rarr;</a>
+                                        <button class="bg-primary hover:bg-[#47a5ff] text-white px-8 py-3 rounded-full font-bold transition-all shadow-lg shadow-primary/20 flex items-center gap-2 w-full md:w-auto justify-center">
+                                            <span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+                                            Export Build
+                                        </button>
+                                    </div>
+                                </div>
+                            `;
+                        }, 2500);
+                    }
+
+                }, 400);
+            });
+
+            // Initial load
+            loadStep(0);
+        });
+    </script>
+</body>
+
+</html>

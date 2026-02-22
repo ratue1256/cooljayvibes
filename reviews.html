@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Reviews - CoolJayVibe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2997FF", "background-dark": "#000000", "card-dark": "#1C1C1E", "card-border": "#2C2C2E", "text-primary": "#F5F5F7", "text-secondary": "#86868B",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+                        "body": ["Inter", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "2xl": "2rem", "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333333;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555555;
+        }
+
+        .backdrop-blur-md {
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+        }
+
+        .apple-card {
+            background: #1C1C1E;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .text-gradient-subtle {
+            background: linear-gradient(180deg, #FFFFFF 0%, #A1A1AA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body class="bg-background-dark text-text-primary font-body antialiased overflow-x-hidden">
+    <div class="relative flex min-h-screen w-full flex-col max-w-[1240px] mx-auto p-4 md:p-10 lg:p-16 gap-10">
+        <header
+            class="flex items-center justify-between py-3 sticky top-6 z-50 bg-background-dark/70 backdrop-blur-md border border-white/10 px-6 rounded-full mx-[-1rem] md:mx-0 shadow-2xl">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="flex items-center justify-center size-7 bg-white text-black rounded-full">
+                    <span class="material-symbols-outlined text-[18px] font-bold">bolt</span>
+                </div>
+                <h2 class="text-lg font-semibold tracking-tight text-white">CoolJayVibe</h2>
+            </a>
+            <nav class="hidden md:flex items-center gap-10">
+                <a class="text-[13px] font-medium text-white transition-colors border-b border-white pb-1"
+                    href="reviews.html">Reviews</a>
+                <a class="text-[13px] font-medium text-text-secondary hover:text-white transition-colors"
+                    href="configurator.html">Configurator</a>
+                <a class="text-[13px] font-medium text-text-secondary hover:text-white transition-colors"
+                    href="guides.html">Guides</a>
+                <a class="text-[13px] font-medium text-text-secondary hover:text-white transition-colors"
+                    href="login.html">Login</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <button class="md:hidden text-white hover:text-text-secondary">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="flex-grow mt-10">
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-4 text-gradient-subtle leading-tight">
+                Reviews.
+            </h1>
+            <p class="text-text-secondary text-xl font-medium mb-12 max-w-2xl">
+                In-depth analysis without the noise. We test hardware the way professionals actually use it.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="apple-card rounded-[2rem] p-8 flex flex-col group cursor-pointer">
+                    <div
+                        class="aspect-video bg-[#2c2c2e] rounded-xl mb-6 flex items-center justify-center text-gray-500 overflow-hidden relative">
+                        <span
+                            class="material-symbols-outlined text-6xl group-hover:scale-110 transition-transform duration-500">smartphone</span>
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span
+                            class="text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 px-2 py-1 rounded">Mobile</span>
+                        <span class="text-xs text-text-secondary">12 min read</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Pixel 10 Pro: The Android Renaissance</h3>
+                    <p class="text-text-secondary text-sm leading-relaxed mt-auto">Google finally achieves hardware and
+                        software synthesis. An absolute masterclass in AI integration.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="apple-card rounded-[2rem] p-8 flex flex-col group cursor-pointer">
+                    <div
+                        class="aspect-video bg-[#2c2c2e] rounded-xl mb-6 flex items-center justify-center text-gray-500 overflow-hidden relative">
+                        <span
+                            class="material-symbols-outlined text-6xl group-hover:scale-110 transition-transform duration-500">laptop_mac</span>
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span
+                            class="text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 px-2 py-1 rounded">Computing</span>
+                        <span class="text-xs text-text-secondary">8 min read</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">MacBook Pro M5: Unnecessary Power?</h3>
+                    <p class="text-text-secondary text-sm leading-relaxed mt-auto">Is the M5 chip a legitimate upgrade,
+                        or purely a flex? We tested it rendering 8K workflows.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="apple-card rounded-[2rem] p-8 flex flex-col group cursor-pointer">
+                    <div
+                        class="aspect-video bg-[#2c2c2e] rounded-xl mb-6 flex items-center justify-center text-gray-500 overflow-hidden relative">
+                        <span
+                            class="material-symbols-outlined text-6xl group-hover:scale-110 transition-transform duration-500">headphones</span>
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span
+                            class="text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 px-2 py-1 rounded">Audio</span>
+                        <span class="text-xs text-text-secondary">5 min read</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Sony XM6 vs AirPods Max</h3>
+                    <p class="text-text-secondary text-sm leading-relaxed mt-auto">The definitive isolation test for
+                        deep work and travel. One clear winner emerges.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

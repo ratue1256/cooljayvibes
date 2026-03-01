@@ -186,69 +186,69 @@
 
             const steps = [
                 {
-                    title: "What's your primary digital ecosystem?",
+                    title_key: "step_eco_title", title_default: "What's your primary digital ecosystem?",
                     options: [
-                        { icon: 'laptop_mac', text: 'Apple (macOS / iOS)', value: 'apple', key: 'ecosystem' },
-                        { icon: 'desktop_windows', text: 'Google / Windows', value: 'google', key: 'ecosystem' },
-                        { icon: 'lock', text: 'De-Googled / Linux', value: 'custom_rom', key: 'ecosystem' }
+                        { icon: 'laptop_mac', key_text: 'step_eco_opt1', text: 'Apple (macOS / iOS)', value: 'apple', key: 'ecosystem' },
+                        { icon: 'android', key_text: 'step_eco_opt2', text: 'Google / Windows', value: 'google', key: 'ecosystem' },
+                        { icon: 'lock', key_text: 'step_eco_opt3', text: 'De-Googled / Linux', value: 'custom_rom', key: 'ecosystem' }
                     ]
                 },
                 {
-                    title: "What is your main hardware philosophy?",
+                    title_key: "step_phil_title", title_default: "What is your main hardware philosophy?",
                     options: [
-                        { icon: 'rocket_launch', text: 'Latest & Greatest', value: 'annual', key: 'longevity' },
-                        { icon: 'verified_user', text: 'Keep it 4+ Years', value: 'long', key: 'longevity' },
-                        { icon: 'build', text: 'Repairable / Modular', value: 'repairable', key: 'longevity' }
+                        { icon: 'rocket_launch', key_text: 'step_phil_opt1', text: 'Latest & Greatest', value: 'annual', key: 'longevity' },
+                        { icon: 'verified_user', key_text: 'step_phil_opt2', text: 'Keep it 4+ Years', value: 'long', key: 'longevity' },
+                        { icon: 'build', key_text: 'step_phil_opt3', text: 'Repairable / Modular', value: 'repairable', key: 'longevity' }
                     ]
                 },
                 {
-                    title: "How do you handle Artificial Intelligence?",
+                    title_key: "step_ai_title", title_default: "How do you handle Artificial Intelligence?",
                     options: [
-                        { icon: 'memory', text: 'Native / On-Device AI', value: 'native', key: 'ai_level' },
-                        { icon: 'cloud', text: 'Cloud AI is fine', value: 'cloud', key: 'ai_level' },
-                        { icon: 'block', text: 'No AI / Privacy First', value: 'none', key: 'ai_level' }
+                        { icon: 'memory', key_text: 'step_ai_opt1', text: 'Native / On-Device AI', value: 'native', key: 'ai_level' },
+                        { icon: 'cloud', key_text: 'step_ai_opt2', text: 'Cloud AI is fine', value: 'cloud', key: 'ai_level' },
+                        { icon: 'block', key_text: 'step_ai_opt3', text: 'No AI / Privacy First', value: 'none', key: 'ai_level' }
                     ]
                 },
                 {
-                    title: "What is your camera priority?",
+                    title_key: "step_cam_title", title_default: "What is your camera priority?",
                     options: [
-                        { icon: 'linked_camera', text: 'Natural / Point & Shoot', value: 'natural', key: 'camera' },
-                        { icon: 'videocam', text: 'Pro Video / ProRes', value: 'pro_video', key: 'camera' },
-                        { icon: 'zoom_in', text: 'Versatility & Zoom', value: 'zoom', key: 'camera' },
-                        { icon: 'photo_camera_back', text: 'Just basic snaps', value: 'basic', key: 'camera' }
+                        { icon: 'camera_alt', key_text: 'step_cam_opt1', text: 'Natural / Point & Shoot', value: 'natural', key: 'camera' },
+                        { icon: 'videocam', key_text: 'step_cam_opt2', text: 'Pro Video / ProRes', value: 'pro_video', key: 'camera' },
+                        { icon: 'zoom_in', key_text: 'step_cam_opt3', text: 'Versatility & Zoom', value: 'zoom', key: 'camera' },
+                        { icon: 'photo_camera_back', key_text: 'step_cam_opt4', text: 'Just basic snaps', value: 'basic', key: 'camera' }
                     ]
                 },
                 {
-                    title: "What is your core productivity suite?",
+                    title_key: "step_prod_title", title_default: "What is your core productivity suite?",
                     options: [
-                        { icon: 'cloud_done', text: 'Google Workspace', value: 'google', key: 'productivity' },
-                        { icon: 'apps', text: 'Microsoft 365', value: 'microsoft', key: 'productivity' },
-                        { icon: 'devices', text: 'Apple iCloud', value: 'apple', key: 'productivity' },
-                        { icon: 'home_storage', text: 'Local / Self-hosted', value: 'local', key: 'productivity' }
+                        { icon: 'cloud_done', key_text: 'step_prod_opt1', text: 'Google Workspace', value: 'google', key: 'productivity' },
+                        { icon: 'apps', key_text: 'step_prod_opt2', text: 'Microsoft 365', value: 'microsoft', key: 'productivity' },
+                        { icon: 'devices', key_text: 'step_prod_opt3', text: 'Apple iCloud', value: 'apple', key: 'productivity' },
+                        { icon: 'dns', key_text: 'step_prod_opt4', text: 'Local / Self-hosted', value: 'local', key: 'productivity' }
                     ]
                 },
                 {
-                    title: "Ideal device footprint?",
+                    title_key: "step_size_title", title_default: "Ideal device footprint?",
                     options: [
-                        { icon: 'smartphone', text: 'Compact / One-handed', value: 'compact', key: 'form_factor' },
-                        { icon: 'tablet_mac', text: 'Max Size / Phablet', value: 'max', key: 'form_factor' },
-                        { icon: 'chrome_reader_mode', text: 'Foldable', value: 'foldable', key: 'form_factor' }
+                        { icon: 'smartphone', key_text: 'step_size_opt1', text: 'Compact / One-handed', value: 'compact', key: 'form_factor' },
+                        { icon: 'tablet_mac', key_text: 'step_size_opt2', text: 'Max Size / Phablet', value: 'max', key: 'form_factor' },
+                        { icon: 'splitscreen', key_text: 'step_size_opt3', text: 'Foldable', value: 'foldable', key: 'form_factor' }
                     ]
                 },
                 {
-                    title: "Gaming & Emulation?",
+                    title_key: "step_gaming_title", title_default: "Gaming & Emulation?",
                     options: [
-                        { icon: 'sports_esports', text: 'Hardcore Mobile Gaming', value: 'hardcore', key: 'gaming' },
-                        { icon: 'layers', text: 'Casual / Cloud Gaming', value: 'casual', key: 'gaming' },
-                        { icon: 'not_interested', text: 'No games', value: 'none', key: 'gaming' }
+                        { icon: 'sports_esports', key_text: 'step_gaming_opt1', text: 'Hardcore Mobile Gaming', value: 'hardcore', key: 'gaming' },
+                        { icon: 'layers', key_text: 'step_gaming_opt2', text: 'Casual / Cloud Gaming', value: 'casual', key: 'gaming' },
+                        { icon: 'not_interested', key_text: 'step_gaming_opt3', text: 'No games', value: 'none', key: 'gaming' }
                     ]
                 },
                 {
-                    title: "Daily Usage Intensity?",
+                    title_key: "step_usage_title", title_default: "Daily Usage Intensity?",
                     options: [
-                        { icon: 'battery_full', text: 'Light (Calls, texts)', value: 'light', key: 'intensity' },
-                        { icon: 'work', text: 'Business / Communication', value: 'business', key: 'intensity' },
-                        { icon: 'bolt', text: 'Power User (8h+ screen)', value: 'power', key: 'intensity' }
+                        { icon: 'chat', key_text: 'step_usage_opt1', text: 'Light (Calls, texts)', value: 'light', key: 'intensity' },
+                        { icon: 'work', key_text: 'step_usage_opt2', text: 'Business / Communication', value: 'business', key: 'intensity' },
+                        { icon: 'bolt', key_text: 'step_usage_opt3', text: 'Power User (8h+ screen)', value: 'power', key: 'intensity' }
                     ]
                 }
             ];
@@ -267,10 +267,11 @@
                 nextBtn.classList.remove('bg-white', 'hover:bg-gray-200');
             }
 
-            function loadStep(stepIndex) {
+                        function loadStep(stepIndex) {
                 const stepData = steps[stepIndex];
                 stepLabel.innerText = 'Step ' + (stepIndex + 1) + ' of ' + steps.length;
-                stepTitle.innerText = stepData.title;
+                stepTitle.setAttribute('data-i18n', stepData.title_key);
+                stepTitle.innerText = stepData.title_default;
                 
                 btnContainer.innerHTML = '';
                 let colsClass = 'md:grid-cols-2';
@@ -281,7 +282,7 @@
                 stepData.options.forEach((opt) => {
                     const btn = document.createElement('button');
                     btn.className = 'os-btn flex flex-col items-center justify-center p-8 rounded-[1.5rem] border border-white/10 hover:border-primary hover:bg-primary/5 transition-all group min-h-[140px]';
-                    btn.innerHTML = `<span class="material-symbols-outlined text-4xl mb-4 group-hover:text-primary transition-colors text-white">${opt.icon}</span><span class="font-semibold text-center text-white">${opt.text}</span>`;
+                    btn.innerHTML = `<span class="material-symbols-outlined text-4xl mb-4 group-hover:text-primary transition-colors text-white">${opt.icon}</span><span class="font-semibold text-center text-white" data-i18n="${opt.key_text}">${opt.text}</span>`;
                     
                     btn.addEventListener('click', () => {
                         resetButtons();
@@ -301,6 +302,8 @@
                 });
 
                 resetButtons();
+                
+                if(window.translatePage) window.translatePage();
             }
 
             nextBtn.addEventListener('click', () => {
@@ -315,13 +318,14 @@
                         nextBtn.innerHTML = 'Next Step';
                         loadStep(currentStep);
                     } else {
-                        cardContainer.innerHTML = `
+                                                cardContainer.innerHTML = `
                             <div class="flex flex-col items-center justify-center text-center py-12 animate-pulse min-h-[400px]">
                                 <span class="material-symbols-outlined text-6xl text-primary mb-6 animate-spin">memory</span>
-                                <h3 class="text-3xl font-bold text-white mb-2">Analyzing the matrix...</h3>
-                                <p class="text-text-secondary">Correlating millions of data points across global supply chains.</p>
+                                <h3 class="text-3xl font-bold text-white mb-2" data-i18n="analyzing_matrix">Analyzing the matrix...</h3>
+                                <p class="text-text-secondary" data-i18n="correlating_data">Correlating millions of data points across global supply chains.</p>
                             </div>
                         `;
+                        if(window.translatePage) window.translatePage();
 
                         setTimeout(() => {
                             let result = window.calculateBestDevice ? window.calculateBestDevice(userPrefs) : { winner: "Pixel 10 Pro XL", reason: "AI Focus", runnerUp: "iPhone 17 Pro Max" };
@@ -330,10 +334,10 @@
                             cardContainer.classList.add('p-0');
                             cardContainer.innerHTML = `
                                 <div class="bg-[#2c2c2e]/50 border-b border-white/5 p-8 text-center bg-gradient-to-b from-primary/10 to-transparent rounded-t-[2.5rem]">
-                                    <div class="inline-flex items-center justify-center bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
+                                    <div class="inline-flex items-center justify-center bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4" data-i18n="opt_complete">
                                         Optimization Complete
                                     </div>
-                                    <h3 class="text-3xl font-bold text-white mb-2">The Recommended Workflow</h3>
+                                    <h3 class="text-3xl font-bold text-white mb-2" data-i18n="recommended_flow">The Recommended Workflow</h3>
                                 </div>
                                 <div class="p-8">
                                     <div class="space-y-6">
@@ -342,7 +346,7 @@
                                                 <span class="material-symbols-outlined text-3xl">emoji_events</span>
                                             </div>
                                             <div>
-                                                <div class="text-[10px] text-primary font-bold uppercase tracking-widest mb-1">Winner</div>
+                                                <div class="text-[10px] text-primary font-bold uppercase tracking-widest mb-1" data-i18n="winner_tag">Winner</div>
                                                 <h4 class="text-lg font-bold text-white">${result.winner}</h4>
                                                 <p class="text-sm text-text-secondary mt-1">${result.reason}</p>
                                             </div>
@@ -352,20 +356,21 @@
                                                 <span class="material-symbols-outlined text-3xl">star_half</span>
                                             </div>
                                             <div>
-                                                <div class="text-[10px] text-primary font-bold uppercase tracking-widest mb-1">Runner Up</div>
+                                                <div class="text-[10px] text-primary font-bold uppercase tracking-widest mb-1" data-i18n="runner_tag">Runner Up</div>
                                                 <h4 class="text-lg font-bold text-white">${result.runnerUp}</h4>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="mt-10 flex flex-col md:flex-row gap-4 justify-between items-center border-t border-white/5 pt-8">
-                                        <a href="guides.html" class="text-text-secondary hover:text-white transition-colors text-sm font-medium">View Migration Guides &rarr;</a>
+                                        <a href="guides.html" class="text-text-secondary hover:text-white transition-colors text-sm font-medium" data-i18n="view_guides">View Migration Guides →</a>
                                         <button onclick="window.location.reload()" class="bg-primary hover:bg-[#47a5ff] text-white px-8 py-3 rounded-full font-bold transition-all shadow-lg shadow-primary/20 flex items-center gap-2 w-full md:w-auto justify-center">
                                             <span class="material-symbols-outlined text-[20px]">refresh</span>
-                                            Start Over
+                                            <span data-i18n="start_over">Start Over</span>
                                         </button>
                                     </div>
                                 </div>
                             `;
+                            if(window.translatePage) window.translatePage();
                         }, 2000);
                     }
                 }, 400);

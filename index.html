@@ -148,13 +148,13 @@
             from {
                 opacity: 0;
                 transform: translateY(36px);
-                filter: blur(5px);
+                
             }
 
             to {
                 opacity: 1;
                 transform: translateY(0);
-                filter: blur(0);
+                
             }
         }
 
@@ -235,7 +235,7 @@
                 <div class="flex items-center justify-center size-7 bg-white text-black rounded-full">
                     <span class="material-symbols-outlined text-[18px] font-bold">bolt</span>
                 </div>
-                <h2 class="text-lg font-semibold tracking-tight text-white">CoolJayVibe</h2>
+                <h2 class="text-lg font-semibold tracking-tight text-white" data-i18n="nav_brand">CoolJayVibe</h2>
             </div>
             <nav class="hidden md:flex items-center gap-10">
                 <a class="text-[13px] font-medium text-text-secondary hover:text-white transition-colors"
@@ -245,7 +245,7 @@
                 <a class="text-[13px] font-medium text-text-secondary hover:text-white transition-colors"
                     href="guides.html" data-i18n="nav_guides">Guides</a>
                 <a class="text-[13px] font-medium text-text-secondary hover:text-white transition-colors"
-                    href="login.html">Login</a>
+                    href="login.html" data-i18n="nav_login">Login</a>
             </nav>
             <div class="flex items-center gap-4">
                 <button class="text-white hover:text-text-secondary transition-colors">
@@ -280,7 +280,7 @@
                 <div class="relative z-10 max-w-4xl flex flex-col items-center">
                     <h1 id="hero-headline"
                         class="text-6xl md:text-8xl font-bold tracking-tight mb-8 leading-[1.05] anim-ready text-white">
-                        <span class="text-gradient-subtle" style="display:inline-block;" data-i18n="hero_line1">Don't buy a phone.</span><br /><span class="opacity-60 text-[#A1A1AA]"
+                        <span class="text-gradient-subtle" style="display:inline-block;" data-i18n="hero_line1">Don't buy a phone.</span><br /><span class="text-[#A1A1AA]"
                             data-i18n="hero_line2">Buy a workflow.</span>
                     </h1>
                     <p
@@ -304,7 +304,7 @@
             <section
                 class="col-span-1 md:col-span-1 lg:col-span-1 row-span-2 rounded-[2.5rem] bg-card-dark border border-white/5 flex flex-col relative group overflow-hidden shadow-lg apple-card anim-card" style="animation-delay: 0.1s"">
                 <div class="p-8 border-b border-white/5 flex justify-between items-center">
-                    <h3 class="font-semibold text-xs uppercase tracking-[0.1em] text-text-secondary">Comparison</h3>
+                    <h3 class="font-semibold text-xs uppercase tracking-[0.1em] text-text-secondary" data-i18n="compare_header">Comparison</h3>
                 </div>
                 <div class="flex-1 flex flex-col p-8 gap-10 relative">
                     <div class="flex justify-between items-start pt-4">
@@ -314,7 +314,7 @@
                                 <span class="material-symbols-outlined text-3xl font-light text-white">smartphone</span>
                             </div>
                             <div>
-                                <span class="block font-semibold text-sm text-white">Pixel 10 Pro</span>
+                                <span class="block font-semibold text-sm text-white" data-i18n="phone_pixel">Pixel 10 Pro</span>
                             </div>
                         </div>
                         <div class="flex flex-col items-center gap-4 text-center w-1/2 group/iphone">
@@ -323,7 +323,7 @@
                                 <span class="material-symbols-outlined text-3xl font-light">phone_iphone</span>
                             </div>
                             <div>
-                                <span class="block font-semibold text-sm text-white">iPhone 17</span>
+                                <span class="block font-semibold text-sm text-white" data-i18n="phone_iphone">iPhone 17</span>
                             </div>
                         </div>
                     </div>
@@ -331,7 +331,7 @@
                         <div class="space-y-3">
                             <div
                                 class="flex justify-between text-[11px] font-semibold text-text-secondary uppercase tracking-widest">
-                                <span>Camera</span>
+                                <span data-i18n="spec_camera">Camera</span>
                             </div>
                             <div class="progress-tray">
                                 <div class="progress-fill bg-primary w-[52%]"></div>
@@ -340,7 +340,7 @@
                         <div class="space-y-3">
                             <div
                                 class="flex justify-between text-[11px] font-semibold text-text-secondary uppercase tracking-widest">
-                                <span>Efficiency</span>
+                                <span data-i18n="spec_efficiency">Efficiency</span>
                             </div>
                             <div class="progress-tray">
                                 <div class="progress-fill bg-white w-[88%]"></div>
@@ -349,7 +349,7 @@
                         <div class="space-y-3">
                             <div
                                 class="flex justify-between text-[11px] font-semibold text-text-secondary uppercase tracking-widest">
-                                <span>Privacy</span>
+                                <span data-i18n="spec_privacy" data-i18n="selector_privacy">Privacy</span>
                             </div>
                             <div class="progress-tray">
                                 <div class="progress-fill bg-green-500 w-[60%]"></div>
@@ -357,9 +357,7 @@
                         </div>
                     </div>
                     <button onclick="window.location.href='comparison.html'"
-                        class="mt-auto w-full py-3.5 bg-white/5 hover:bg-white/10 text-white rounded-full transition-all text-xs font-semibold uppercase tracking-widest group/btn border border-white/5">
-                        Deep Analysis
-                    </button>
+                        class="mt-auto w-full py-3.5 bg-white/5 hover:bg-white/10 text-white rounded-full transition-all text-xs font-semibold uppercase tracking-widest group/btn border border-white/5" data-i18n="compare_deep">Deep Analysis</button>
                 </div>
             </section>
             <section
@@ -377,7 +375,7 @@
                         <div
                             class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 peer-checked:shadow-2xl">
                             <span class="material-symbols-outlined text-3xl mb-1">work</span>
-                            <span class="font-semibold text-xs uppercase tracking-tighter">Work</span>
+                            <span class="font-semibold text-xs uppercase tracking-tighter" data-i18n="selector_work">Work</span>
                         </div>
                     </label>
                     <label class="relative cursor-pointer group">
@@ -385,7 +383,7 @@
                         <div
                             class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 text-text-secondary peer-checked:shadow-2xl">
                             <span class="material-symbols-outlined text-3xl mb-1">photo_camera</span>
-                            <span class="font-semibold text-xs uppercase tracking-tighter">Photo</span>
+                            <span class="font-semibold text-xs uppercase tracking-tighter" data-i18n="selector_photo">Photo</span>
                         </div>
                     </label>
                     <label class="relative cursor-pointer group">
@@ -393,7 +391,7 @@
                         <div
                             class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 text-text-secondary peer-checked:shadow-2xl">
                             <span class="material-symbols-outlined text-3xl mb-1">shield</span>
-                            <span class="font-semibold text-xs uppercase tracking-tighter">Privacy</span>
+                            <span class="font-semibold text-xs uppercase tracking-tighter" data-i18n="spec_privacy" data-i18n="selector_privacy">Privacy</span>
                         </div>
                     </label>
                     <label class="relative cursor-pointer group">
@@ -401,12 +399,12 @@
                         <div
                             class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 text-text-secondary peer-checked:shadow-2xl">
                             <span class="material-symbols-outlined text-3xl mb-1">sports_esports</span>
-                            <span class="font-semibold text-xs uppercase tracking-tighter">Gaming</span>
+                            <span class="font-semibold text-xs uppercase tracking-tighter" data-i18n="selector_gaming">Gaming</span>
                         </div>
                     </label>
                 </div>
                 <div class="hidden md:flex flex-col items-end min-w-[120px]">
-                    <span class="text-[11px] text-text-secondary font-bold uppercase tracking-[0.1em]">Matches</span>
+                    <span class="text-[11px] text-text-secondary font-bold uppercase tracking-[0.1em]" data-i18n="selector_matches">Matches</span>
                     <div class="text-4xl font-medium text-white tracking-tighter">12<span
                             class="text-text-secondary text-xl font-normal">/48</span>
                     </div>
@@ -462,16 +460,14 @@
                 </div>
             </section>
         </main>
-        <footer
-            class="flex flex-col md:flex-row justify-between items-center text-xs text-text-secondary py-8 border-t border-white/5 mt-4">
-            <div class="flex gap-6">
-                <span>© 2024 CJV Systems</span>
-                <span class="w-px h-3 bg-white/10 self-center"></span>
-                <span>Berlin / Tokyo</span>
-            </div>
-            <div class="flex gap-6 mt-4 md:mt-0">
-                <a class="hover:text-white transition-colors" href="#">Privacy Protocol</a>
-                <a class="hover:text-white transition-colors" href="#">Impressum</a>
+                <footer class="flex justify-center text-xs text-text-secondary py-8 border-t border-white/5 mt-4">
+            <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+                <span data-i18n="footer_rights">© 2026 CoolJayVibe. All rights reserved.</span>
+                <div class="flex items-center gap-6">
+                    <a href="#" class="hover:text-white transition-colors" data-i18n="footer_terms">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition-colors" data-i18n="footer_privacy">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors" data-i18n="footer_legal">Legal Notice</a>
+                </div>
             </div>
         </footer>
     </div>

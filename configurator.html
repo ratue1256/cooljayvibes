@@ -175,39 +175,80 @@
             
             const userPrefs = {
                 ecosystem: '',
+                longevity: '',
+                ai_level: '',
+                camera: '',
                 productivity: '',
-                ai_importance: '',
-                photo_philosophy: ''
+                form_factor: '',
+                gaming: '',
+                intensity: ''
             };
 
             const steps = [
                 {
-                    title: "What's your primary operating system?",
+                    title: "What's your primary digital ecosystem?",
                     options: [
-                        { icon: 'laptop_mac', text: 'macOS / iOS', value: 'apple', key: 'ecosystem' },
-                        { icon: 'desktop_windows', text: 'Windows / Android', value: 'google', key: 'ecosystem' }
+                        { icon: 'laptop_mac', text: 'Apple (macOS / iOS)', value: 'apple', key: 'ecosystem' },
+                        { icon: 'desktop_windows', text: 'Google / Windows', value: 'google', key: 'ecosystem' },
+                        { icon: 'lock', text: 'De-Googled / Linux', value: 'custom_rom', key: 'ecosystem' }
                     ]
                 },
                 {
-                    title: "How important is Native AI to your workflow?",
+                    title: "What is your main hardware philosophy?",
                     options: [
-                        { icon: 'memory', text: 'Crucial (Generation, Summaries)', value: 'high', key: 'ai_importance' },
-                        { icon: 'bolt', text: 'Nice to have / Not important', value: 'low', key: 'ai_importance' }
+                        { icon: 'rocket_launch', text: 'Latest & Greatest', value: 'annual', key: 'longevity' },
+                        { icon: 'verified_user', text: 'Keep it 4+ Years', value: 'long', key: 'longevity' },
+                        { icon: 'build', text: 'Repairable / Modular', value: 'repairable', key: 'longevity' }
                     ]
                 },
                 {
-                    title: "What is your photo philosophy?",
+                    title: "How do you handle Artificial Intelligence?",
                     options: [
-                        { icon: 'photo_camera', text: '100% Natural, No filters', value: 'natural', key: 'photo_philosophy' },
-                        { icon: 'videocam', text: 'Pro Video & Cinematic', value: 'video_pro', key: 'photo_philosophy' },
-                        { icon: 'zoom_in', text: 'Total Versatility & Zoom', value: 'versatile', key: 'photo_philosophy' }
+                        { icon: 'memory', text: 'Native / On-Device AI', value: 'native', key: 'ai_level' },
+                        { icon: 'cloud', text: 'Cloud AI is fine', value: 'cloud', key: 'ai_level' },
+                        { icon: 'block', text: 'No AI / Privacy First', value: 'none', key: 'ai_level' }
                     ]
                 },
                 {
-                    title: "What represents your main productivity suite?",
+                    title: "What is your camera priority?",
                     options: [
-                        { icon: 'cloud', text: 'Google Suite (Docs, Drive)', value: 'google_suite', key: 'productivity' },
-                        { icon: 'palette', text: 'Creative / Office', value: 'creative', key: 'productivity' }
+                        { icon: 'linked_camera', text: 'Natural / Point & Shoot', value: 'natural', key: 'camera' },
+                        { icon: 'videocam', text: 'Pro Video / ProRes', value: 'pro_video', key: 'camera' },
+                        { icon: 'zoom_in', text: 'Versatility & Zoom', value: 'zoom', key: 'camera' },
+                        { icon: 'photo_camera_back', text: 'Just basic snaps', value: 'basic', key: 'camera' }
+                    ]
+                },
+                {
+                    title: "What is your core productivity suite?",
+                    options: [
+                        { icon: 'cloud_done', text: 'Google Workspace', value: 'google', key: 'productivity' },
+                        { icon: 'apps', text: 'Microsoft 365', value: 'microsoft', key: 'productivity' },
+                        { icon: 'devices', text: 'Apple iCloud', value: 'apple', key: 'productivity' },
+                        { icon: 'home_storage', text: 'Local / Self-hosted', value: 'local', key: 'productivity' }
+                    ]
+                },
+                {
+                    title: "Ideal device footprint?",
+                    options: [
+                        { icon: 'smartphone', text: 'Compact / One-handed', value: 'compact', key: 'form_factor' },
+                        { icon: 'tablet_mac', text: 'Max Size / Phablet', value: 'max', key: 'form_factor' },
+                        { icon: 'chrome_reader_mode', text: 'Foldable', value: 'foldable', key: 'form_factor' }
+                    ]
+                },
+                {
+                    title: "Gaming & Emulation?",
+                    options: [
+                        { icon: 'sports_esports', text: 'Hardcore Mobile Gaming', value: 'hardcore', key: 'gaming' },
+                        { icon: 'layers', text: 'Casual / Cloud Gaming', value: 'casual', key: 'gaming' },
+                        { icon: 'not_interested', text: 'No games', value: 'none', key: 'gaming' }
+                    ]
+                },
+                {
+                    title: "Daily Usage Intensity?",
+                    options: [
+                        { icon: 'battery_full', text: 'Light (Calls, texts)', value: 'light', key: 'intensity' },
+                        { icon: 'work', text: 'Business / Communication', value: 'business', key: 'intensity' },
+                        { icon: 'bolt', text: 'Power User (8h+ screen)', value: 'power', key: 'intensity' }
                     ]
                 }
             ];
@@ -232,21 +273,23 @@
                 stepTitle.innerText = stepData.title;
                 
                 btnContainer.innerHTML = '';
+                let colsClass = 'md:grid-cols-2';
+                if (stepData.options.length === 3) colsClass = 'md:grid-cols-3';
+                if (stepData.options.length === 4) colsClass = 'md:grid-cols-2';
+                btnContainer.className = `grid grid-cols-1 ${colsClass} gap-4`;
                 
                 stepData.options.forEach((opt) => {
                     const btn = document.createElement('button');
-                    btn.className = 'os-btn flex flex-col items-center justify-center p-8 rounded-[1.5rem] border border-white/10 hover:border-primary hover:bg-primary/5 transition-all group';
+                    btn.className = 'os-btn flex flex-col items-center justify-center p-8 rounded-[1.5rem] border border-white/10 hover:border-primary hover:bg-primary/5 transition-all group min-h-[140px]';
                     btn.innerHTML = `<span class="material-symbols-outlined text-4xl mb-4 group-hover:text-primary transition-colors text-white">${opt.icon}</span><span class="font-semibold text-center text-white">${opt.text}</span>`;
                     
                     btn.addEventListener('click', () => {
                         resetButtons();
-                        
                         btn.classList.remove('border-white/10');
                         btn.classList.add('border-primary', 'bg-primary/10');
                         const icon = btn.querySelector('span.material-symbols-outlined');
                         icon.classList.remove('text-white');
                         icon.classList.add('text-primary');
-                        
                         selectedOption = opt;
                         
                         nextBtn.disabled = false;
@@ -262,22 +305,18 @@
 
             nextBtn.addEventListener('click', () => {
                 if (!selectedOption) return;
-                
                 userPrefs[selectedOption.key] = selectedOption.value;
-
                 nextBtn.innerHTML = '<span class="material-symbols-outlined animate-spin text-sm">progress_activity</span> Loading...';
                 nextBtn.disabled = true;
 
                 setTimeout(() => {
                     currentStep++;
-
                     if (currentStep < steps.length) {
                         nextBtn.innerHTML = 'Next Step';
                         loadStep(currentStep);
                     } else {
-                        // Show final analysis
                         cardContainer.innerHTML = `
-                            <div class="flex flex-col items-center justify-center text-center py-12 animate-pulse">
+                            <div class="flex flex-col items-center justify-center text-center py-12 animate-pulse min-h-[400px]">
                                 <span class="material-symbols-outlined text-6xl text-primary mb-6 animate-spin">memory</span>
                                 <h3 class="text-3xl font-bold text-white mb-2">Analyzing the matrix...</h3>
                                 <p class="text-text-secondary">Correlating millions of data points across global supply chains.</p>
@@ -289,7 +328,6 @@
                             
                             cardContainer.classList.remove('p-10');
                             cardContainer.classList.add('p-0');
-
                             cardContainer.innerHTML = `
                                 <div class="bg-[#2c2c2e]/50 border-b border-white/5 p-8 text-center bg-gradient-to-b from-primary/10 to-transparent rounded-t-[2.5rem]">
                                     <div class="inline-flex items-center justify-center bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
@@ -328,16 +366,14 @@
                                     </div>
                                 </div>
                             `;
-                        }, 2500);
+                        }, 2000);
                     }
-
                 }, 400);
             });
 
-            // Initial load
             loadStep(0);
         });
-    </script>
+</script>
 <script src="lang.js"></script>
 </body>
 

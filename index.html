@@ -54,7 +54,9 @@
         .text-gradient-subtle {
             background: linear-gradient(180deg, #FFFFFF 0%, #A1A1AA 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
+            color: transparent;
         }
 
         .backdrop-blur-md {
@@ -148,13 +150,13 @@
             from {
                 opacity: 0;
                 transform: translateY(36px);
-                
+
             }
 
             to {
                 opacity: 1;
                 transform: translateY(0);
-                
+
             }
         }
 
@@ -280,8 +282,9 @@
                 <div class="relative z-10 max-w-4xl flex flex-col items-center">
                     <h1 id="hero-headline"
                         class="text-6xl md:text-8xl font-bold tracking-tight mb-8 leading-[1.05] anim-ready text-white">
-                        <span class="text-gradient-subtle" style="display:inline-block;" data-i18n="hero_line1">Don't buy a phone.</span><br /><span class="text-[#A1A1AA]"
-                            data-i18n="hero_line2">Buy a workflow.</span>
+                        <span class="text-gradient-subtle" style="display:inline-block;" data-i18n="hero_line1">Don't
+                            buy a phone.</span><br /><span class="text-[#A1A1AA]" data-i18n="hero_line2">Buy a
+                            workflow.</span>
                     </h1>
                     <p
                         class="text-text-secondary text-xl md:text-2xl font-medium mb-12 max-w-2xl leading-relaxed anim-ready">
@@ -302,313 +305,428 @@
                 </div>
             </section>
             <section
-                class="col-span-1 md:col-span-1 lg:col-span-1 row-span-2 rounded-[2.5rem] bg-card-dark border border-white/5 flex flex-col relative group overflow-hidden shadow-lg apple-card anim-card" style="animation-delay: 0.1s"">
-                <div class="p-8 border-b border-white/5 flex justify-between items-center">
-                    <h3 class="font-semibold text-xs uppercase tracking-[0.1em] text-text-secondary" data-i18n="compare_header">Comparison</h3>
-                </div>
-                <div class="flex-1 flex flex-col p-8 gap-10 relative">
-                    <div class="flex justify-between items-start pt-4">
-                        <div class="flex flex-col items-center gap-4 text-center w-1/2 group/pixel">
-                            <div
-                                class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#2c2c2e] to-[#1c1c1e] shadow-2xl flex items-center justify-center text-gray-300 border border-white/10 group-hover/pixel:scale-105 transition-transform duration-500">
-                                <span class="material-symbols-outlined text-3xl font-light text-white">smartphone</span>
-                            </div>
-                            <div>
-                                <span class="block font-semibold text-sm text-white" data-i18n="phone_pixel">Pixel 10 Pro</span>
-                            </div>
-                        </div>
-                        <div class="flex flex-col items-center gap-4 text-center w-1/2 group/iphone">
-                            <div
-                                class="w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-100 to-gray-400 shadow-2xl flex items-center justify-center text-black border border-white/10 group-hover/iphone:scale-105 transition-transform duration-500">
-                                <span class="material-symbols-outlined text-3xl font-light">phone_iphone</span>
-                            </div>
-                            <div>
-                                <span class="block font-semibold text-sm text-white" data-i18n="phone_iphone">iPhone 17</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="space-y-8 mt-4">
-                        <div class="space-y-3">
-                            <div
-                                class="flex justify-between text-[11px] font-semibold text-text-secondary uppercase tracking-widest">
-                                <span data-i18n="spec_camera">Camera</span>
-                            </div>
-                            <div class="progress-tray">
-                                <div class="progress-fill bg-primary w-[52%]"></div>
-                            </div>
-                        </div>
-                        <div class="space-y-3">
-                            <div
-                                class="flex justify-between text-[11px] font-semibold text-text-secondary uppercase tracking-widest">
-                                <span data-i18n="spec_efficiency">Efficiency</span>
-                            </div>
-                            <div class="progress-tray">
-                                <div class="progress-fill bg-white w-[88%]"></div>
-                            </div>
-                        </div>
-                        <div class="space-y-3">
-                            <div
-                                class="flex justify-between text-[11px] font-semibold text-text-secondary uppercase tracking-widest">
-                                <span data-i18n="spec_privacy" data-i18n="selector_privacy">Privacy</span>
-                            </div>
-                            <div class="progress-tray">
-                                <div class="progress-fill bg-green-500 w-[60%]"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <button onclick="window.location.href='comparison.html'"
-                        class="mt-auto w-full py-3.5 bg-white/5 hover:bg-white/10 text-white rounded-full transition-all text-xs font-semibold uppercase tracking-widest group/btn border border-white/5" data-i18n="compare_deep">Deep Analysis</button>
-                </div>
-            </section>
-            <section
-                class="col-span-1 md:col-span-3 lg:col-span-4 rounded-[2.5rem] bg-card-dark p-10 flex flex-col md:flex-row items-center justify-between gap-12 apple-card">
-                <div class="flex flex-col gap-3 max-w-lg">
-                    <h3 class="text-white font-semibold text-3xl tracking-tight">
-                        What matters to you?
-                    </h3>
-                    <p class="text-text-secondary text-lg font-medium leading-relaxed">Choose your priority. We'll show
-                        you exactly how each device fits into your world.</p>
-                </div>
-                <div class="flex flex-wrap justify-center gap-4 w-full md:w-auto">
-                    <label class="relative cursor-pointer group">
-                        <input checked="" class="peer sr-only" name="priority" type="radio" value="work" />
-                        <div
-                            class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 peer-checked:shadow-2xl">
-                            <span class="material-symbols-outlined text-3xl mb-1">work</span>
-                            <span class="font-semibold text-xs uppercase tracking-tighter" data-i18n="selector_work">Work</span>
-                        </div>
-                    </label>
-                    <label class="relative cursor-pointer group">
-                        <input class="peer sr-only" name="priority" type="radio" value="photo" />
-                        <div
-                            class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 text-text-secondary peer-checked:shadow-2xl">
-                            <span class="material-symbols-outlined text-3xl mb-1">photo_camera</span>
-                            <span class="font-semibold text-xs uppercase tracking-tighter" data-i18n="selector_photo">Photo</span>
-                        </div>
-                    </label>
-                    <label class="relative cursor-pointer group">
-                        <input class="peer sr-only" name="priority" type="radio" value="privacy" />
-                        <div
-                            class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 text-text-secondary peer-checked:shadow-2xl">
-                            <span class="material-symbols-outlined text-3xl mb-1">shield</span>
-                            <span class="font-semibold text-xs uppercase tracking-tighter" data-i18n="spec_privacy" data-i18n="selector_privacy">Privacy</span>
-                        </div>
-                    </label>
-                    <label class="relative cursor-pointer group">
-                        <input class="peer sr-only" name="priority" type="radio" value="gaming" />
-                        <div
-                            class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 text-text-secondary peer-checked:shadow-2xl">
-                            <span class="material-symbols-outlined text-3xl mb-1">sports_esports</span>
-                            <span class="font-semibold text-xs uppercase tracking-tighter" data-i18n="selector_gaming">Gaming</span>
-                        </div>
-                    </label>
-                </div>
-                <div class="hidden md:flex flex-col items-end min-w-[120px]">
-                    <span class="text-[11px] text-text-secondary font-bold uppercase tracking-[0.1em]" data-i18n="selector_matches">Matches</span>
-                    <div class="text-4xl font-medium text-white tracking-tighter">12<span
-                            class="text-text-secondary text-xl font-normal">/48</span>
-                    </div>
-                </div>
-            </section>
-            <section onclick="window.location.href='compliance.html'"
-                class="col-span-1 md:col-span-1 lg:col-span-2 rounded-[2.5rem] bg-card-dark p-10 flex items-center gap-8 apple-card cursor-pointer group">
+                class="col-span-1 md:col-span-1 lg:col-span-1 row-span-2 rounded-[2.5rem] bg-card-dark border border-white/5 flex flex-col relative group overflow-hidden shadow-lg apple-card anim-card"
+                style="animation-delay: 0.1s"">
+                <div class=" p-8 border-b border-white/5 flex justify-between items-center">
+                <h3 class="font-semibold text-xs uppercase tracking-[0.1em] text-text-secondary"
+                    data-i18n="compare_header">Comparison</h3>
+    </div>
+    <div class="flex-1 flex flex-col p-8 gap-10 relative">
+        <div class="flex justify-between items-start pt-4">
+            <div class="flex flex-col items-center gap-4 text-center w-1/2 group/pixel">
                 <div
-                    class="size-16 rounded-[1.5rem] bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0">
-                    <span class="material-symbols-outlined text-3xl">policy</span>
-                </div>
-                <div class="flex-1">
-                    <h3 class="font-semibold text-xl text-white mb-2 transition-colors">Digital Sovereignty</h3>
-                    <p class="text-base text-text-secondary font-medium leading-relaxed">Understanding privacy laws.
-                        Secure your life from global data harvesting.</p>
-                </div>
-                <div class="self-center">
-                    <span
-                        class="material-symbols-outlined text-text-secondary group-hover:text-white transition-colors">chevron_right</span>
-                </div>
-            </section>
-            <section onclick="window.location.href='guides.html'"
-                class="col-span-1 md:col-span-1 lg:col-span-1 rounded-[2.5rem] bg-card-dark p-10 flex flex-col justify-between apple-card cursor-pointer group h-full">
-                <div class="flex justify-between items-start mb-6">
-                    <div
-                        class="size-14 rounded-[1.25rem] bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
-                        <span class="material-symbols-outlined text-2xl">sync_alt</span>
-                    </div>
+                    class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#2c2c2e] to-[#1c1c1e] shadow-2xl flex items-center justify-center text-gray-300 border border-white/10 group-hover/pixel:scale-105 transition-transform duration-500">
+                    <span class="material-symbols-outlined text-3xl font-light text-white">smartphone</span>
                 </div>
                 <div>
-                    <h3 class="font-semibold text-xl text-white mb-2 transition-colors">
-                        Easy Migration</h3>
-                    <p class="text-base text-text-secondary font-medium">Step-by-step guides for ecosystem transitions.
-                    </p>
-                </div>
-            </section>
-            <section
-                class="col-span-1 md:col-span-1 lg:col-span-1 rounded-[2.5rem] bg-card-dark overflow-hidden relative group apple-card">
-                <div class="absolute inset-0 bg-gradient-to-br from-gray-700 to-black opacity-40"></div>
-                <div class="relative z-10 p-10 h-full flex flex-col justify-end">
-                    <span class="text-primary text-[11px] font-bold mb-2 uppercase tracking-widest">Newsletter</span>
-                    <h3 class="font-bold text-white text-2xl leading-tight mb-6 tracking-tight">Stay updated.</h3>
-                    <form class="flex flex-col gap-3 w-full">
-                        <input
-                            class="w-full bg-white/5 border border-white/5 text-white text-sm px-6 py-4 rounded-full focus:outline-none focus:bg-white/10 placeholder:text-gray-500 backdrop-blur-sm transition-all text-center"
-                            placeholder="Email address" type="email" />
-                        <button
-                            class="bg-white text-black px-6 py-4 rounded-full hover:bg-gray-200 transition-colors font-bold text-sm tracking-tight"
-                            type="submit">
-                            Join Now
-                        </button>
-                    </form>
-                </div>
-            </section>
-        </main>
-                <footer class="flex justify-center text-xs text-text-secondary py-8 border-t border-white/5 mt-4">
-            <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
-                <span data-i18n="footer_rights">© 2026 CoolJayVibe. All rights reserved.</span>
-                <div class="flex items-center gap-6">
-                    <a href="#" class="hover:text-white transition-colors" data-i18n="footer_terms">Terms of Service</a>
-                    <a href="#" class="hover:text-white transition-colors" data-i18n="footer_privacy">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition-colors" data-i18n="footer_legal">Legal Notice</a>
+                    <span class="block font-semibold text-sm text-white" data-i18n="phone_pixel">Pixel 10 Pro</span>
                 </div>
             </div>
-        </footer>
+            <div class="flex flex-col items-center gap-4 text-center w-1/2 group/iphone">
+                <div
+                    class="w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-100 to-gray-400 shadow-2xl flex items-center justify-center text-black border border-white/10 group-hover/iphone:scale-105 transition-transform duration-500">
+                    <span class="material-symbols-outlined text-3xl font-light">phone_iphone</span>
+                </div>
+                <div>
+                    <span class="block font-semibold text-sm text-white" data-i18n="phone_iphone">iPhone 17</span>
+                </div>
+            </div>
+        </div>
+        <div class="space-y-8 mt-4">
+            <div class="space-y-3">
+                <div
+                    class="flex justify-between text-[11px] font-semibold text-text-secondary uppercase tracking-widest">
+                    <span data-i18n="spec_camera">Camera</span>
+                </div>
+                <div class="progress-tray">
+                    <div class="progress-fill bg-primary w-[52%]"></div>
+                </div>
+            </div>
+            <div class="space-y-3">
+                <div
+                    class="flex justify-between text-[11px] font-semibold text-text-secondary uppercase tracking-widest">
+                    <span data-i18n="spec_efficiency">Efficiency</span>
+                </div>
+                <div class="progress-tray">
+                    <div class="progress-fill bg-white w-[88%]"></div>
+                </div>
+            </div>
+            <div class="space-y-3">
+                <div
+                    class="flex justify-between text-[11px] font-semibold text-text-secondary uppercase tracking-widest">
+                    <span data-i18n="spec_privacy" data-i18n="selector_privacy">Privacy</span>
+                </div>
+                <div class="progress-tray">
+                    <div class="progress-fill bg-green-500 w-[60%]"></div>
+                </div>
+            </div>
+        </div>
+        <button onclick="window.location.href='comparison.html'"
+            class="mt-auto w-full py-3.5 bg-white/5 hover:bg-white/10 text-white rounded-full transition-all text-xs font-semibold uppercase tracking-widest group/btn border border-white/5"
+            data-i18n="compare_deep">Deep Analysis</button>
     </div>
+    </section>
+    <section
+        class="col-span-1 md:col-span-3 lg:col-span-4 rounded-[2.5rem] bg-card-dark p-10 flex flex-col md:flex-row items-center justify-between gap-12 apple-card">
+        <div class="flex flex-col gap-3 max-w-lg">
+            <h3 class="text-white font-semibold text-3xl tracking-tight">
+                What matters to you?
+            </h3>
+            <p class="text-text-secondary text-lg font-medium leading-relaxed">Choose your priority. We'll show
+                you exactly how each device fits into your world.</p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-4 w-full md:w-auto">
+            <label class="relative cursor-pointer group">
+                <input checked="" class="peer sr-only" name="priority" type="radio" value="work" />
+                <div
+                    class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 peer-checked:shadow-2xl">
+                    <span class="material-symbols-outlined text-3xl mb-1">work</span>
+                    <span class="font-semibold text-xs uppercase tracking-tighter" data-i18n="selector_work">Work</span>
+                </div>
+            </label>
+            <label class="relative cursor-pointer group">
+                <input class="peer sr-only" name="priority" type="radio" value="photo" />
+                <div
+                    class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 text-text-secondary peer-checked:shadow-2xl">
+                    <span class="material-symbols-outlined text-3xl mb-1">photo_camera</span>
+                    <span class="font-semibold text-xs uppercase tracking-tighter"
+                        data-i18n="selector_photo">Photo</span>
+                </div>
+            </label>
+            <label class="relative cursor-pointer group">
+                <input class="peer sr-only" name="priority" type="radio" value="privacy" />
+                <div
+                    class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 text-text-secondary peer-checked:shadow-2xl">
+                    <span class="material-symbols-outlined text-3xl mb-1">shield</span>
+                    <span class="font-semibold text-xs uppercase tracking-tighter" data-i18n="spec_privacy"
+                        data-i18n="selector_privacy">Privacy</span>
+                </div>
+            </label>
+            <label class="relative cursor-pointer group">
+                <input class="peer sr-only" name="priority" type="radio" value="gaming" />
+                <div
+                    class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 text-text-secondary peer-checked:shadow-2xl">
+                    <span class="material-symbols-outlined text-3xl mb-1">sports_esports</span>
+                    <span class="font-semibold text-xs uppercase tracking-tighter"
+                        data-i18n="selector_gaming">Gaming</span>
+                </div>
+            </label>
+        </div>
+        <div class="hidden md:flex flex-col items-end min-w-[120px]">
+            <span class="text-[11px] text-text-secondary font-bold uppercase tracking-[0.1em]"
+                data-i18n="selector_matches">Matches</span>
+            <div class="text-4xl font-medium text-white tracking-tighter">12<span
+                    class="text-text-secondary text-xl font-normal">/48</span>
+            </div>
+        </div>
+    </section>
+    <section onclick="window.location.href='compliance.html'"
+        class="col-span-1 md:col-span-1 lg:col-span-2 rounded-[2.5rem] bg-card-dark p-10 flex items-center gap-8 apple-card cursor-pointer group">
+        <div class="size-16 rounded-[1.5rem] bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-3xl">policy</span>
+        </div>
+        <div class="flex-1">
+            <h3 class="font-semibold text-xl text-white mb-2 transition-colors">Digital Sovereignty</h3>
+            <p class="text-base text-text-secondary font-medium leading-relaxed">Understanding privacy laws.
+                Secure your life from global data harvesting.</p>
+        </div>
+        <div class="self-center">
+            <span
+                class="material-symbols-outlined text-text-secondary group-hover:text-white transition-colors">chevron_right</span>
+        </div>
+    </section>
+    <section onclick="window.location.href='guides.html'"
+        class="col-span-1 md:col-span-1 lg:col-span-1 rounded-[2.5rem] bg-card-dark p-10 flex flex-col justify-between apple-card cursor-pointer group h-full">
+        <div class="flex justify-between items-start mb-6">
+            <div class="size-14 rounded-[1.25rem] bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+                <span class="material-symbols-outlined text-2xl">sync_alt</span>
+            </div>
+        </div>
+        <div>
+            <h3 class="font-semibold text-xl text-white mb-2 transition-colors">
+                href="configurator.html" data-i18n="nav_configurator">Configurator</a>
+                <a class="text-[13px] font-medium text-text-secondary hover:text-white transition-colors"
+                    href="guides.html" data-i18n="nav_guides">Guides</a>
+                <a class="text-[13px] font-medium text-text-secondary hover:text-white transition-colors"
+                    href="login.html" data-i18n="nav_login">Login</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <button class="text-white hover:text-text-secondary transition-colors">
+                        <span class="material-symbols-outlined text-[20px]">search</span>
+                    </button>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Quick Selector Logic
-            const priorityRadios = document.querySelectorAll('input[name="priority"]');
-            const matchesContainer = document.querySelector('.text-3xl.font-light.text-white');
-            const matchData = {
-                'work': 12,
-                'photo': 8,
-                'privacy': 5,
-                'gaming': 14
-            };
+                    <div class="relative" style="position:relative">
+                        <button id="lang-toggle-btn" type="button"
+                            class="text-text-secondary hover:text-white transition-colors"
+                            style="display:flex;align-items:center;gap:4px;font-size:13px;font-weight:500;background:none;border:none;cursor:pointer;padding:4px 6px;border-radius:8px;">
+                            <span class="material-symbols-outlined" style="font-size:18px">language</span>
+                            <span id="current-lang-display"
+                                style="font-size:11px;font-weight:700;letter-spacing:.05em">EN</span>
+                            <span class="material-symbols-outlined" style="font-size:13px">expand_more</span>
+                        </button>
+                        <div id="lang-dropdown" class="hidden"
+                            style="position:absolute;right:0;top:calc(100% + 8px);min-width:185px;background:#1C1C1E;border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden;z-index:9999;max-height:260px;overflow-y:auto;box-shadow:0 16px 40px rgba(0,0,0,.8)">
+                            <div id="lang-menu-list"></div>
+                        </div>
+                    </div>
+                    <button class="md:hidden text-white hover:text-text-secondary">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                </div>
+                </header>
+                <main class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 flex-grow">
+                    <section
+                        class="col-span-1 md:col-span-2 lg:col-span-3 row-span-2 relative group overflow-hidden rounded-[2.5rem] bg-card-dark p-10 md:p-20 flex flex-col justify-center items-center text-center shadow-lg apple-card">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-b from-blue-600/10 via-transparent to-transparent opacity-40 hero-shimmer">
+                        </div>
+                        <div class="relative z-10 max-w-4xl flex flex-col items-center">
+                            <h1 id="hero-headline"
+                                class="text-6xl md:text-8xl font-bold tracking-tight mb-8 leading-[1.05] anim-ready text-white">
+                                <span class="text-gradient-subtle" style="display:inline-block;"
+                                    data-i18n="hero_line1">Don't buy a phone.</span><br /><span class="text-[#A1A1AA]"
+                                    data-i18n="hero_line2">Buy a workflow.</span>
+                            </h1>
+                            <p
+                                class="text-text-secondary text-xl md:text-2xl font-medium mb-12 max-w-2xl leading-relaxed anim-ready">
+                                <span data-i18n="hero_subtitle">Unbiased hardware intelligence. Tailored to your work,
+                                    your
+                                    privacy, and your life.</span>
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-6 items-center anim-ready"
+                                style="animation-delay:.15s">
+                                <button onclick="window.location.href='configurator.html'"
+                                    class="flex items-center justify-center gap-2 bg-primary hover:bg-[#47a5ff] text-white px-10 py-4 rounded-full font-semibold text-base transition-all transform active:scale-95 shadow-2xl shadow-primary/20">
+                                    <span data-i18n="hero_cta">Start Configurator</span>
+                                </button>
+                                <a class="px-8 py-4 text-white hover:text-primary font-medium text-base transition-colors flex items-center gap-1 group/link"
+                                    href="manifesto.html">
+                                    <span data-i18n="hero_learn">Learn more</span> <span
+                                        class="material-symbols-outlined text-[20px] group-hover/link:translate-x-1 transition-transform">chevron_right</span>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                    <section
+                        class="col-span-1 md:col-span-1 lg:col-span-1 row-span-2 rounded-[2.5rem] bg-card-dark border border-white/5 flex flex-col relative group overflow-hidden shadow-lg apple-card anim-card"
+                        style="animation-delay: 0.1s">
+                        <div class=" p-8 border-b border-white/5 flex justify-between items-center">
+                            <h3 class="font-semibold text-xs uppercase tracking-[0.1em] text-text-secondary"
+                                data-i18n="compare_header">Comparison</h3>
+                        </div>
+                        <div class="flex-1 flex flex-col p-8 gap-10 relative">
+                            <div class="flex justify-between items-start pt-4">
+                                <div class="flex flex-col items-center gap-4 text-center w-1/2 group/pixel">
+                                    <div
+                                        class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#2c2c2e] to-[#1c1c1e] shadow-2xl flex items-center justify-center text-gray-300 border border-white/10 group-hover/pixel:scale-105 transition-transform duration-500">
+                                        <span
+                                            class="material-symbols-outlined text-3xl font-light text-white">smartphone</span>
+                                    </div>
+                                    <div>
+                                        <span class="block font-semibold text-sm text-white"
+                                            data-i18n="phone_pixel">Pixel 10 Pro</span>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-center gap-4 text-center w-1/2 group/iphone">
+                                    <div
+                                        class="w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-100 to-gray-400 shadow-2xl flex items-center justify-center text-black border border-white/10 group-hover/iphone:scale-105 transition-transform duration-500">
+                                        <span class="material-symbols-outlined text-3xl font-light">phone_iphone</span>
+                                    </div>
+                                    <div>
+                                        <span class="block font-semibold text-sm text-white"
+                                            data-i18n="phone_iphone">iPhone 17</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="space-y-8 mt-4">
+                                <div class="space-y-3">
+                                    <div
+                                        class="flex justify-between text-[11px] font-semibold text-text-secondary uppercase tracking-widest">
+                                        <span data-i18n="spec_camera">Camera</span>
+                                    </div>
+                                    <div class="progress-tray">
+                                        <div class="progress-fill bg-primary w-[52%]"></div>
+                                    </div>
+                                </div>
+                                <div class="space-y-3">
+                                    <div
+                                        class="flex justify-between text-[11px] font-semibold text-text-secondary uppercase tracking-widest">
+                                        <span data-i18n="spec_efficiency">Efficiency</span>
+                                    </div>
+                                    <div class="progress-tray">
+                                        <div class="progress-fill bg-white w-[88%]"></div>
+                                    </div>
+                                </div>
+                                <div class="space-y-3">
+                                    <div
+                                        class="flex justify-between text-[11px] font-semibold text-text-secondary uppercase tracking-widest">
+                                        <span data-i18n="spec_privacy" data-i18n="selector_privacy">Privacy</span>
+                                    </div>
+                                    <div class="progress-tray">
+                                        <div class="progress-fill bg-green-500 w-[60%]"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button onclick="window.location.href='comparison.html'"
+                                class="mt-auto w-full py-3.5 bg-white/5 hover:bg-white/10 text-white rounded-full transition-all text-xs font-semibold uppercase tracking-widest group/btn border border-white/5"
+                                data-i18n="compare_deep">Deep Analysis</button>
+                        </div>
+                    </section>
+                    <section
+                        class="col-span-1 md:col-span-3 lg:col-span-4 rounded-[2.5rem] bg-card-dark p-10 flex flex-col md:flex-row items-center justify-between gap-12 apple-card">
+                        <div class="flex flex-col gap-3 max-w-lg">
+                            <h3 class="text-white font-semibold text-3xl tracking-tight">
+                                What matters to you?
+                            </h3>
+                            <p class="text-text-secondary text-lg font-medium leading-relaxed">Choose your priority.
+                                We'll show
+                                you exactly how each device fits into your world.</p>
+                        </div>
+                        <div class="flex flex-wrap justify-center gap-4 w-full md:w-auto">
+                            <label class="relative cursor-pointer group">
+                                <input checked="" class="peer sr-only" name="priority" type="radio" value="work" />
+                                <div
+                                    class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 peer-checked:shadow-2xl">
+                                    <span class="material-symbols-outlined text-3xl mb-1">work</span>
+                                    <span class="font-semibold text-xs uppercase tracking-tighter"
+                                        data-i18n="selector_work">Work</span>
+                                </div>
+                            </label>
+                            <label class="relative cursor-pointer group">
+                                <input class="peer sr-only" name="priority" type="radio" value="photo" />
+                                <div
+                                    class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 text-text-secondary peer-checked:shadow-2xl">
+                                    <span class="material-symbols-outlined text-3xl mb-1">photo_camera</span>
+                                    <span class="font-semibold text-xs uppercase tracking-tighter"
+                                        data-i18n="selector_photo">Photo</span>
+                                </div>
+                            </label>
+                            <label class="relative cursor-pointer group">
+                                <input class="peer sr-only" name="priority" type="radio" value="privacy" />
+                                <div
+                                    class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 text-text-secondary peer-checked:shadow-2xl">
+                                    <span class="material-symbols-outlined text-3xl mb-1">shield</span>
+                                    <span class="font-semibold text-xs uppercase tracking-tighter"
+                                        data-i18n="spec_privacy" data-i18n="selector_privacy">Privacy</span>
+                                </div>
+                            </label>
+                            <label class="relative cursor-pointer group">
+                                <input class="peer sr-only" name="priority" type="radio" value="gaming" />
+                                <div
+                                    class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 text-text-secondary peer-checked:shadow-2xl">
+                                    <span class="material-symbols-outlined text-3xl mb-1">sports_esports</span>
+                                    <span class="font-semibold text-xs uppercase tracking-tighter"
+                                        data-i18n="selector_gaming">Gaming</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="hidden md:flex flex-col items-end min-w-[120px]">
+                            <span class="text-[11px] text-text-secondary font-bold uppercase tracking-[0.1em]"
+                                data-i18n="selector_matches">Matches</span>
+                            <div class="text-4xl font-medium text-white tracking-tighter">12<span
+                                    class="text-text-secondary text-xl font-normal">/48</span>
+                            </div>
+                        </div>
+                    </section>
+                    <section onclick="window.location.href='compliance.html'"
+                        class="col-span-1 md:col-span-1 lg:col-span-2 rounded-[2.5rem] bg-card-dark p-10 flex items-center gap-8 apple-card cursor-pointer group">
+                        <div
+                            class="size-16 rounded-[1.5rem] bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-3xl">policy</span>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-xl text-white mb-2 transition-colors">Digital Sovereignty</h3>
+                            <p class="text-base text-text-secondary font-medium leading-relaxed">Understanding privacy
+                                laws.
+                                Secure your life from global data harvesting.</p>
+                        </div>
+                        <div class="self-center">
+                            <span
+                                class="material-symbols-outlined text-text-secondary group-hover:text-white transition-colors">chevron_right</span>
+                        </div>
+                    </section>
+                    <section onclick="window.location.href='guides.html'"
+                        class="col-span-1 md:col-span-1 lg:col-span-1 rounded-[2.5rem] bg-card-dark p-10 flex flex-col justify-between apple-card cursor-pointer group h-full">
+                        <div class="flex justify-between items-start mb-6">
+                            <div
+                                class="size-14 rounded-[1.25rem] bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-2xl">sync_alt</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-xl text-white mb-2 transition-colors">
+                                Easy Migration</h3>
+                            <p class="text-base text-text-secondary font-medium">Step-by-step guides for ecosystem
+                                transitions.
+                            </p>
+                        </div>
+                    </section>
 
-            if (matchesContainer) {
-                matchesContainer.style.transition = 'opacity 0.2s ease';
-                priorityRadios.forEach(radio => {
-                    radio.addEventListener('change', (e) => {
-                        const count = matchData[e.target.value] || 0;
-                        matchesContainer.style.opacity = '0';
-                        setTimeout(() => {
-                            matchesContainer.innerHTML = `${count}<span class="text-text-secondary text-lg">/48</span>`;
-                            matchesContainer.style.opacity = '1';
-                        }, 200);
-                    });
-                });
-            }
-
-            // Mobile Menu Toggle
-            const menuBtn = document.querySelector('button.md\\:hidden');
-            const nav = document.querySelector('nav');
-
-            if (menuBtn && nav) {
-                menuBtn.addEventListener('click', () => {
-                    nav.classList.toggle('hidden');
-                    nav.classList.toggle('absolute');
-                    nav.classList.toggle('top-[70px]');
-                    nav.classList.toggle('left-4');
-                    nav.classList.toggle('right-4');
-                    nav.classList.toggle('bg-card-dark');
-                    nav.classList.toggle('p-6');
-                    nav.classList.toggle('rounded-xl');
-                    nav.classList.toggle('border');
-                    nav.classList.toggle('border-white/5');
-                    nav.classList.toggle('flex-col');
-                    nav.classList.toggle('shadow-2xl');
-                    nav.classList.toggle('z-50');
-                });
-            }
-
-            // Newsletter Form Submission
-            const form = document.querySelector('form');
-            if (form) {
-                form.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const input = form.querySelector('input[type="email"]');
-                    const btn = form.querySelector('button');
-
-                    if (input.value.trim() !== '') {
-                        const originalBtnContent = btn.innerHTML;
-                        const originalPlaceholder = input.placeholder;
-
-                        btn.innerHTML = '<span class="material-symbols-outlined text-xl">check</span>';
-                        btn.classList.add('bg-green-500', 'text-white');
-                        btn.classList.remove('bg-white', 'text-black', 'hover:bg-gray-200');
-
-                        input.value = '';
-                        input.placeholder = 'Confirmed!';
-                        input.disabled = true;
-
-                        showToast('Welcome to the inner circle.', 'mail');
-
-                        setTimeout(() => {
-                            btn.innerHTML = originalBtnContent;
-                            btn.classList.remove('bg-green-500', 'text-white');
-                            btn.classList.add('bg-white', 'text-black', 'hover:bg-gray-200');
-                            input.placeholder = originalPlaceholder;
-                            input.disabled = false;
-                        }, 3000);
-                    }
-                });
-            }
-
-            // Global Toast System
-            const toastContainer = document.createElement('div');
-            toastContainer.id = 'toast-container';
-            document.body.appendChild(toastContainer);
-
-            function showToast(message, icon = 'info') {
-                const toast = document.createElement('div');
-                toast.className = 'toast';
-                toast.innerHTML = `
+                </main>
+                <footer class="flex justify-center text-xs text-text-secondary py-8 border-t border-white/5 mt-4">
+                    <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+                        <span data-i18n="footer_rights">© 2026 CoolJayVibe. All rights reserved.</span>
+                        <div class="flex items-center gap-6">
+                            <a href="#" class="hover:text-white transition-colors" data-i18n="footer_terms">Terms of
+                                Service</a>
+                            <a href="#" class="hover:text-white transition-colors" data-i18n="footer_privacy">Privacy
+                                Policy</a>
+                            <a href="#" class="hover:text-white transition-colors" data-i18n="footer_legal">Legal
+                                Notice</a>
+                        </div>
+                    </div>
+                    function showToast(message, icon = 'info') {
+                    const toast = document.createElement('div');
+                    toast.className = 'toast';
+                    toast.innerHTML = `
                     <span class="material-symbols-outlined text-primary">${icon}</span>
                     <span>${message}</span>
-                `;
-                toastContainer.appendChild(toast);
+                    `;
+                    toastContainer.appendChild(toast);
 
-                setTimeout(() => {
+                    setTimeout(() => {
                     toast.classList.add('fade-out');
                     setTimeout(() => toast.remove(), 300);
-                }, 3000);
-            }
+                    }, 3000);
+                    }
 
 
 
-            // ─── Apple-style cinematic reveal ───
-            const headline = document.getElementById('hero-headline');
-            if (headline) {
-                setTimeout(() => { headline.classList.add('anim-go'); }, 50);
-            }
+                    // ─── Apple-style cinematic reveal ───
+                    const headline = document.getElementById('hero-headline');
+                    if (headline) {
+                    setTimeout(() => { headline.classList.add('anim-go'); }, 50);
+                    }
 
-            
 
-            // Scroll-triggered for .anim-ready and .anim-card
-            const revealTargets = document.querySelectorAll('.anim-ready, .anim-card');
-            if ('IntersectionObserver' in window) {
-                const revealObserver = new IntersectionObserver((entries) => {
+
+                    // Scroll-triggered for .anim-ready and .anim-card
+                    const revealTargets = document.querySelectorAll('.anim-ready, .anim-card');
+                    if ('IntersectionObserver' in window) {
+                    const revealObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('anim-go');
-                            revealObserver.unobserve(entry.target);
-                        }
+                    if (entry.isIntersecting) {
+                    entry.target.classList.add('anim-go');
+                    revealObserver.unobserve(entry.target);
+                    }
                     });
-                }, { threshold: 0.02 });
-                revealTargets.forEach(el => revealObserver.observe(el));
-            } else {
-                revealTargets.forEach(el => el.classList.add('anim-go'));
-            }
+                    }, { threshold: 0.02 });
+                    revealTargets.forEach(el => revealObserver.observe(el));
+                    } else {
+                    revealTargets.forEach(el => el.classList.add('anim-go'));
+                    }
 
-            // Handle unlinked buttons with simple toasts
-            document.querySelectorAll('button:not([onclick]):not([type="submit"]):not(#lang-toggle-btn)').forEach(el => {
-                el.addEventListener('click', (e) => {
+                    // Handle unlinked buttons with simple toasts
+                    document.querySelectorAll('button:not([onclick]):not([type="submit"]):not(#lang-toggle-btn)').forEach(el
+                    => {
+                    el.addEventListener('click', (e) => {
                     const text = el.innerText.trim() || 'Feature';
                     showToast(`${text} loading...`, 'hourglass_empty');
-                });
-            });
-        });
-    </script>
-    <script src="lang.js"></script>
+                    });
+                    });
+                    });
+                    </script>
+                    <script src="lang.js"></script>
 </body>
 
 </html>

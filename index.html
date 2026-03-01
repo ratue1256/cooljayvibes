@@ -307,162 +307,128 @@
                     </div>
                 </div>
             </section>
+            <section onclick="window.location.href='configurator.html'"
+                class="col-span-1 md:col-span-1 lg:col-span-1 row-span-2 rounded-[2.5rem] bg-card-dark border border-[#2997FF]/30 flex flex-col relative group overflow-hidden shadow-lg apple-card anim-card cursor-pointer hover:border-[#2997FF]/60 transition-colors"
+                style="animation-delay: 0.1s">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#2997FF]/10 to-transparent opacity-50"></div>
+                <div class="p-8 border-b border-white/5 flex justify-between items-center relative z-10">
+                    <h3 class="font-semibold text-xs uppercase tracking-[0.1em] text-[#47a5ff]"
+                        data-i18n="nav_configurator">Configurator</h3>
+                    <span
+                        class="material-symbols-outlined text-[#47a5ff] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                </div>
+                <div class="flex-1 flex flex-col p-8 justify-center items-center text-center gap-6 relative z-10">
+                    <div
+                        class="w-20 h-20 rounded-full bg-[#2997FF]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                        <span class="material-symbols-outlined text-4xl text-[#2997FF]">magic_button</span>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-xl mb-2" data-i18n="hero_cta">Start Configurator</h4>
+                        <p class="text-text-secondary text-sm" data-i18n="index_config_desc">Let our AI find the perfect
+                            device for your specific workflow.</p>
+                    </div>
+                </div>
+            </section>
             <section
-                class="col-span-1 md:col-span-1 lg:col-span-1 row-span-2 rounded-[2.5rem] bg-card-dark border border-white/5 flex flex-col relative group overflow-hidden shadow-lg apple-card anim-card"
-                style="animation-delay: 0.1s"">
-                <div class=" p-8 border-b border-white/5 flex justify-between items-center">
-                <h3 class="font-semibold text-xs uppercase tracking-[0.1em] text-text-secondary"
-                    data-i18n="compare_header">Comparison</h3>
-    </div>
-    <div class="flex-1 flex flex-col p-8 gap-10 relative">
-        <div class="flex justify-between items-start pt-4">
-            <div class="flex flex-col items-center gap-4 text-center w-1/2 group/pixel">
+                class="col-span-1 md:col-span-3 lg:col-span-4 rounded-[2.5rem] bg-card-dark p-10 flex flex-col md:flex-row items-center justify-between gap-12 apple-card">
+                <div class="flex flex-col gap-3 max-w-lg">
+                    <h3 class="text-white font-semibold text-3xl tracking-tight" data-i18n="index_priority_title">What
+                        matters
+                        to you?</h3>
+                    <p class="text-text-secondary text-lg font-medium leading-relaxed" data-i18n="index_priority_desc">
+                        Choose
+                        your priority. We'll show you exactly how each device fits into your world.</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-4 w-full md:w-auto">
+                    <label class="relative cursor-pointer group">
+                        <input checked="" class="peer sr-only" name="priority" type="radio" value="work" />
+                        <div
+                            class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 peer-checked:shadow-2xl">
+                            <span class="material-symbols-outlined text-3xl mb-1">work</span>
+                            <span class="font-semibold text-xs uppercase tracking-tighter"
+                                data-i18n="selector_work">Work</span>
+                        </div>
+                    </label>
+                    <label class="relative cursor-pointer group">
+                        <input class="peer sr-only" name="priority" type="radio" value="photo" />
+                        <div
+                            class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 text-text-secondary peer-checked:shadow-2xl">
+                            <span class="material-symbols-outlined text-3xl mb-1">photo_camera</span>
+                            <span class="font-semibold text-xs uppercase tracking-tighter"
+                                data-i18n="selector_photo">Photo</span>
+                        </div>
+                    </label>
+                    <label class="relative cursor-pointer group">
+                        <input class="peer sr-only" name="priority" type="radio" value="privacy" />
+                        <div
+                            class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 text-text-secondary peer-checked:shadow-2xl">
+                            <span class="material-symbols-outlined text-3xl mb-1">shield</span>
+                            <span class="font-semibold text-xs uppercase tracking-tighter" data-i18n="spec_privacy"
+                                data-i18n="selector_privacy">Privacy</span>
+                        </div>
+                    </label>
+                    <label class="relative cursor-pointer group">
+                        <input class="peer sr-only" name="priority" type="radio" value="gaming" />
+                        <div
+                            class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 text-text-secondary peer-checked:shadow-2xl">
+                            <span class="material-symbols-outlined text-3xl mb-1">sports_esports</span>
+                            <span class="font-semibold text-xs uppercase tracking-tighter"
+                                data-i18n="selector_gaming">Gaming</span>
+                        </div>
+                    </label>
+                </div>
+                <div class="hidden md:flex flex-col items-end min-w-[120px]">
+                    <span class="text-[11px] text-text-secondary font-bold uppercase tracking-[0.1em]"
+                        data-i18n="selector_matches">Matches</span>
+                    <div class="text-4xl font-medium text-white tracking-tighter">12<span
+                            class="text-text-secondary text-xl font-normal">/48</span>
+                    </div>
+                </div>
+            </section>
+            <section onclick="window.location.href='compliance.html'"
+                class="col-span-1 md:col-span-1 lg:col-span-2 rounded-[2.5rem] bg-card-dark p-10 flex items-center gap-8 apple-card cursor-pointer group">
                 <div
-                    class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#2c2c2e] to-[#1c1c1e] shadow-2xl flex items-center justify-center text-gray-300 border border-white/10 group-hover/pixel:scale-105 transition-transform duration-500">
-                    <span class="material-symbols-outlined text-3xl font-light text-white">smartphone</span>
+                    class="size-16 rounded-[1.5rem] bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0">
+                    <span class="material-symbols-outlined text-3xl">policy</span>
+                </div>
+                <div class="flex-1">
+                    <h3 class="font-semibold text-xl text-white mb-2 transition-colors" data-i18n="compliance_title">
+                        Digital Sovereignty</h3>
+                    <p class="text-base text-text-secondary font-medium leading-relaxed"
+                        data-i18n="compliance_subtitle">Understanding privacy laws.
+                        Secure your life from global data harvesting.</p>
+                </div>
+                <div class="self-center">
+                    <span
+                        class="material-symbols-outlined text-text-secondary group-hover:text-white transition-colors">chevron_right</span>
+                </div>
+            </section>
+            <section onclick="window.location.href='guides.html'"
+                class="col-span-1 md:col-span-1 lg:col-span-1 rounded-[2.5rem] bg-card-dark p-10 flex flex-col justify-between apple-card cursor-pointer group h-full">
+                <div class="flex justify-between items-start mb-6">
+                    <div
+                        class="size-14 rounded-[1.25rem] bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-2xl">sync_alt</span>
+                    </div>
                 </div>
                 <div>
-                    <span class="block font-semibold text-sm text-white" data-i18n="phone_pixel">Pixel 10 Pro</span>
+                    <h3 class="font-semibold text-xl text-white mb-2 transition-colors" data-i18n="guide_title">Easy
+                        Migration</h3>
+                    <p class="text-base text-text-secondary font-medium" data-i18n="guide_subtitle">Step-by-step guides
+                        for ecosystem transitions.</p>
+                </div>
+            </section>
+        </main>
+        <footer class="flex justify-center text-xs text-text-secondary py-8 border-t border-white/5 mt-4">
+            <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+                <span data-i18n="footer_rights">© 2026 CoolJayVibe. All rights reserved.</span>
+                <div class="flex items-center gap-6">
+                    <a href="#" class="hover:text-white transition-colors" data-i18n="footer_terms">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition-colors" data-i18n="footer_privacy">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors" data-i18n="footer_legal">Legal Notice</a>
                 </div>
             </div>
-            <div class="flex flex-col items-center gap-4 text-center w-1/2 group/iphone">
-                <div
-                    class="w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-100 to-gray-400 shadow-2xl flex items-center justify-center text-black border border-white/10 group-hover/iphone:scale-105 transition-transform duration-500">
-                    <span class="material-symbols-outlined text-3xl font-light">phone_iphone</span>
-                </div>
-                <div>
-                    <span class="block font-semibold text-sm text-white" data-i18n="phone_iphone">iPhone 17</span>
-                </div>
-            </div>
-        </div>
-        <div class="space-y-8 mt-4">
-            <div class="space-y-3">
-                <div
-                    class="flex justify-between text-[11px] font-semibold text-text-secondary uppercase tracking-widest">
-                    <span data-i18n="spec_camera">Camera</span>
-                </div>
-                <div class="progress-tray">
-                    <div class="progress-fill bg-primary w-[52%]"></div>
-                </div>
-            </div>
-            <div class="space-y-3">
-                <div
-                    class="flex justify-between text-[11px] font-semibold text-text-secondary uppercase tracking-widest">
-                    <span data-i18n="spec_efficiency">Efficiency</span>
-                </div>
-                <div class="progress-tray">
-                    <div class="progress-fill bg-white w-[88%]"></div>
-                </div>
-            </div>
-            <div class="space-y-3">
-                <div
-                    class="flex justify-between text-[11px] font-semibold text-text-secondary uppercase tracking-widest">
-                    <span data-i18n="spec_privacy" data-i18n="selector_privacy">Privacy</span>
-                </div>
-                <div class="progress-tray">
-                    <div class="progress-fill bg-green-500 w-[60%]"></div>
-                </div>
-            </div>
-        </div>
-        <button onclick="window.location.href='comparison.html'"
-            class="mt-auto w-full py-3.5 bg-white/5 hover:bg-white/10 text-white rounded-full transition-all text-xs font-semibold uppercase tracking-widest group/btn border border-white/5"
-            data-i18n="compare_deep">Deep Analysis</button>
-    </div>
-    </section>
-    <section
-        class="col-span-1 md:col-span-3 lg:col-span-4 rounded-[2.5rem] bg-card-dark p-10 flex flex-col md:flex-row items-center justify-between gap-12 apple-card">
-        <div class="flex flex-col gap-3 max-w-lg">
-            <h3 class="text-white font-semibold text-3xl tracking-tight" data-i18n="index_priority_title">What matters
-                to you?</h3>
-            <p class="text-text-secondary text-lg font-medium leading-relaxed" data-i18n="index_priority_desc">Choose
-                your priority. We'll show you exactly how each device fits into your world.</p>
-        </div>
-        <div class="flex flex-wrap justify-center gap-4 w-full md:w-auto">
-            <label class="relative cursor-pointer group">
-                <input checked="" class="peer sr-only" name="priority" type="radio" value="work" />
-                <div
-                    class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 peer-checked:shadow-2xl">
-                    <span class="material-symbols-outlined text-3xl mb-1">work</span>
-                    <span class="font-semibold text-xs uppercase tracking-tighter" data-i18n="selector_work">Work</span>
-                </div>
-            </label>
-            <label class="relative cursor-pointer group">
-                <input class="peer sr-only" name="priority" type="radio" value="photo" />
-                <div
-                    class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 text-text-secondary peer-checked:shadow-2xl">
-                    <span class="material-symbols-outlined text-3xl mb-1">photo_camera</span>
-                    <span class="font-semibold text-xs uppercase tracking-tighter"
-                        data-i18n="selector_photo">Photo</span>
-                </div>
-            </label>
-            <label class="relative cursor-pointer group">
-                <input class="peer sr-only" name="priority" type="radio" value="privacy" />
-                <div
-                    class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 text-text-secondary peer-checked:shadow-2xl">
-                    <span class="material-symbols-outlined text-3xl mb-1">shield</span>
-                    <span class="font-semibold text-xs uppercase tracking-tighter" data-i18n="spec_privacy"
-                        data-i18n="selector_privacy">Privacy</span>
-                </div>
-            </label>
-            <label class="relative cursor-pointer group">
-                <input class="peer sr-only" name="priority" type="radio" value="gaming" />
-                <div
-                    class="flex flex-col items-center justify-center w-28 h-28 bg-[#2C2C2E]/50 rounded-[2rem] border border-white/5 peer-checked:bg-white peer-checked:text-black transition-all duration-500 hover:scale-105 text-text-secondary peer-checked:shadow-2xl">
-                    <span class="material-symbols-outlined text-3xl mb-1">sports_esports</span>
-                    <span class="font-semibold text-xs uppercase tracking-tighter"
-                        data-i18n="selector_gaming">Gaming</span>
-                </div>
-            </label>
-        </div>
-        <div class="hidden md:flex flex-col items-end min-w-[120px]">
-            <span class="text-[11px] text-text-secondary font-bold uppercase tracking-[0.1em]"
-                data-i18n="selector_matches">Matches</span>
-            <div class="text-4xl font-medium text-white tracking-tighter">12<span
-                    class="text-text-secondary text-xl font-normal">/48</span>
-            </div>
-        </div>
-    </section>
-    <section onclick="window.location.href='compliance.html'"
-        class="col-span-1 md:col-span-1 lg:col-span-2 rounded-[2.5rem] bg-card-dark p-10 flex items-center gap-8 apple-card cursor-pointer group">
-        <div class="size-16 rounded-[1.5rem] bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0">
-            <span class="material-symbols-outlined text-3xl">policy</span>
-        </div>
-        <div class="flex-1">
-            <h3 class="font-semibold text-xl text-white mb-2 transition-colors">Digital Sovereignty</h3>
-            <p class="text-base text-text-secondary font-medium leading-relaxed">Understanding privacy laws.
-                Secure your life from global data harvesting.</p>
-        </div>
-        <div class="self-center">
-            <span
-                class="material-symbols-outlined text-text-secondary group-hover:text-white transition-colors">chevron_right</span>
-        </div>
-    </section>
-    <section onclick="window.location.href='guides.html'"
-        class="col-span-1 md:col-span-1 lg:col-span-1 rounded-[2.5rem] bg-card-dark p-10 flex flex-col justify-between apple-card cursor-pointer group h-full">
-        <div class="flex justify-between items-start mb-6">
-            <div class="size-14 rounded-[1.25rem] bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
-                <span class="material-symbols-outlined text-2xl">sync_alt</span>
-            </div>
-        </div>
-        <div>
-            <h3 class="font-semibold text-xl text-white mb-2 transition-colors" data-i18n="nav_guides">
-                Easy Migration</h3>
-            <p class="text-base text-text-secondary font-medium" data-i18n="hero_subtitle">Step-by-step guides for
-                ecosystem transitions.
-            </p>
-        </div>
-    </section>
-    </main>
-    <footer class="flex justify-center text-xs text-text-secondary py-8 border-t border-white/5 mt-4">
-        <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
-            <span data-i18n="footer_rights">© 2026 CoolJayVibe. All rights reserved.</span>
-            <div class="flex items-center gap-6">
-                <a href="#" class="hover:text-white transition-colors" data-i18n="footer_terms">Terms of Service</a>
-                <a href="#" class="hover:text-white transition-colors" data-i18n="footer_privacy">Privacy Policy</a>
-                <a href="#" class="hover:text-white transition-colors" data-i18n="footer_legal">Legal Notice</a>
-            </div>
-        </div>
-    </footer>
+        </footer>
     </div>
 
     <script id="global-scripts">

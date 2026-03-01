@@ -1,168 +1,14 @@
-<!DOCTYPE html>
-<html class="dark" lang="en">
+import re
 
-<head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Configurator - CoolJayVibe</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-        rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#2997FF", "background-dark": "#000000", "card-dark": "#1C1C1E", "card-border": "#2C2C2E", "text-primary": "#F5F5F7", "text-secondary": "#86868B",
-                    },
-                    fontFamily: {
-                        "display": ["Inter", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
-                        "body": ["Inter", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "2xl": "2rem", "full": "9999px"
-                    },
-                },
-            },
-        }
-    </script>
-    <style>
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
+# 1. Update configurator.html
+with open('configurator.html', 'r', encoding='utf-8') as f:
+    content = f.read()
 
-        ::-webkit-scrollbar-track {
-            background: #000000;
-        }
+# Insert recommendation_engine script if missing
+if 'recommendation_engine.js' not in content:
+    content = content.replace('<script src="lang.js"></script>', '<script src="recommendation_engine.js"></script>\n<script src="lang.js"></script>')
 
-        ::-webkit-scrollbar-thumb {
-            background: #333333;
-            border-radius: 5px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555555;
-        }
-
-        .backdrop-blur-md {
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-        }
-
-        .apple-card {
-            background: #1C1C1E;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .text-gradient-subtle {
-            background: linear-gradient(180deg, #FFFFFF 0%, #A1A1AA 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-    </style>
-</head>
-
-<body
-    class="bg-background-dark text-text-primary font-body antialiased selection:bg-primary selection:text-white overflow-x-hidden">
-    <div class="relative flex min-h-screen w-full flex-col max-w-[1240px] mx-auto p-4 md:p-10 lg:p-16 gap-10">
-        <!-- Header copied from index -->
-        <header
-            class="flex items-center justify-between py-3 sticky top-6 z-50 bg-background-dark/70 backdrop-blur-md border border-white/10 px-6 rounded-full mx-[-1rem] md:mx-0 shadow-2xl">
-            <a href="index.html" class="flex items-center gap-2">
-                <div class="flex items-center justify-center size-7 bg-white text-black rounded-full">
-                    <span class="material-symbols-outlined text-[18px] font-bold">bolt</span>
-                </div>
-                <h2 class="text-lg font-semibold tracking-tight text-white" data-i18n="nav_brand" data-i18n="nav_brand">CoolJayVibe</h2>
-            </a>
-            <nav class="hidden md:flex items-center gap-10">
-    <a class="text-[13px] font-medium text-text-secondary hover:text-white transition-colors"
-        href="configurator.html" data-i18n="nav_configurator">Configurator</a>
-    <a class="text-[13px] font-medium text-text-secondary hover:text-white transition-colors"
-        href="guides.html" data-i18n="nav_guides">Guides</a>
-    <a class="text-[13px] font-medium text-text-secondary hover:text-white transition-colors flex items-center gap-1.5"
-        href="https://x.com/CoolJayVibe" target="_blank" rel="noopener noreferrer">
-        <svg width="12" height="12" viewBox="0 0 1200 1227" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" fill="currentColor"/>
-        </svg>
-        <span data-i18n="nav_follow_x">Follow on X</span>
-    </a>
-</nav>
-            <div class="flex items-center gap-4">
-                
-                <div class="relative" style="position:relative">
-                    <button id="lang-toggle-btn" type="button" class="text-text-secondary hover:text-white transition-colors" style="display:flex;align-items:center;gap:4px;font-size:13px;font-weight:500;background:none;border:none;cursor:pointer;padding:4px 6px;border-radius:8px;">
-                        <span class="material-symbols-outlined" style="font-size:18px">language</span>
-                        <span id="current-lang-display" style="font-size:11px;font-weight:700;letter-spacing:.05em">EN</span>
-                        <span class="material-symbols-outlined" style="font-size:13px">expand_more</span>
-                    </button>
-                    <div id="lang-dropdown" class="hidden" style="position:absolute;right:0;top:calc(100% + 8px);min-width:185px;background:#1C1C1E;border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden;z-index:9999;max-height:260px;overflow-y:auto;box-shadow:0 16px 40px rgba(0,0,0,.8)">
-                        <div id="lang-menu-list"></div>
-                    </div>
-                </div>
-                <button class="md:hidden text-white hover:text-text-secondary">
-                    <span class="material-symbols-outlined">menu</span>
-                </button>
-            </div>
-        </header>
-
-        <main class="flex-grow flex flex-col items-center justify-center text-center mt-10">
-            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-gradient-subtle leading-tight">
-                Build your perfect workflow.
-            </h1>
-            <p class="text-text-secondary text-xl font-medium mb-12 max-w-2xl">
-                Answer a few quick questions. We'll analyze the entire market and build a tech ecosystem uniquely suited
-                to your life.
-            </p>
-
-            <div class="w-full max-w-2xl apple-card rounded-[2.5rem] p-10 text-left">
-                <div class="mb-8">
-                    <div class="text-xs text-text-secondary font-bold uppercase tracking-widest mb-2">Step 1 of 4</div>
-                    <h3 class="text-3xl font-semibold text-white">What's your primary operating system?</h3>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <button id="os-mac"
-                        class="os-btn flex flex-col items-center justify-center p-8 rounded-[1.5rem] border border-white/10 hover:border-primary hover:bg-primary/5 transition-all group">
-                        <span
-                            class="material-symbols-outlined text-4xl mb-4 group-hover:text-primary transition-colors text-white">laptop_mac</span>
-                        <span class="font-semibold">macOS / iOS</span>
-                    </button>
-                    <button id="os-win"
-                        class="os-btn flex flex-col items-center justify-center p-8 rounded-[1.5rem] border border-white/10 hover:border-primary hover:bg-primary/5 transition-all group">
-                        <span
-                            class="material-symbols-outlined text-4xl mb-4 group-hover:text-primary transition-colors text-white">desktop_windows</span>
-                        <span class="font-semibold">Windows / Android</span>
-                    </button>
-                </div>
-
-                <div class="mt-10 flex justify-end">
-                    <button id="btn-next" disabled
-                        class="bg-white/50 text-black px-8 py-3 rounded-full font-semibold transition-colors cursor-not-allowed">
-                        Next Step
-                    </button>
-                </div>
-            </div>
-        </main>
-
-                        <footer class="flex justify-center text-xs text-text-secondary py-8 border-t border-white/5 mt-4">
-            <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
-                <span data-i18n="footer_rights">© 2026 CoolJayVibe. All rights reserved.</span>
-                <div class="flex items-center gap-6">
-                    <a href="#" class="hover:text-white transition-colors" data-i18n="footer_terms">Terms of Service</a>
-                    <a href="#" class="hover:text-white transition-colors" data-i18n="footer_privacy">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition-colors" data-i18n="footer_legal">Legal Notice</a>
-                </div>
-            </div>
-        </footer>
-    </div>
-
-    <script>
+new_script = """    <script>
         document.addEventListener('DOMContentLoaded', () => {
             const nextBtn = document.getElementById('btn-next');
             const stepLabel = document.querySelector('.text-xs');
@@ -337,8 +183,78 @@
             // Initial load
             loadStep(0);
         });
-    </script>
-<script src="lang.js"></script>
-</body>
+    </script>"""
 
-</html>
+# Find the start of the <script> block
+script_start = content.find('    <script>\n        document.addEventListener(\'DOMContentLoaded\'')
+script_end = content.find('</script>\n<script src="lang.js"></script>')
+
+if script_start != -1 and script_end != -1:
+    content = content[:script_start] + new_script + content[script_end + len('</script>'):]
+    with open('configurator.html', 'w', encoding='utf-8') as f:
+        f.write(content)
+else:
+    print("Could not find script block bounds in configurator.html")
+
+
+# 2. Update guides.html
+with open('guides.html', 'r', encoding='utf-8') as f:
+    guidesContent = f.read()
+
+guidesContent = guidesContent.replace('<span class="material-symbols-outlined text-4xl mb-6 text-white">apple</span>', '<svg class="w-9 h-9 mb-6 text-white fill-current" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.3 48.6-.6 88.5-84.6 100.8-121.2-46.7-20.9-59.5-68.5-59.9-89.4zM258 87.7c26.9-32.9 23.3-71.1 22.4-74.5-27.1 1.4-60.6 18.2-78.1 39.3-15.3 18.2-22.9 44.6-21.7 69.4 30.6 2.3 58-15.5 77.4-34.2z"/></svg>')
+
+guidesHtmlReplacement = """            <div class="w-full max-w-3xl grid grid-cols-1 gap-6 text-left" id="guides-container">
+                <div
+                    class="apple-card rounded-[2rem] p-8 flex flex-col group cursor-pointer hover:border-emerald-500/50" onclick="toggleGuide('android-to-ios')">
+                    <span class="material-symbols-outlined text-4xl mb-6 text-emerald-400">android</span>
+                    <h3 class="text-2xl font-bold text-white mb-2">Android to iOS</h3>
+                    <p class="text-text-secondary text-sm leading-relaxed mb-4">Understanding iCloud, breaking free from Google Drive, and setting up an Apple ID the right way.</p>
+                    
+                    <div id="guide-android-to-ios" class="hidden mt-4 pt-4 border-t border-white/10 text-white/80 space-y-4 text-sm animate-pulse-fade">
+                        <p><strong class="text-white">1. Data Backup:</strong> Instead of relying on 'Move to iOS' which can be bugged with large WhatsApp files, manually backup Google Drive files using Google Takeout. Use WhatsApp's native iOS transfer feature.</p>
+                        <p><strong class="text-white">2. Password Management:</strong> Do not trap yourself in iCloud Keychain if you ever plan to switch again. Export from Google Password Manager to ProtonPass or Bitwarden before switching.</p>
+                        <p><strong class="text-white">3. Two-Factor Authentication:</strong> Before resetting your Android, transfer your Google Authenticator or Authy codes to the iOS device or use Ente Auth for cross-platform freedom.</p>
+                        <button class="bg-emerald-500/20 text-emerald-400 px-4 py-2 rounded-full font-semibold mt-2 hover:bg-emerald-500/30 transition-colors cursor-default">View Deep Dive Article</button>
+                    </div>
+                </div>
+                
+                <div class="apple-card rounded-[2rem] p-8 flex flex-col group cursor-pointer hover:border-text-secondary/50" onclick="toggleGuide('ios-to-android')">
+                    <svg class="w-9 h-9 mb-6 text-white fill-current" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.3 48.6-.6 88.5-84.6 100.8-121.2-46.7-20.9-59.5-68.5-59.9-89.4zM258 87.7c26.9-32.9 23.3-71.1 22.4-74.5-27.1 1.4-60.6 18.2-78.1 39.3-15.3 18.2-22.9 44.6-21.7 69.4 30.6 2.3 58-15.5 77.4-34.2z"/></svg>
+                    <h3 class="text-2xl font-bold text-white mb-2">iOS to Android</h3>
+                    <p class="text-text-secondary text-sm leading-relaxed mb-4">The complete guide to migrating without losing iMessage groups, photos, or your sanity.</p>
+                    
+                    <div id="guide-ios-to-android" class="hidden mt-4 pt-4 border-t border-white/10 text-white/80 space-y-4 text-sm animate-pulse-fade">
+                        <p><strong class="text-white">1. The iMessage Trap:</strong> Deregister iMessage online using Apple's official tool <em class="text-primary cursor-pointer hover:underline">before</em> moving your SIM card. Otherwise, your texts from iPhone users will get stuck in Apple's servers.</p>
+                        <p><strong class="text-white">2. Photos & iCloud:</strong> Use Apple's official "Transfer a copy of your data" via privacy.apple.com to directly port your entire iCloud Photos library to Google Photos overnight.</p>
+                        <p><strong class="text-white">3. Notes & Reminders:</strong> Apple Notes lock-in is real. Use Google Keep or Notion. You will have to manually copy crucial notes, as Apple provides no bulk export option.</p>
+                        <button class="bg-gray-500/20 text-gray-300 px-4 py-2 rounded-full font-semibold mt-2 hover:bg-gray-500/30 transition-colors cursor-default">View Deep Dive Article</button>
+                    </div>
+                </div>
+            </div>"""
+
+guides_start = guidesContent.find('<div class="w-full max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-6 text-left">')
+guides_end = guidesContent.find('</main>')
+
+if guides_start != -1 and guides_end != -1:
+    guidesContent = guidesContent[:guides_start] + guidesHtmlReplacement + "\n        " + guidesContent[guides_end:]
+    
+    toggle_script = """    <script>
+        function toggleGuide(id) {
+            const el = document.getElementById('guide-' + id);
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+            } else {
+                el.classList.add('hidden');
+            }
+        }
+    </script>
+</body>"""
+    if 'function toggleGuide' not in guidesContent:
+        guidesContent = guidesContent.replace('</body>', toggle_script)
+
+    with open('guides.html', 'w', encoding='utf-8') as f:
+        f.write(guidesContent)
+else:
+    print("Could not find dynamic bounds in guides.html")
+
+print("Python update successful")

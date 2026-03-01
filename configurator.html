@@ -163,6 +163,7 @@
     </div>
 
     <script>
+
         document.addEventListener('DOMContentLoaded', () => {
             const nextBtn = document.getElementById('btn-next');
             const stepLabel = document.querySelector('.text-xs');
@@ -189,8 +190,8 @@
                     title_key: "step_eco_title", title_default: "What's your primary digital ecosystem?",
                     options: [
                         { icon: 'laptop_mac', key_text: 'step_eco_opt1', text: 'Apple (macOS / iOS)', value: 'apple', key: 'ecosystem' },
-                        { icon: 'android', key_text: 'step_eco_opt2', text: 'Google / Windows', value: 'google', key: 'ecosystem' },
-                        { icon: 'lock', key_text: 'step_eco_opt3', text: 'De-Googled / Linux', value: 'custom_rom', key: 'ecosystem' }
+                        { icon: 'desktop_windows', key_text: 'step_eco_opt2', text: 'Windows', value: 'google', key: 'ecosystem' },
+                        { icon: 'lock', key_text: 'step_eco_opt3', text: 'Linux', value: 'custom_rom', key: 'ecosystem' }
                     ]
                 },
                 {
@@ -267,7 +268,7 @@
                 nextBtn.classList.remove('bg-white', 'hover:bg-gray-200');
             }
 
-                        function loadStep(stepIndex) {
+            function loadStep(stepIndex) {
                 const stepData = steps[stepIndex];
                 stepLabel.innerText = 'Step ' + (stepIndex + 1) + ' of ' + steps.length;
                 stepTitle.setAttribute('data-i18n', stepData.title_key);
@@ -302,7 +303,6 @@
                 });
 
                 resetButtons();
-                
                 if(window.translatePage) window.translatePage();
             }
 
@@ -318,7 +318,7 @@
                         nextBtn.innerHTML = 'Next Step';
                         loadStep(currentStep);
                     } else {
-                                                cardContainer.innerHTML = `
+                        cardContainer.innerHTML = `
                             <div class="flex flex-col items-center justify-center text-center py-12 animate-pulse min-h-[400px]">
                                 <span class="material-symbols-outlined text-6xl text-primary mb-6 animate-spin">memory</span>
                                 <h3 class="text-3xl font-bold text-white mb-2" data-i18n="analyzing_matrix">Analyzing the matrix...</h3>
@@ -328,7 +328,8 @@
                         if(window.translatePage) window.translatePage();
 
                         setTimeout(() => {
-                            let result = window.calculateBestDevice ? window.calculateBestDevice(userPrefs) : { winner: "Pixel 10 Pro XL", reason: "AI Focus", runnerUp: "iPhone 17 Pro Max" };
+                            let result = window.calculateBestDevice ? window.calculateBestDevice(userPrefs) : null;
+                            if(!result) { result = { winner: "Pixel 10 Pro XL", reason: "Fallback Algorithm.", runnerUp: "iPhone 17 Pro Max"}; }
                             
                             cardContainer.classList.remove('p-10');
                             cardContainer.classList.add('p-0');
